@@ -34,6 +34,22 @@ lake build
 Requires the Lean toolchain pinned in [lean-toolchain](lean-toolchain)
 (`elan` will install it automatically).
 
+### Blueprint and API docs
+
+```sh
+leanblueprint web                    # regenerate blueprint HTML
+DOCGEN_SRC=file lake build Rudin:docs   # regenerate API docs
+# symlink docs into blueprint/web/ so /find/#doc/... resolves:
+( cd blueprint/web && \
+  for e in /Users/so/Repos/rudin-lean/.lake/build/doc/*; do \
+    name=$(basename "$e"); [ -e "$name" ] || ln -s "$e" "$name"; \
+  done )
+leanblueprint serve                  # browse at http://localhost:8000/
+```
+
+The `DOCGEN_SRC=file` env var makes doc-gen4 use `file://` source URIs
+(required when there is no GitHub remote for the repo).
+
 ## Status
 
 Only a seed theorem (Rudin 1.6 — translation and scalar-multiplication
