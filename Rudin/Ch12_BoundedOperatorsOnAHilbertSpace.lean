@@ -77,6 +77,16 @@ theorem adjoint_norm (A : E →L[𝕜] F) :
     ‖adjoint A‖ = ‖A‖ :=
   ContinuousLinearMap.adjoint.norm_map A
 
+variable (𝕜 E) in
+/-- **Corollary of 12.9** — The identity operator is self-adjoint:
+`1† = 1`. Proof: pair against every `x, y` — both sides give `⟪y, x⟫`. -/
+theorem adjoint_one : (ContinuousLinearMap.adjoint (1 : E →L[𝕜] E)) = 1 := by
+  apply ContinuousLinearMap.ext
+  intro y
+  refine ext_inner_right 𝕜 fun x => ?_
+  rw [ContinuousLinearMap.adjoint_inner_left,
+      ContinuousLinearMap.one_apply, ContinuousLinearMap.one_apply]
+
 end Adjoint
 
 section AdjointAlgebra
@@ -149,6 +159,22 @@ theorem normal_orthogonal_range {T : E →L[𝕜] E} (hT : IsStarNormal T) :
     T.rangeᗮ = T.ker :=
   ContinuousLinearMap.IsStarNormal.orthogonal_range hT
 
+/-- **Corollary of 12.12 + 12.26** — Every self-adjoint operator is
+normal. Proof: `star T = T` makes `star T * T = T * T = T * star T`. -/
+theorem selfAdjoint_isStarNormal {T : E →L[𝕜] E} (hT : IsSelfAdjoint T) :
+    IsStarNormal T :=
+  ⟨by rw [hT]⟩
+
+/-- **Corollary of 12.26** — For a normal operator, `ker T = ker T†`. -/
+theorem normal_ker_adjoint {T : E →L[𝕜] E} (hT : IsStarNormal T) :
+    (ContinuousLinearMap.adjoint T).ker = T.ker :=
+  ContinuousLinearMap.IsStarNormal.ker_adjoint_eq_ker hT
+
+/-- **Corollary of 12.26** — For a normal `T`, `T v = 0 ↔ T† v = 0`. -/
+theorem normal_apply_eq_zero_iff {T : E →L[𝕜] E} (hT : IsStarNormal T) (v : E) :
+    ContinuousLinearMap.adjoint T v = 0 ↔ T v = 0 :=
+  ContinuousLinearMap.IsStarNormal.adjoint_apply_eq_zero_iff hT v
+
 end Normal
 
 section OrthogonalProjection
@@ -169,6 +195,12 @@ theorem orthogonalProjection_isSelfAdjoint
     (U : Submodule 𝕜 E) [U.HasOrthogonalProjection] :
     IsSelfAdjoint (orthogonalProjection U) :=
   isSelfAdjoint_starProjection U
+
+/-- **Corollary of 12.14** — An orthogonal projection is normal. -/
+theorem orthogonalProjection_isStarNormal
+    (U : Submodule 𝕜 E) [U.HasOrthogonalProjection] :
+    IsStarNormal (orthogonalProjection U) :=
+  selfAdjoint_isStarNormal (orthogonalProjection_isSelfAdjoint U)
 
 end OrthogonalProjection
 

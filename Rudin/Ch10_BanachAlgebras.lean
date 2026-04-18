@@ -43,6 +43,14 @@ theorem gelfand_formula (a : A) :
       (𝓝 (spectralRadius ℂ a)) :=
   spectrum.pow_norm_pow_one_div_tendsto_nhds_spectralRadius a
 
+omit [CompleteSpace A] in
+/-- **Corollary** — In a nontrivial complex Banach algebra, `0` is in
+the spectrum of the zero element, and nothing else. Proof: `z ∈ σ(0)`
+iff `z • 1 - 0 = z • 1` is not a unit, iff `z = 0`. -/
+theorem spectrum_zero [Nontrivial A] : spectrum ℂ (0 : A) = {0} := by
+  ext z
+  simp
+
 /-- **Theorem 10.13 (spectrum bounded by norm)** — The spectrum of `a`
 lies in the closed disk of radius `‖a‖` centered at zero. -/
 theorem spectrum_subset_closedBall [NormOneClass A] (a : A) :
@@ -105,6 +113,13 @@ theorem neumann_series (a : R) (h : ‖a‖ < 1) :
 then `1 - a` is invertible. -/
 theorem isUnit_one_sub (a : R) (h : ‖a‖ < 1) : IsUnit (1 - a) :=
   ⟨Units.oneSub a h, rfl⟩
+
+/-- **Corollary of 10.7** — If `‖a‖ < 1`, then `1 + a` is invertible.
+Proof: rewrite `1 + a = 1 - (-a)` and observe `‖-a‖ = ‖a‖ < 1`. -/
+theorem isUnit_one_add (a : R) (h : ‖a‖ < 1) : IsUnit (1 + a) := by
+  have h' : ‖-a‖ < 1 := by rwa [norm_neg]
+  have := isUnit_one_sub (-a) h'
+  rwa [sub_neg_eq_add] at this
 
 end UnitsOpen
 
