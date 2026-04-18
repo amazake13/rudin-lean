@@ -69,6 +69,12 @@ theorem hahn_banach_point_point [T1Space E] {x y : E} (hxy : x ≠ y) :
     ∃ f : StrongDual ℝ E, f x < f y :=
   geometric_hahn_banach_point_point hxy
 
+/-- **Theorem 3.22 (Krein–Milman lemma)** — Every nonempty compact set
+in a locally convex Hausdorff TVS has an extreme point. -/
+theorem krein_milman_lemma {s : Set E} (hs_cpt : IsCompact s)
+    (hs_ne : s.Nonempty) : (s.extremePoints ℝ).Nonempty :=
+  hs_cpt.extremePoints_nonempty hs_ne
+
 end HahnBanachGeometric
 
 end Rudin.Ch03

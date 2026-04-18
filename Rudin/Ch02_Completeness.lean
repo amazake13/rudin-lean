@@ -74,4 +74,19 @@ theorem riesz_lemma {F : Subspace 𝕜 E}
 
 end RieszLemma
 
+section BoundedInverse
+
+variable {𝕜 E F : Type*} [NontriviallyNormedField 𝕜]
+variable [NormedAddCommGroup E] [NormedSpace 𝕜 E] [CompleteSpace E]
+variable [NormedAddCommGroup F] [NormedSpace 𝕜 F] [CompleteSpace F]
+
+/-- **Theorem 2.12 (Bounded inverse theorem)** — A continuous linear
+bijection between Banach spaces has a continuous inverse; it is
+packaged as a continuous linear isomorphism. -/
+noncomputable def bounded_inverse (f : E →L[𝕜] F) (hker : f.ker = ⊥)
+    (hrange : f.range = ⊤) : E ≃L[𝕜] F :=
+  ContinuousLinearEquiv.ofBijective f hker hrange
+
+end BoundedInverse
+
 end Rudin.Ch02

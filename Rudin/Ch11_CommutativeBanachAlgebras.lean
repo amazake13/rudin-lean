@@ -1,4 +1,5 @@
 import Mathlib.Analysis.Normed.Algebra.Spectrum
+import Mathlib.Analysis.Normed.Algebra.Basic
 import Mathlib.Analysis.CStarAlgebra.GelfandDuality
 
 /-!
@@ -32,6 +33,10 @@ theorem mem_spectrum_iff_exists_character (a : A) (z : ℂ) :
 the function `φ ↦ φ a` on the character space `Δ`. -/
 noncomputable def gelfand : A →ₐ[ℂ] C(characterSpace ℂ A, ℂ) :=
   gelfandTransform ℂ A
+
+/-- **Theorem 11.9 (character space is compact)** — The character
+space of a commutative complex Banach algebra is weak-$*$ compact. -/
+example : CompactSpace (characterSpace ℂ A) := inferInstance
 
 end CommutativeComplexBanachAlgebra
 

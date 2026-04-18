@@ -51,4 +51,21 @@ example : CompleteSpace (E →L[𝕜] F) := inferInstance
 
 end DualComplete
 
+section Polar
+
+variable {𝕜 E : Type*} [NontriviallyNormedField 𝕜]
+variable [SeminormedAddCommGroup E] [NormedSpace 𝕜 E]
+
+/-- **Definition 4.X (polar set)** — The polar of a set $s \subseteq E$
+inside the continuous dual consists of functionals $\varphi$ with
+$|\varphi(x)| \le 1$ for all $x \in s$. -/
+abbrev polar (s : Set E) : Set (StrongDual 𝕜 E) := StrongDual.polar 𝕜 s
+
+/-- **Theorem 4.X (polars are closed)** — The polar of any set is closed
+in the strong dual. -/
+theorem polar_isClosed (s : Set E) : IsClosed (StrongDual.polar 𝕜 s) :=
+  NormedSpace.isClosed_polar 𝕜 s
+
+end Polar
+
 end Rudin.Ch04

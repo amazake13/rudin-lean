@@ -92,6 +92,15 @@
   for all $y \in F$.
 \end{theorem}
 
+\begin{theorem}[Rudin 2.12, Bounded inverse]
+  \label{thm:bounded-inverse}
+  \uses{thm:open-mapping}
+  \lean{Rudin.Ch02.bounded_inverse}
+  \leanok
+  A bijective continuous linear map between Banach spaces has a
+  continuous inverse (so it is a topological isomorphism).
+\end{theorem}
+
 \chapter{Convexity}
 
 \begin{theorem}[Rudin 3.2, Hahn--Banach, analytic]
@@ -133,9 +142,18 @@
   separated by a continuous linear functional.
 \end{theorem}
 
+\begin{theorem}[Rudin 3.22, Krein--Milman lemma]
+  \label{thm:krein-milman-lemma}
+  \uses{thm:hahn-banach-point-point}
+  \lean{Rudin.Ch03.krein_milman_lemma}
+  \leanok
+  Every nonempty compact set in a locally convex Hausdorff TVS has an
+  extreme point.
+\end{theorem}
+
 \begin{theorem}[Rudin 3.23, Krein--Milman]
   \label{thm:krein-milman}
-  \uses{thm:hahn-banach-separation}
+  \uses{thm:krein-milman-lemma, thm:hahn-banach-separation}
   \lean{Rudin.Ch03.krein_milman}
   \leanok
   In a locally convex Hausdorff topological vector space, every compact
@@ -161,6 +179,22 @@
   is an isometric linear embedding. $E$ is called \emph{reflexive} if
   this map is surjective.
 \end{definition}
+
+\begin{definition}[polar set]
+  \label{def:polar}
+  \lean{Rudin.Ch04.polar}
+  \leanok
+  For $s \subseteq E$, the \emph{polar} is
+  $\{\varphi \in E^{*} : |\varphi(x)| \le 1 \text{ for all } x \in s\}$.
+\end{definition}
+
+\begin{theorem}[polar is closed]
+  \label{thm:polar-closed}
+  \uses{def:polar}
+  \lean{Rudin.Ch04.polar_isClosed}
+  \leanok
+  The polar of any set is closed in the strong dual.
+\end{theorem}
 
 \chapter{Some Applications}
 
@@ -221,6 +255,14 @@
   \leanok
   The Fourier transform extends to a unitary automorphism of $L^2(E;F)$;
   in particular, $\|\widehat{f}\|_{L^2} = \|f\|_{L^2}$.
+\end{theorem}
+
+\begin{theorem}[Rudin 7.7, Fourier inversion on Schwartz space]
+  \label{thm:fourier-inversion}
+  \uses{thm:fourier-schwartz}
+  \lean{Rudin.Ch07.fourier_inversion}
+  \leanok
+  For $f \in \mathcal{S}(V, E)$, $\mathcal{F}^{-1} \mathcal{F} f = f$.
 \end{theorem}
 
 \chapter{Applications to Differential Equations}
@@ -322,6 +364,21 @@
   The spectrum of any element of a complex Banach algebra is compact.
 \end{theorem}
 
+\begin{theorem}[resolvent set is open]
+  \label{thm:resolventSet-open}
+  \lean{Rudin.Ch10.resolventSet_isOpen}
+  \leanok
+  The complement of the spectrum in $\mathbb{C}$ is open.
+\end{theorem}
+
+\begin{theorem}[spectral radius $\le$ norm]
+  \label{thm:spectralRadius-le-norm}
+  \uses{thm:spectrum-in-closed-ball}
+  \lean{Rudin.Ch10.spectralRadius_le_norm}
+  \leanok
+  $\rho(a) \le \|a\|$ for any element of a complex Banach algebra.
+\end{theorem}
+
 \chapter{Commutative Banach Algebras}
 
 \begin{definition}[Rudin 11.5, character space]
@@ -421,6 +478,23 @@
   $\overline{\mu} = \mu$.
 \end{theorem}
 
+\begin{theorem}[Rudin 12.26, characterisation of normal operators]
+  \label{thm:normal-iff}
+  \uses{def:adjoint}
+  \lean{Rudin.Ch12.isStarNormal_iff_norm_eq_adjoint}
+  \leanok
+  An operator $T$ on a Hilbert space is normal ($T^{*}T = T T^{*}$)
+  iff $\|T v\| = \|T^{*} v\|$ for every $v$.
+\end{theorem}
+
+\begin{theorem}[Rudin 12.26, kernel $=$ range orthogonal complement for normal operators]
+  \label{thm:normal-orthogonal-range}
+  \uses{thm:normal-iff}
+  \lean{Rudin.Ch12.normal_orthogonal_range}
+  \leanok
+  For a normal operator $T$, $(\operatorname{range} T)^{\perp} = \ker T$.
+\end{theorem}
+
 \begin{theorem}[Rudin 12.22, spectral theorem (finite-dimensional)]
   \label{thm:spectral-diagonalization}
   \uses{def:adjoint}
@@ -475,4 +549,23 @@
   \lean{Rudin.Ch13.closure_isClosed}
   \leanok
   If $T$ is closable, then $\overline{T}$ is a closed operator.
+\end{theorem}
+
+\begin{definition}[Rudin 13.9, adjoint of an unbounded operator]
+  \label{def:pmap-adjoint}
+  \uses{def:closed-operator}
+  \lean{Rudin.Ch13.pmapAdjoint}
+  \leanok
+  For a densely-defined operator $T\colon E \to F$ between Hilbert
+  spaces, its adjoint $T^{*}$ is defined on the subspace of $y \in F$
+  for which $x \mapsto \langle T x, y\rangle$ is bounded on
+  $\operatorname{dom} T$.
+\end{definition}
+
+\begin{theorem}[Rudin 13.10, the adjoint is closed]
+  \label{thm:pmap-adjoint-closed}
+  \uses{def:pmap-adjoint, def:closed-operator}
+  \lean{Rudin.Ch13.pmapAdjoint_isClosed}
+  \leanok
+  The adjoint of any densely-defined operator is a closed operator.
 \end{theorem}

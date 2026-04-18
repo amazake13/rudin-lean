@@ -50,4 +50,19 @@ theorem plancherel (f : Lp (α := E) F 2) : ‖(𝓕 f : Lp (α := E) F 2)‖ = 
 
 end L2Fourier
 
+section FourierInversion
+
+variable {E V : Type*}
+  [NormedAddCommGroup E] [NormedSpace ℂ E] [CompleteSpace E]
+variable [NormedAddCommGroup V] [InnerProductSpace ℝ V]
+  [FiniteDimensional ℝ V] [MeasurableSpace V] [BorelSpace V]
+
+/-- **Theorem 7.7 (Fourier inversion on Schwartz space)** — For
+`f : 𝓢(V, E)`, the inverse Fourier transform undoes the Fourier
+transform: $\mathcal{F}^{-1} \mathcal{F} f = f$. -/
+theorem fourier_inversion (f : 𝓢(V, E)) : 𝓕⁻ (𝓕 f) = f :=
+  FourierPair.fourierInv_fourier_eq f
+
+end FourierInversion
+
 end Rudin.Ch07

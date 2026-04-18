@@ -1,5 +1,6 @@
 import Mathlib.Topology.Algebra.Module.LinearPMap
 import Mathlib.Analysis.InnerProductSpace.Adjoint
+import Mathlib.Analysis.InnerProductSpace.LinearPMap
 
 /-!
 # Chapter 13 — Unbounded Operators
@@ -50,5 +51,27 @@ theorem closure_isClosed {T : E →ₗ.[R] F} (hT : IsClosableOperator T) :
   hT.closure_isClosed
 
 end ClosedOperators
+
+section PMapAdjoint
+
+variable {𝕜 E F : Type*} [RCLike 𝕜]
+variable [NormedAddCommGroup E] [InnerProductSpace 𝕜 E] [CompleteSpace E]
+variable [NormedAddCommGroup F] [InnerProductSpace 𝕜 F] [CompleteSpace F]
+
+/-- **Definition 13.9 (adjoint of an unbounded operator)** — For a
+densely-defined operator $T : E \to F$, its adjoint $T^{*}$ is defined
+on the subspace of $y \in F$ for which $x \mapsto \langle T x, y\rangle$
+is bounded on the domain of $T$. -/
+noncomputable def pmapAdjoint (T : E →ₗ.[𝕜] F) : F →ₗ.[𝕜] E :=
+  T.adjoint
+
+omit [CompleteSpace F] in
+/-- **Theorem 13.10** — The adjoint of any densely-defined operator is
+closed. -/
+theorem pmapAdjoint_isClosed {T : E →ₗ.[𝕜] F} (hT : Dense (T.domain : Set E)) :
+    (pmapAdjoint T).IsClosed :=
+  T.adjoint_isClosed hT
+
+end PMapAdjoint
 
 end Rudin.Ch13

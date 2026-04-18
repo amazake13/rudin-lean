@@ -81,6 +81,26 @@ theorem self_adjoint_eigenvalue_real (hT : T.IsSymmetric) {μ : 𝕜}
 
 end SelfAdjoint
 
+section Normal
+
+variable {𝕜 E : Type*} [RCLike 𝕜]
+variable [NormedAddCommGroup E] [InnerProductSpace 𝕜 E] [CompleteSpace E]
+
+/-- **Theorem 12.26 (characterisation of normal operators)** —
+An operator is normal iff `‖T v‖ = ‖T† v‖` for all `v`. -/
+theorem isStarNormal_iff_norm_eq_adjoint (T : E →L[𝕜] E) :
+    IsStarNormal T ↔ ∀ v : E, ‖T v‖ = ‖ContinuousLinearMap.adjoint T v‖ :=
+  ContinuousLinearMap.isStarNormal_iff_norm_eq_adjoint
+
+/-- **Theorem 12.26 (normal operators: kernel ⟂ range)** —
+For a normal operator `T`, the orthogonal complement of the range
+equals the kernel. -/
+theorem normal_orthogonal_range {T : E →L[𝕜] E} (hT : IsStarNormal T) :
+    T.rangeᗮ = T.ker :=
+  ContinuousLinearMap.IsStarNormal.orthogonal_range hT
+
+end Normal
+
 section SpectralTheorem
 
 variable {𝕜 E : Type*} [RCLike 𝕜]

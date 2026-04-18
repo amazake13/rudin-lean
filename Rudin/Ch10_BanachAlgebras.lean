@@ -54,6 +54,17 @@ element of a complex Banach algebra is compact. -/
 theorem spectrum_isCompact (a : A) : IsCompact (spectrum ℂ a) :=
   spectrum.isCompact a
 
+/-- **Theorem 10.13 (resolvent set is open)** — The complement of the
+spectrum in `ℂ` is open. -/
+theorem resolventSet_isOpen (a : A) : IsOpen (resolventSet ℂ a) :=
+  spectrum.isOpen_resolventSet a
+
+/-- **Theorem 10.13 (spectral radius $\le$ norm)** — The spectral radius
+of any element is bounded by its norm. -/
+theorem spectralRadius_le_norm [NormOneClass A] (a : A) :
+    spectralRadius ℂ a ≤ ‖a‖₊ :=
+  spectrum.spectralRadius_le_nnnorm a
+
 end ComplexBanachAlgebra
 
 section UnitsOpen

@@ -74,7 +74,7 @@
       <span class="definition_thmcaption">
       Definition
       </span>
-      <span class="definition_thmlabel">39</span><span class="definition_thmtitle">Rudin 12.9, adjoint of a bounded operator</span></div>
+      <span class="definition_thmlabel">46</span><span class="definition_thmtitle">Rudin 12.9, adjoint of a bounded operator</span></div>
     <div class="thm_thmcontent"><p>   For Hilbert spaces \(E\), \(F\) and \(A \in \mathcal{B}(E,F)\), there is a unique bounded operator \(A^{*} \in \mathcal{B}(F,E)\) characterised by \(\langle A x, y\rangle = \langle x, A^{*} y\rangle \) for all \(x \in E\), \(y \in F\). </p>
 </div>
 
@@ -104,7 +104,7 @@
       <span class="definition_thmcaption">
       Definition
       </span>
-      <span class="definition_thmlabel">35</span><span class="definition_thmtitle">Rudin 11.5, character space</span></div>
+      <span class="definition_thmlabel">42</span><span class="definition_thmtitle">Rudin 11.5, character space</span></div>
     <div class="thm_thmcontent"><p>   The character space \(\Delta \) of a commutative complex Banach algebra \(A\) is the set of continuous nonzero algebra homomorphisms \(A \to \mathbb {C}\), equipped with the weak-\(*\) topology. </p>
 </div>
 
@@ -134,7 +134,7 @@
       <span class="definition_thmcaption">
       Definition
       </span>
-      <span class="definition_thmlabel">48</span><span class="definition_thmtitle">Rudin 13.4, closable operator</span></div>
+      <span class="definition_thmlabel">57</span><span class="definition_thmtitle">Rudin 13.4, closable operator</span></div>
     <div class="thm_thmcontent"><p>    An operator \(T\) is <em>closable</em> iff the closure of its graph is itself the graph of some (uniquely determined) operator. </p>
 </div>
 
@@ -164,7 +164,7 @@
       <span class="definition_thmcaption">
       Definition
       </span>
-      <span class="definition_thmlabel">47</span><span class="definition_thmtitle">Rudin 13.1, closed operator</span></div>
+      <span class="definition_thmlabel">56</span><span class="definition_thmtitle">Rudin 13.1, closed operator</span></div>
     <div class="thm_thmcontent"><p>   A densely-defined linear operator \(T\) is <em>closed</em> iff its graph \(\{ (x, T x) : x \in \operatorname {dom} T\} \) is closed in \(E \times F\). </p>
 </div>
 
@@ -194,7 +194,7 @@
       <span class="definition_thmcaption">
       Definition
       </span>
-      <span class="definition_thmlabel">50</span><span class="definition_thmtitle">Rudin 13.6, closure of an operator</span></div>
+      <span class="definition_thmlabel">59</span><span class="definition_thmtitle">Rudin 13.6, closure of an operator</span></div>
     <div class="thm_thmcontent"><p>    If \(T\) is closable, \(\overline{T}\) is the unique extension whose graph is the closure of the graph of \(T\). </p>
 </div>
 
@@ -224,7 +224,7 @@
       <span class="definition_thmcaption">
       Definition
       </span>
-      <span class="definition_thmlabel">17</span><span class="definition_thmtitle">Rudin 4.4, canonical embedding into the bidual</span></div>
+      <span class="definition_thmlabel">19</span><span class="definition_thmtitle">Rudin 4.4, canonical embedding into the bidual</span></div>
     <div class="thm_thmcontent"><p>   The canonical map \(E \to E^{**}\), \(x \mapsto (\varphi \mapsto \varphi (x))\), is an isometric linear embedding. \(E\) is called <em>reflexive</em> if this map is surjective. </p>
 </div>
 
@@ -254,7 +254,7 @@
       <span class="definition_thmcaption">
       Definition
       </span>
-      <span class="definition_thmlabel">37</span><span class="definition_thmtitle">Rudin 11.18, Gelfand transform</span></div>
+      <span class="definition_thmlabel">44</span><span class="definition_thmtitle">Rudin 11.18, Gelfand transform</span></div>
     <div class="thm_thmcontent"><p>    The Gelfand transform \(A \to C(\Delta , \mathbb {C})\) sends \(a\) to \(\varphi \mapsto \varphi (a)\). </p>
 </div>
 
@@ -314,7 +314,7 @@
       <span class="definition_thmcaption">
       Definition
       </span>
-      <span class="definition_thmlabel">28</span><span class="definition_thmtitle">Rudin 10.7, Neumann unit construction</span></div>
+      <span class="definition_thmlabel">33</span><span class="definition_thmtitle">Rudin 10.7, Neumann unit construction</span></div>
     <div class="thm_thmcontent"><p>   For \(\| a\|  {\lt} 1\), \(1 - a\) is explicitly a unit, witnessed by the geometric series \(\sum _{n \ge 0} a^n\). </p>
 </div>
 
@@ -322,6 +322,66 @@
     
     
   <a class="lean_link lean_decl" href="/find/#doc/Rudin.Ch10.oneSubUnit">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="def:pmap-adjoint_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="def:pmap-adjoint" style="display: none">
+    <div class="thm_thmheading">
+      <span class="definition_thmcaption">
+      Definition
+      </span>
+      <span class="definition_thmlabel">61</span><span class="definition_thmtitle">Rudin 13.9, adjoint of an unbounded operator</span></div>
+    <div class="thm_thmcontent"><p>    For a densely-defined operator \(T\colon E \to F\) between Hilbert spaces, its adjoint \(T^{*}\) is defined on the subspace of \(y \in F\) for which \(x \mapsto \langle T x, y\rangle \) is bounded on \(\operatorname {dom} T\). </p>
+</div>
+
+    <a class="latex_link" href="sect0013.html#def:pmap-adjoint">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="/find/#doc/Rudin.Ch13.pmapAdjoint">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="def:polar_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="def:polar" style="display: none">
+    <div class="thm_thmheading">
+      <span class="definition_thmcaption">
+      Definition
+      </span>
+      <span class="definition_thmlabel">20</span><span class="definition_thmtitle">polar set</span></div>
+    <div class="thm_thmcontent"><p>   For \(s \subseteq E\), the <em>polar</em> is \(\{ \varphi \in E^{*} : |\varphi (x)| \le 1 \text{ for all } x \in s\} \). </p>
+</div>
+
+    <a class="latex_link" href="sect0004.html#def:polar">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="/find/#doc/Rudin.Ch04.polar">Lean</a>
     
     
   
@@ -344,7 +404,7 @@
       <span class="definition_thmcaption">
       Definition
       </span>
-      <span class="definition_thmlabel">20</span><span class="definition_thmtitle">Schwartz space</span></div>
+      <span class="definition_thmlabel">24</span><span class="definition_thmtitle">Schwartz space</span></div>
     <div class="thm_thmcontent"><p>   The space \(\mathcal{S}(E,F)\) of rapidly decreasing smooth functions from a finite-dimensional real vector space \(E\) to a normed space \(F\), with the Fréchet topology generated by the seminorms \(\| x\| ^k \| f^{(n)}(x)\| \). </p>
 </div>
 
@@ -374,7 +434,7 @@
       <span class="theorem_thmcaption">
       Theorem
       </span>
-      <span class="theorem_thmlabel">25</span><span class="theorem_thmtitle">Abel’s limit theorem</span></div>
+      <span class="theorem_thmlabel">30</span><span class="theorem_thmtitle">Abel’s limit theorem</span></div>
     <div class="thm_thmcontent"><p>   If \(\sum a_n\) converges to \(l\), then \(\sum a_n x^n \to l\) as \(x \to 1^-\). (The elementary abelian partner to Wiener’s Tauberian theorem, which is not yet available in mathlib.) </p>
 </div>
 
@@ -404,7 +464,7 @@
       <span class="theorem_thmcaption">
       Theorem
       </span>
-      <span class="theorem_thmlabel">41</span><span class="theorem_thmtitle">Rudin 12.9, adjoint is involutive</span></div>
+      <span class="theorem_thmlabel">48</span><span class="theorem_thmtitle">Rudin 12.9, adjoint is involutive</span></div>
     <div class="thm_thmcontent"><p>    \((A^{*})^{*} = A\). </p>
 </div>
 
@@ -434,7 +494,7 @@
       <span class="theorem_thmcaption">
       Theorem
       </span>
-      <span class="theorem_thmlabel">42</span><span class="theorem_thmtitle">Rudin 12.10, adjoint of composition</span></div>
+      <span class="theorem_thmlabel">49</span><span class="theorem_thmtitle">Rudin 12.10, adjoint of composition</span></div>
     <div class="thm_thmcontent"><p>    \((AB)^{*} = B^{*} A^{*}\). </p>
 </div>
 
@@ -464,7 +524,7 @@
       <span class="theorem_thmcaption">
       Theorem
       </span>
-      <span class="theorem_thmlabel">40</span><span class="theorem_thmtitle">Rudin 12.9, defining relation of the adjoint</span></div>
+      <span class="theorem_thmlabel">47</span><span class="theorem_thmtitle">Rudin 12.9, defining relation of the adjoint</span></div>
     <div class="thm_thmcontent"><p>    \(\langle A^{*} y, x\rangle = \langle y, A x\rangle \). </p>
 </div>
 
@@ -524,7 +584,7 @@
       <span class="theorem_thmcaption">
       Theorem
       </span>
-      <span class="theorem_thmlabel">16</span><span class="theorem_thmtitle">Rudin 4.3, Banach–Alaoglu</span></div>
+      <span class="theorem_thmlabel">18</span><span class="theorem_thmtitle">Rudin 4.3, Banach–Alaoglu</span></div>
     <div class="thm_thmcontent"><p>   The closed unit ball of the continuous dual of a normed space is compact in the weak-\(*\) topology; more generally, the polar of any neighborhood of the origin is weak-\(*\) compact. </p>
 </div>
 
@@ -582,6 +642,36 @@
 
 
     
+    <div class="dep-modal-container" id="thm:bounded-inverse_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="thm:bounded-inverse" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">11</span><span class="theorem_thmtitle">Rudin 2.12, Bounded inverse</span></div>
+    <div class="thm_thmcontent"><p>    A bijective continuous linear map between Banach spaces has a continuous inverse (so it is a topological isomorphism). </p>
+</div>
+
+    <a class="latex_link" href="sect0002.html#thm:bounded-inverse">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="/find/#doc/Rudin.Ch02.bounded_inverse">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
     <div class="dep-modal-container" id="thm:closed-closable_modal">
       <div class="dep-modal-content">
           <button class="dep-closebtn">
@@ -593,7 +683,7 @@
       <span class="theorem_thmcaption">
       Theorem
       </span>
-      <span class="theorem_thmlabel">49</span><span class="theorem_thmtitle">Closed operators are closable</span></div>
+      <span class="theorem_thmlabel">58</span><span class="theorem_thmtitle">Closed operators are closable</span></div>
     <div class="thm_thmcontent"><p>    Every closed operator is trivially closable. </p>
 </div>
 
@@ -653,7 +743,7 @@
       <span class="theorem_thmcaption">
       Theorem
       </span>
-      <span class="theorem_thmlabel">51</span><span class="theorem_thmtitle">Rudin 13.7, the closure is closed</span></div>
+      <span class="theorem_thmlabel">60</span><span class="theorem_thmtitle">Rudin 13.7, the closure is closed</span></div>
     <div class="thm_thmcontent"><p>    If \(T\) is closable, then \(\overline{T}\) is a closed operator. </p>
 </div>
 
@@ -683,7 +773,7 @@
       <span class="theorem_thmcaption">
       Theorem
       </span>
-      <span class="theorem_thmlabel">43</span><span class="theorem_thmtitle">Rudin 12.11, C\(^{*}\)-identity</span></div>
+      <span class="theorem_thmlabel">50</span><span class="theorem_thmtitle">Rudin 12.11, C\(^{*}\)-identity</span></div>
     <div class="thm_thmcontent"><p>    \(\| A^{*} A\|  = \| A\| ^{2}\). </p>
 </div>
 
@@ -713,7 +803,7 @@
       <span class="theorem_thmcaption">
       Theorem
       </span>
-      <span class="theorem_thmlabel">21</span><span class="theorem_thmtitle">Rudin 6.4, differentiation is continuous on test functions</span></div>
+      <span class="theorem_thmlabel">25</span><span class="theorem_thmtitle">Rudin 6.4, differentiation is continuous on test functions</span></div>
     <div class="thm_thmcontent"><p>    The Fréchet derivative defines a continuous linear map \(\mathcal{S}(E,F) \to \mathcal{S}(E, E\! \to _L\!  F)\). </p>
 </div>
 
@@ -743,7 +833,7 @@
       <span class="theorem_thmcaption">
       Theorem
       </span>
-      <span class="theorem_thmlabel">24</span><span class="theorem_thmtitle">Fourier transforms differentiation into multiplication</span></div>
+      <span class="theorem_thmlabel">29</span><span class="theorem_thmtitle">Fourier transforms differentiation into multiplication</span></div>
     <div class="thm_thmcontent"><p>    For \(f \in \mathcal{S}(V,E)\), \(\widehat{\partial f}(\xi ) = 2\pi i\, \xi \cdot \widehat{f}(\xi )\), reducing constant-coefficient linear PDEs in \(\mathcal{S}\) to algebraic (multiplication) problems. </p>
 </div>
 
@@ -751,6 +841,36 @@
     
     
   <a class="lean_link lean_decl" href="/find/#doc/Rudin.Ch08.fourier_fderiv_eq">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="thm:fourier-inversion_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="thm:fourier-inversion" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">28</span><span class="theorem_thmtitle">Rudin 7.7, Fourier inversion on Schwartz space</span></div>
+    <div class="thm_thmcontent"><p>    For \(f \in \mathcal{S}(V, E)\), \(\mathcal{F}^{-1} \mathcal{F} f = f\). </p>
+</div>
+
+    <a class="latex_link" href="sect0007.html#thm:fourier-inversion">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="/find/#doc/Rudin.Ch07.fourier_inversion">Lean</a>
     
     
   
@@ -773,7 +893,7 @@
       <span class="theorem_thmcaption">
       Theorem
       </span>
-      <span class="theorem_thmlabel">22</span><span class="theorem_thmtitle">Rudin 7.4, Fourier transform on Schwartz space</span></div>
+      <span class="theorem_thmlabel">26</span><span class="theorem_thmtitle">Rudin 7.4, Fourier transform on Schwartz space</span></div>
     <div class="thm_thmcontent"><p>    The Fourier transform is a continuous linear self-map of \(\mathcal{S}(V, E)\). </p>
 </div>
 
@@ -803,7 +923,7 @@
       <span class="theorem_thmcaption">
       Theorem
       </span>
-      <span class="theorem_thmlabel">32</span><span class="theorem_thmtitle">Rudin 10.13, Gelfand’s spectral radius formula</span></div>
+      <span class="theorem_thmlabel">37</span><span class="theorem_thmtitle">Rudin 10.13, Gelfand’s spectral radius formula</span></div>
     <div class="thm_thmcontent"><p>   For \(a\) in a complex Banach algebra, \(\| a^n\| ^{1/n} \to \rho (a)\) as \(n \to \infty \), where \(\rho (a)\) is the spectral radius. </p>
 </div>
 
@@ -833,7 +953,7 @@
       <span class="theorem_thmcaption">
       Theorem
       </span>
-      <span class="theorem_thmlabel">31</span><span class="theorem_thmtitle">Rudin 10.14, Gelfand–Mazur</span></div>
+      <span class="theorem_thmlabel">36</span><span class="theorem_thmtitle">Rudin 10.14, Gelfand–Mazur</span></div>
     <div class="thm_thmcontent"><p>    If every nonzero element of a complex Banach algebra \(A\) is invertible, then the natural map \(\mathbb {C} \to A\) is an isometric algebra isomorphism. </p>
 </div>
 
@@ -863,7 +983,7 @@
       <span class="theorem_thmcaption">
       Theorem
       </span>
-      <span class="theorem_thmlabel">38</span><span class="theorem_thmtitle">Rudin 11.18, Gelfand–Naimark: commutative C\(^{*}\)-algebras</span></div>
+      <span class="theorem_thmlabel">45</span><span class="theorem_thmtitle">Rudin 11.18, Gelfand–Naimark: commutative C\(^{*}\)-algebras</span></div>
     <div class="thm_thmcontent"><p>    For a commutative unital C\(^{*}\)-algebra \(A\), the Gelfand transform is an isometric \(*\)-isomorphism \(A \cong C(\Delta , \mathbb {C})\). </p>
 </div>
 
@@ -902,7 +1022,7 @@
       <span class="theorem_thmcaption">
       Theorem
       </span>
-      <span class="theorem_thmlabel">11</span><span class="theorem_thmtitle">Rudin 3.2, Hahn–Banach, analytic</span></div>
+      <span class="theorem_thmlabel">12</span><span class="theorem_thmtitle">Rudin 3.2, Hahn–Banach, analytic</span></div>
     <div class="thm_thmcontent"><p>   Let \(E\) be a real vector space, \(N\colon E \to \mathbb {R}\) a sublinear functional, and \(f\) a linear functional defined on a subspace of \(E\) with \(f \le N\) on its domain. Then \(f\) extends to a linear functional \(g\colon E \to \mathbb {R}\) with \(g \le N\) everywhere. </p>
 </div>
 
@@ -932,7 +1052,7 @@
       <span class="theorem_thmcaption">
       Theorem
       </span>
-      <span class="theorem_thmlabel">13</span><span class="theorem_thmtitle">Rudin 3.5, closed convex vs. point</span></div>
+      <span class="theorem_thmlabel">14</span><span class="theorem_thmtitle">Rudin 3.5, closed convex vs. point</span></div>
     <div class="thm_thmcontent"><p>    A closed convex set \(s\) and a point \(x \notin s\) in a locally convex Hausdorff TVS can be strictly separated by a continuous linear functional. </p>
 </div>
 
@@ -962,7 +1082,7 @@
       <span class="theorem_thmcaption">
       Theorem
       </span>
-      <span class="theorem_thmlabel">14</span><span class="theorem_thmtitle">Rudin 3.5, two distinct points</span></div>
+      <span class="theorem_thmlabel">15</span><span class="theorem_thmtitle">Rudin 3.5, two distinct points</span></div>
     <div class="thm_thmcontent"><p>    In a locally convex \(T_1\) TVS, any two distinct points are strictly separated by a continuous linear functional. </p>
 </div>
 
@@ -992,7 +1112,7 @@
       <span class="theorem_thmcaption">
       Theorem
       </span>
-      <span class="theorem_thmlabel">12</span><span class="theorem_thmtitle">Rudin 3.4, Geometric Hahn–Banach</span></div>
+      <span class="theorem_thmlabel">13</span><span class="theorem_thmtitle">Rudin 3.4, Geometric Hahn–Banach</span></div>
     <div class="thm_thmcontent"><p>    In a locally convex Hausdorff topological vector space, a compact convex set and a disjoint closed convex set can be strictly separated by a continuous linear functional. </p>
 </div>
 
@@ -1052,7 +1172,7 @@
       <span class="theorem_thmcaption">
       Theorem
       </span>
-      <span class="theorem_thmlabel">27</span><span class="theorem_thmtitle">Rudin 10.12, inversion is continuous</span></div>
+      <span class="theorem_thmlabel">32</span><span class="theorem_thmtitle">Rudin 10.12, inversion is continuous</span></div>
     <div class="thm_thmcontent"><p>    The inversion map \(x \mapsto x^{-1}\) is continuous at every unit. </p>
 </div>
 
@@ -1082,7 +1202,7 @@
       <span class="theorem_thmcaption">
       Theorem
       </span>
-      <span class="theorem_thmlabel">15</span><span class="theorem_thmtitle">Rudin 3.23, Krein–Milman</span></div>
+      <span class="theorem_thmlabel">17</span><span class="theorem_thmtitle">Rudin 3.23, Krein–Milman</span></div>
     <div class="thm_thmcontent"><p>    In a locally convex Hausdorff topological vector space, every compact convex set is the closed convex hull of its extreme points. </p>
 </div>
 
@@ -1090,6 +1210,36 @@
     
     
   <a class="lean_link lean_decl" href="/find/#doc/Rudin.Ch03.krein_milman">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="thm:krein-milman-lemma_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="thm:krein-milman-lemma" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">16</span><span class="theorem_thmtitle">Rudin 3.22, Krein–Milman lemma</span></div>
+    <div class="thm_thmcontent"><p>    Every nonempty compact set in a locally convex Hausdorff TVS has an extreme point. </p>
+</div>
+
+    <a class="latex_link" href="sect0003.html#thm:krein-milman-lemma">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="/find/#doc/Rudin.Ch03.krein_milman_lemma">Lean</a>
     
     
   
@@ -1172,7 +1322,7 @@
       <span class="theorem_thmcaption">
       Theorem
       </span>
-      <span class="theorem_thmlabel">29</span><span class="theorem_thmtitle">Rudin 10.7, Neumann series formula</span></div>
+      <span class="theorem_thmlabel">34</span><span class="theorem_thmtitle">Rudin 10.7, Neumann series formula</span></div>
     <div class="thm_thmcontent"><p>    For \(\| a\|  {\lt} 1\) in a Banach algebra, \(\sum _{n \ge 0} a^n = (1 - a)^{-1}\). </p>
 </div>
 
@@ -1180,6 +1330,66 @@
     
     
   <a class="lean_link lean_decl" href="/find/#doc/Rudin.Ch10.neumann_series">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="thm:normal-iff_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="thm:normal-iff" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">53</span><span class="theorem_thmtitle">Rudin 12.26, characterisation of normal operators</span></div>
+    <div class="thm_thmcontent"><p>    An operator \(T\) on a Hilbert space is normal (\(T^{*}T = T T^{*}\)) iff \(\| T v\|  = \| T^{*} v\| \) for every \(v\). </p>
+</div>
+
+    <a class="latex_link" href="sect0012.html#thm:normal-iff">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="/find/#doc/Rudin.Ch12.isStarNormal_iff_norm_eq_adjoint">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="thm:normal-orthogonal-range_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="thm:normal-orthogonal-range" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">54</span><span class="theorem_thmtitle">Rudin 12.26, kernel \(=\) range orthogonal complement for normal operators</span></div>
+    <div class="thm_thmcontent"><p>    For a normal operator \(T\), \((\operatorname {range} T)^{\perp } = \ker T\). </p>
+</div>
+
+    <a class="latex_link" href="sect0012.html#thm:normal-orthogonal-range">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="/find/#doc/Rudin.Ch12.normal_orthogonal_range">Lean</a>
     
     
   
@@ -1232,7 +1442,7 @@
       <span class="theorem_thmcaption">
       Theorem
       </span>
-      <span class="theorem_thmlabel">23</span><span class="theorem_thmtitle">Rudin 7.9, Plancherel</span></div>
+      <span class="theorem_thmlabel">27</span><span class="theorem_thmtitle">Rudin 7.9, Plancherel</span></div>
     <div class="thm_thmcontent"><p>    The Fourier transform extends to a unitary automorphism of \(L^2(E;F)\); in particular, \(\| \widehat{f}\| _{L^2} = \| f\| _{L^2}\). </p>
 </div>
 
@@ -1249,6 +1459,96 @@
         
       </ul>
   </div>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="thm:pmap-adjoint-closed_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="thm:pmap-adjoint-closed" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">62</span><span class="theorem_thmtitle">Rudin 13.10, the adjoint is closed</span></div>
+    <div class="thm_thmcontent"><p>    The adjoint of any densely-defined operator is a closed operator. </p>
+</div>
+
+    <a class="latex_link" href="sect0013.html#thm:pmap-adjoint-closed">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="/find/#doc/Rudin.Ch13.pmapAdjoint_isClosed">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="thm:polar-closed_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="thm:polar-closed" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">21</span><span class="theorem_thmtitle">polar is closed</span></div>
+    <div class="thm_thmcontent"><p>    The polar of any set is closed in the strong dual. </p>
+</div>
+
+    <a class="latex_link" href="sect0004.html#thm:polar-closed">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="/find/#doc/Rudin.Ch04.polar_isClosed">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="thm:resolventSet-open_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="thm:resolventSet-open" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">40</span><span class="theorem_thmtitle">resolvent set is open</span></div>
+    <div class="thm_thmcontent"><p>   The complement of the spectrum in \(\mathbb {C}\) is open. </p>
+</div>
+
+    <a class="latex_link" href="sect0010.html#thm:resolventSet-open">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="/find/#doc/Rudin.Ch10.resolventSet_isOpen">Lean</a>
     
     
   
@@ -1301,7 +1601,7 @@
       <span class="theorem_thmcaption">
       Theorem
       </span>
-      <span class="theorem_thmlabel">44</span><span class="theorem_thmtitle">Rudin 12.12, self-adjoint iff \(A^{*} = A\)</span></div>
+      <span class="theorem_thmlabel">51</span><span class="theorem_thmtitle">Rudin 12.12, self-adjoint iff \(A^{*} = A\)</span></div>
     <div class="thm_thmcontent"><p>    \(A\) is self-adjoint iff \(A^{*} = A\). </p>
 </div>
 
@@ -1331,7 +1631,7 @@
       <span class="theorem_thmcaption">
       Theorem
       </span>
-      <span class="theorem_thmlabel">45</span><span class="theorem_thmtitle">Rudin 12.23, eigenvalues of a self-adjoint operator are real</span></div>
+      <span class="theorem_thmlabel">52</span><span class="theorem_thmtitle">Rudin 12.23, eigenvalues of a self-adjoint operator are real</span></div>
     <div class="thm_thmcontent"><p>    Every eigenvalue \(\mu \) of a self-adjoint operator satisfies \(\overline{\mu } = \mu \). </p>
 </div>
 
@@ -1361,7 +1661,7 @@
       <span class="theorem_thmcaption">
       Theorem
       </span>
-      <span class="theorem_thmlabel">46</span><span class="theorem_thmtitle">Rudin 12.22, spectral theorem (finite-dimensional)</span></div>
+      <span class="theorem_thmlabel">55</span><span class="theorem_thmtitle">Rudin 12.22, spectral theorem (finite-dimensional)</span></div>
     <div class="thm_thmcontent"><p>    A self-adjoint operator \(T\) on a finite-dimensional inner product space \(E\) is unitarily equivalent to the diagonal operator on the orthogonal direct sum of its eigenspaces: there is a linear isometry \(E \cong \bigoplus _\mu E_\mu \) conjugating \(T\) to multiplication by \(\mu \) on each summand. </p>
 </div>
 
@@ -1389,6 +1689,36 @@
 
 
     
+    <div class="dep-modal-container" id="thm:spectralRadius-le-norm_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="thm:spectralRadius-le-norm" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">41</span><span class="theorem_thmtitle">spectral radius \(\le \) norm</span></div>
+    <div class="thm_thmcontent"><p>    \(\rho (a) \le \| a\| \) for any element of a complex Banach algebra. </p>
+</div>
+
+    <a class="latex_link" href="sect0010.html#thm:spectralRadius-le-norm">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="/find/#doc/Rudin.Ch10.spectralRadius_le_norm">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
     <div class="dep-modal-container" id="thm:spectrum-compact_modal">
       <div class="dep-modal-content">
           <button class="dep-closebtn">
@@ -1400,7 +1730,7 @@
       <span class="theorem_thmcaption">
       Theorem
       </span>
-      <span class="theorem_thmlabel">34</span><span class="theorem_thmtitle">Rudin 10.13, spectrum is compact</span></div>
+      <span class="theorem_thmlabel">39</span><span class="theorem_thmtitle">Rudin 10.13, spectrum is compact</span></div>
     <div class="thm_thmcontent"><p>    The spectrum of any element of a complex Banach algebra is compact. </p>
 </div>
 
@@ -1430,7 +1760,7 @@
       <span class="theorem_thmcaption">
       Theorem
       </span>
-      <span class="theorem_thmlabel">33</span><span class="theorem_thmtitle">Rudin 10.13, spectrum bounded by norm</span></div>
+      <span class="theorem_thmlabel">38</span><span class="theorem_thmtitle">Rudin 10.13, spectrum bounded by norm</span></div>
     <div class="thm_thmcontent"><p>   \(\sigma (a) \subseteq \{ z : |z| \le \| a\| \} \). </p>
 </div>
 
@@ -1460,7 +1790,7 @@
       <span class="theorem_thmcaption">
       Theorem
       </span>
-      <span class="theorem_thmlabel">30</span><span class="theorem_thmtitle">Rudin 10.13, spectrum nonempty</span></div>
+      <span class="theorem_thmlabel">35</span><span class="theorem_thmtitle">Rudin 10.13, spectrum nonempty</span></div>
     <div class="thm_thmcontent"><p>   Every element of a nontrivial complex Banach algebra has nonempty spectrum. </p>
 </div>
 
@@ -1490,7 +1820,7 @@
       <span class="theorem_thmcaption">
       Theorem
       </span>
-      <span class="theorem_thmlabel">36</span><span class="theorem_thmtitle">Rudin 11.9, characters detect the spectrum</span></div>
+      <span class="theorem_thmlabel">43</span><span class="theorem_thmtitle">Rudin 11.9, characters detect the spectrum</span></div>
     <div class="thm_thmcontent"><p>    \(z \in \sigma (a)\) iff there is a character \(\varphi \in \Delta \) with \(\varphi (a) = z\). </p>
 </div>
 
@@ -1520,7 +1850,7 @@
       <span class="theorem_thmcaption">
       Theorem
       </span>
-      <span class="theorem_thmlabel">18</span><span class="theorem_thmtitle">Rudin 5.7, Stone–Weierstrass (real)</span></div>
+      <span class="theorem_thmlabel">22</span><span class="theorem_thmtitle">Rudin 5.7, Stone–Weierstrass (real)</span></div>
     <div class="thm_thmcontent"><p>   If \(X\) is a compact Hausdorff space and \(A\) is a real subalgebra of \(C(X,\mathbb {R})\) that separates points, then \(A\) is dense in \(C(X,\mathbb {R})\). </p>
 </div>
 
@@ -1550,7 +1880,7 @@
       <span class="theorem_thmcaption">
       Theorem
       </span>
-      <span class="theorem_thmlabel">19</span><span class="theorem_thmtitle">Rudin 5.8, Stone–Weierstrass (\(\mathbb {R},\mathbb {C}\))</span></div>
+      <span class="theorem_thmlabel">23</span><span class="theorem_thmtitle">Rudin 5.8, Stone–Weierstrass (\(\mathbb {R},\mathbb {C}\))</span></div>
     <div class="thm_thmcontent"><p>   For \(\mathbb {K} \in \{ \mathbb {R}, \mathbb {C}\} \) and \(X\) compact, a self-adjoint star-subalgebra of \(C(X, \mathbb {K})\) that separates points is dense. </p>
 </div>
 
@@ -1619,7 +1949,7 @@
       <span class="theorem_thmcaption">
       Theorem
       </span>
-      <span class="theorem_thmlabel">26</span><span class="theorem_thmtitle">Rudin 10.11, units form an open set</span></div>
+      <span class="theorem_thmlabel">31</span><span class="theorem_thmtitle">Rudin 10.11, units form an open set</span></div>
     <div class="thm_thmcontent"><p>   In a Banach algebra, the set of invertible elements is open. </p>
 </div>
 
@@ -1654,7 +1984,7 @@ graphContainer.graphviz({useWorker: true})
     .width(width)
     .height(height)
     .fit(true)
-    .renderDot(`strict digraph "" {	graph [bgcolor=transparent];	node [label="\N",		penwidth=1.8	];	edge [arrowhead=vee];	"def:schwartz"	[color=green,		fillcolor="#B0ECA3",		label=schwartz,		shape=box,		style=filled];	"thm:fourier-schwartz"	[color=green,		label="fourier-schwartz",		shape=ellipse];	"def:schwartz" -> "thm:fourier-schwartz"	[style=dashed];	"thm:fderiv-schwartz"	[color=green,		label="fderiv-schwartz",		shape=ellipse];	"def:schwartz" -> "thm:fderiv-schwartz"	[style=dashed];	"thm:plancherel"	[color=green,		label=plancherel,		shape=ellipse];	"thm:fourier-schwartz" -> "thm:plancherel"	[style=dashed];	"thm:fourier-derivative"	[color=green,		label="fourier-derivative",		shape=ellipse];	"thm:fourier-schwartz" -> "thm:fourier-derivative"	[style=dashed];	"thm:minkowski-subadditive"	[color=green,		label="minkowski-subadditive",		shape=ellipse];	"thm:linear-continuity-bound"	[color=green,		label="linear-continuity-bound",		shape=ellipse];	"thm:banach-steinhaus"	[color=green,		label="banach-steinhaus",		shape=ellipse];	"thm:hahn-banach-analytic"	[color=green,		label="hahn-banach-analytic",		shape=ellipse];	"thm:hahn-banach-separation"	[color=green,		label="hahn-banach-separation",		shape=ellipse];	"thm:hahn-banach-analytic" -> "thm:hahn-banach-separation"	[style=dashed];	"thm:hahn-banach-closed-point"	[color=green,		label="hahn-banach-closed-point",		shape=ellipse];	"thm:hahn-banach-analytic" -> "thm:hahn-banach-closed-point"	[style=dashed];	"thm:krein-milman"	[color=green,		label="krein-milman",		shape=ellipse];	"thm:hahn-banach-separation" -> "thm:krein-milman"	[style=dashed];	"thm:hahn-banach-point-point"	[color=green,		label="hahn-banach-point-point",		shape=ellipse];	"thm:hahn-banach-closed-point" -> "thm:hahn-banach-point-point"	[style=dashed];	"thm:abel-limit"	[color=green,		label="abel-limit",		shape=ellipse];	"thm:spectrum-compact"	[color=green,		label="spectrum-compact",		shape=ellipse];	"def:gelfand-transform"	[color=green,		fillcolor="#B0ECA3",		label="gelfand-transform",		shape=box,		style=filled];	"thm:gelfand-naimark"	[color=green,		label="gelfand-naimark",		shape=ellipse];	"def:gelfand-transform" -> "thm:gelfand-naimark"	[style=dashed];	"def:closure-operator"	[color=green,		fillcolor="#B0ECA3",		label="closure-operator",		shape=box,		style=filled];	"thm:closure-closed"	[color=green,		label="closure-closed",		shape=ellipse];	"def:closure-operator" -> "thm:closure-closed"	[style=dashed];	"thm:translation-homeo"	[color=green,		label="translation-homeo",		shape=ellipse];	"thm:inversion-continuous"	[color=green,		label="inversion-continuous",		shape=ellipse];	"thm:self-adjoint-real-eigenvalue"	[color=green,		label="self-adjoint-real-eigenvalue",		shape=ellipse];	"thm:neumann-series"	[color=green,		label="neumann-series",		shape=ellipse];	"thm:adjoint-comp"	[color=green,		label="adjoint-comp",		shape=ellipse];	"thm:banach-alaoglu"	[color=green,		label="banach-alaoglu",		shape=ellipse];	"thm:spectrum-nonempty"	[color=green,		label="spectrum-nonempty",		shape=ellipse];	"thm:gelfand-mazur"	[color=green,		label="gelfand-mazur",		shape=ellipse];	"thm:spectrum-nonempty" -> "thm:gelfand-mazur"	[style=dashed];	"thm:spectrum-via-characters"	[color=green,		label="spectrum-via-characters",		shape=ellipse];	"thm:spectrum-nonempty" -> "thm:spectrum-via-characters"	[style=dashed];	"thm:spectrum-via-characters" -> "thm:gelfand-naimark"	[style=dashed];	"thm:closed-closable"	[color=green,		label="closed-closable",		shape=ellipse];	"def:minkowski"	[color=green,		fillcolor="#B0ECA3",		label=minkowski,		shape=box,		style=filled];	"def:minkowski" -> "thm:minkowski-subadditive"	[style=dashed];	"def:adjoint"	[color=green,		fillcolor="#B0ECA3",		label=adjoint,		shape=box,		style=filled];	"def:adjoint" -> "thm:adjoint-comp"	[style=dashed];	"thm:adjoint-inner-left"	[color=green,		label="adjoint-inner-left",		shape=ellipse];	"def:adjoint" -> "thm:adjoint-inner-left"	[style=dashed];	"thm:cstar-identity"	[color=green,		label="cstar-identity",		shape=ellipse];	"def:adjoint" -> "thm:cstar-identity"	[style=dashed];	"thm:self-adjoint-iff"	[color=green,		label="self-adjoint-iff",		shape=ellipse];	"def:adjoint" -> "thm:self-adjoint-iff"	[style=dashed];	"thm:spectral-diagonalization"	[color=green,		label="spectral-diagonalization",		shape=ellipse];	"def:adjoint" -> "thm:spectral-diagonalization"	[style=dashed];	"thm:adjoint-adjoint"	[color=green,		label="adjoint-adjoint",		shape=ellipse];	"def:adjoint" -> "thm:adjoint-adjoint"	[style=dashed];	"thm:self-adjoint-iff" -> "thm:self-adjoint-real-eigenvalue"	[style=dashed];	"thm:open-mapping"	[color=green,		label="open-mapping",		shape=ellipse];	"thm:closed-graph"	[color=green,		label="closed-graph",		shape=ellipse];	"thm:open-mapping" -> "thm:closed-graph"	[style=dashed];	"def:neumann-unit"	[color=green,		fillcolor="#B0ECA3",		label="neumann-unit",		shape=box,		style=filled];	"def:neumann-unit" -> "thm:neumann-series"	[style=dashed];	"thm:stone-weierstrass"	[color=green,		label="stone-weierstrass",		shape=ellipse];	"thm:gelfand-formula"	[color=green,		label="gelfand-formula",		shape=ellipse];	"thm:baire-category"	[color=green,		label="baire-category",		shape=ellipse];	"thm:baire-category" -> "thm:banach-steinhaus"	[style=dashed];	"thm:baire-category" -> "thm:open-mapping"	[style=dashed];	"thm:riesz-lemma"	[color=green,		label="riesz-lemma",		shape=ellipse];	"def:character-space"	[color=green,		fillcolor="#B0ECA3",		label="character-space",		shape=box,		style=filled];	"def:character-space" -> "def:gelfand-transform"	[style=dashed];	"def:character-space" -> "thm:spectrum-via-characters"	[style=dashed];	"def:double-dual-embedding"	[color=green,		fillcolor="#B0ECA3",		label="double-dual-embedding",		shape=box,		style=filled];	"def:closed-operator"	[color=green,		fillcolor="#B0ECA3",		label="closed-operator",		shape=box,		style=filled];	"def:closable-operator"	[color=green,		fillcolor="#B0ECA3",		label="closable-operator",		shape=box,		style=filled];	"def:closed-operator" -> "def:closable-operator"	[style=dashed];	"def:closable-operator" -> "def:closure-operator"	[style=dashed];	"def:closable-operator" -> "thm:closed-closable"	[style=dashed];	"thm:heine-borel"	[color=green,		label="heine-borel",		shape=ellipse];	"thm:units-open"	[color=green,		label="units-open",		shape=ellipse];	"thm:units-open" -> "thm:inversion-continuous"	[style=dashed];	"thm:stone-weierstrass-star"	[color=green,		label="stone-weierstrass-star",		shape=ellipse];	"thm:spectrum-in-closed-ball"	[color=green,		label="spectrum-in-closed-ball",		shape=ellipse];	"thm:spectrum-in-closed-ball" -> "thm:spectrum-compact"	[style=dashed];}`)
+    .renderDot(`strict digraph "" {	graph [bgcolor=transparent];	node [label="\N",		penwidth=1.8	];	edge [arrowhead=vee];	"def:adjoint"	[color=green,		fillcolor="#B0ECA3",		label=adjoint,		shape=box,		style=filled];	"thm:self-adjoint-iff"	[color=green,		label="self-adjoint-iff",		shape=ellipse];	"def:adjoint" -> "thm:self-adjoint-iff"	[style=dashed];	"thm:cstar-identity"	[color=green,		label="cstar-identity",		shape=ellipse];	"def:adjoint" -> "thm:cstar-identity"	[style=dashed];	"thm:adjoint-comp"	[color=green,		label="adjoint-comp",		shape=ellipse];	"def:adjoint" -> "thm:adjoint-comp"	[style=dashed];	"thm:adjoint-inner-left"	[color=green,		label="adjoint-inner-left",		shape=ellipse];	"def:adjoint" -> "thm:adjoint-inner-left"	[style=dashed];	"thm:adjoint-adjoint"	[color=green,		label="adjoint-adjoint",		shape=ellipse];	"def:adjoint" -> "thm:adjoint-adjoint"	[style=dashed];	"thm:spectral-diagonalization"	[color=green,		label="spectral-diagonalization",		shape=ellipse];	"def:adjoint" -> "thm:spectral-diagonalization"	[style=dashed];	"thm:normal-iff"	[color=green,		label="normal-iff",		shape=ellipse];	"def:adjoint" -> "thm:normal-iff"	[style=dashed];	"thm:self-adjoint-real-eigenvalue"	[color=green,		label="self-adjoint-real-eigenvalue",		shape=ellipse];	"thm:self-adjoint-iff" -> "thm:self-adjoint-real-eigenvalue"	[style=dashed];	"thm:normal-orthogonal-range"	[color=green,		label="normal-orthogonal-range",		shape=ellipse];	"thm:normal-iff" -> "thm:normal-orthogonal-range"	[style=dashed];	"def:pmap-adjoint"	[color=green,		fillcolor="#B0ECA3",		label="pmap-adjoint",		shape=box,		style=filled];	"thm:pmap-adjoint-closed"	[color=green,		label="pmap-adjoint-closed",		shape=ellipse];	"def:pmap-adjoint" -> "thm:pmap-adjoint-closed"	[style=dashed];	"thm:minkowski-subadditive"	[color=green,		label="minkowski-subadditive",		shape=ellipse];	"thm:linear-continuity-bound"	[color=green,		label="linear-continuity-bound",		shape=ellipse];	"thm:banach-steinhaus"	[color=green,		label="banach-steinhaus",		shape=ellipse];	"thm:hahn-banach-separation"	[color=green,		label="hahn-banach-separation",		shape=ellipse];	"thm:krein-milman"	[color=green,		label="krein-milman",		shape=ellipse];	"thm:hahn-banach-separation" -> "thm:krein-milman"	[style=dashed];	"thm:stone-weierstrass"	[color=green,		label="stone-weierstrass",		shape=ellipse];	"thm:fourier-derivative"	[color=green,		label="fourier-derivative",		shape=ellipse];	"def:double-dual-embedding"	[color=green,		fillcolor="#B0ECA3",		label="double-dual-embedding",		shape=box,		style=filled];	"def:closed-operator"	[color=green,		fillcolor="#B0ECA3",		label="closed-operator",		shape=box,		style=filled];	"def:closed-operator" -> "def:pmap-adjoint"	[style=dashed];	"def:closable-operator"	[color=green,		fillcolor="#B0ECA3",		label="closable-operator",		shape=box,		style=filled];	"def:closed-operator" -> "def:closable-operator"	[style=dashed];	"thm:closed-closable"	[color=green,		label="closed-closable",		shape=ellipse];	"def:closable-operator" -> "thm:closed-closable"	[style=dashed];	"def:closure-operator"	[color=green,		fillcolor="#B0ECA3",		label="closure-operator",		shape=box,		style=filled];	"def:closable-operator" -> "def:closure-operator"	[style=dashed];	"thm:closure-closed"	[color=green,		label="closure-closed",		shape=ellipse];	"def:closure-operator" -> "thm:closure-closed"	[style=dashed];	"thm:translation-homeo"	[color=green,		label="translation-homeo",		shape=ellipse];	"thm:fourier-inversion"	[color=green,		label="fourier-inversion",		shape=ellipse];	"thm:spectrum-compact"	[color=green,		label="spectrum-compact",		shape=ellipse];	"thm:spectrum-via-characters"	[color=green,		label="spectrum-via-characters",		shape=ellipse];	"thm:gelfand-naimark"	[color=green,		label="gelfand-naimark",		shape=ellipse];	"thm:spectrum-via-characters" -> "thm:gelfand-naimark"	[style=dashed];	"def:polar"	[color=green,		fillcolor="#B0ECA3",		label=polar,		shape=box,		style=filled];	"thm:polar-closed"	[color=green,		label="polar-closed",		shape=ellipse];	"def:polar" -> "thm:polar-closed"	[style=dashed];	"def:character-space"	[color=green,		fillcolor="#B0ECA3",		label="character-space",		shape=box,		style=filled];	"def:character-space" -> "thm:spectrum-via-characters"	[style=dashed];	"def:gelfand-transform"	[color=green,		fillcolor="#B0ECA3",		label="gelfand-transform",		shape=box,		style=filled];	"def:character-space" -> "def:gelfand-transform"	[style=dashed];	"def:gelfand-transform" -> "thm:gelfand-naimark"	[style=dashed];	"thm:hahn-banach-analytic"	[color=green,		label="hahn-banach-analytic",		shape=ellipse];	"thm:hahn-banach-analytic" -> "thm:hahn-banach-separation"	[style=dashed];	"thm:hahn-banach-closed-point"	[color=green,		label="hahn-banach-closed-point",		shape=ellipse];	"thm:hahn-banach-analytic" -> "thm:hahn-banach-closed-point"	[style=dashed];	"thm:hahn-banach-point-point"	[color=green,		label="hahn-banach-point-point",		shape=ellipse];	"thm:hahn-banach-closed-point" -> "thm:hahn-banach-point-point"	[style=dashed];	"thm:krein-milman-lemma"	[color=green,		label="krein-milman-lemma",		shape=ellipse];	"thm:hahn-banach-point-point" -> "thm:krein-milman-lemma"	[style=dashed];	"thm:krein-milman-lemma" -> "thm:krein-milman"	[style=dashed];	"thm:neumann-series"	[color=green,		label="neumann-series",		shape=ellipse];	"thm:spectrum-nonempty"	[color=green,		label="spectrum-nonempty",		shape=ellipse];	"thm:spectrum-nonempty" -> "thm:spectrum-via-characters"	[style=dashed];	"thm:gelfand-mazur"	[color=green,		label="gelfand-mazur",		shape=ellipse];	"thm:spectrum-nonempty" -> "thm:gelfand-mazur"	[style=dashed];	"thm:resolventSet-open"	[color=green,		label="resolventSet-open",		shape=ellipse];	"def:minkowski"	[color=green,		fillcolor="#B0ECA3",		label=minkowski,		shape=box,		style=filled];	"def:minkowski" -> "thm:minkowski-subadditive"	[style=dashed];	"thm:open-mapping"	[color=green,		label="open-mapping",		shape=ellipse];	"thm:bounded-inverse"	[color=green,		label="bounded-inverse",		shape=ellipse];	"thm:open-mapping" -> "thm:bounded-inverse"	[style=dashed];	"thm:closed-graph"	[color=green,		label="closed-graph",		shape=ellipse];	"thm:open-mapping" -> "thm:closed-graph"	[style=dashed];	"thm:fourier-schwartz"	[color=green,		label="fourier-schwartz",		shape=ellipse];	"thm:fourier-schwartz" -> "thm:fourier-derivative"	[style=dashed];	"thm:fourier-schwartz" -> "thm:fourier-inversion"	[style=dashed];	"thm:plancherel"	[color=green,		label=plancherel,		shape=ellipse];	"thm:fourier-schwartz" -> "thm:plancherel"	[style=dashed];	"thm:baire-category"	[color=green,		label="baire-category",		shape=ellipse];	"thm:baire-category" -> "thm:banach-steinhaus"	[style=dashed];	"thm:baire-category" -> "thm:open-mapping"	[style=dashed];	"def:neumann-unit"	[color=green,		fillcolor="#B0ECA3",		label="neumann-unit",		shape=box,		style=filled];	"def:neumann-unit" -> "thm:neumann-series"	[style=dashed];	"thm:heine-borel"	[color=green,		label="heine-borel",		shape=ellipse];	"thm:riesz-lemma"	[color=green,		label="riesz-lemma",		shape=ellipse];	"thm:fderiv-schwartz"	[color=green,		label="fderiv-schwartz",		shape=ellipse];	"thm:abel-limit"	[color=green,		label="abel-limit",		shape=ellipse];	"thm:banach-alaoglu"	[color=green,		label="banach-alaoglu",		shape=ellipse];	"thm:gelfand-formula"	[color=green,		label="gelfand-formula",		shape=ellipse];	"thm:spectrum-in-closed-ball"	[color=green,		label="spectrum-in-closed-ball",		shape=ellipse];	"thm:spectrum-in-closed-ball" -> "thm:spectrum-compact"	[style=dashed];	"thm:spectralRadius-le-norm"	[color=green,		label="spectralRadius-le-norm",		shape=ellipse];	"thm:spectrum-in-closed-ball" -> "thm:spectralRadius-le-norm"	[style=dashed];	"def:schwartz"	[color=green,		fillcolor="#B0ECA3",		label=schwartz,		shape=box,		style=filled];	"def:schwartz" -> "thm:fourier-schwartz"	[style=dashed];	"def:schwartz" -> "thm:fderiv-schwartz"	[style=dashed];	"thm:stone-weierstrass-star"	[color=green,		label="stone-weierstrass-star",		shape=ellipse];	"thm:units-open"	[color=green,		label="units-open",		shape=ellipse];	"thm:inversion-continuous"	[color=green,		label="inversion-continuous",		shape=ellipse];	"thm:units-open" -> "thm:inversion-continuous"	[style=dashed];}`)
     .on("end", interactive);
 
 latexLabelEscaper = function(label) {
