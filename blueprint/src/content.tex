@@ -46,6 +46,22 @@
   constant $C$ with $\|f(x)\| \le C\|x\|$ for all $x$.
 \end{theorem}
 
+\begin{definition}[Rudin 1.27, balanced hull]
+  \label{def:balanced-hull}
+  \lean{Rudin.Ch01.balanced_hull}
+  \leanok
+  The \emph{balanced hull} of $s \subseteq E$ is the smallest balanced
+  set containing $s$.
+\end{definition}
+
+\begin{theorem}[Rudin 1.28, balanced hull is balanced]
+  \label{thm:balanced-hull-balanced}
+  \uses{def:balanced-hull}
+  \lean{Rudin.Ch01.balanced_hull_is_balanced, Rudin.Ch01.subset_balanced_hull}
+  \leanok
+  The balanced hull is balanced and contains the original set.
+\end{theorem}
+
 \chapter{Completeness}
 
 \begin{theorem}[Rudin 2.2, Baire category]
@@ -99,6 +115,22 @@
   \leanok
   A bijective continuous linear map between Banach spaces has a
   continuous inverse (so it is a topological isomorphism).
+\end{theorem}
+
+\begin{definition}[meagre / first-category sets]
+  \label{def:meagre}
+  \lean{Rudin.Ch02.isMeagre}
+  \leanok
+  A set is \emph{meagre} (a.k.a.\ of the \emph{first category}) if it
+  is a countable union of nowhere-dense sets.
+\end{definition}
+
+\begin{theorem}[meagre complement is dense in Baire spaces]
+  \label{thm:meagre-compl-dense}
+  \uses{def:meagre, thm:baire-category}
+  \lean{Rudin.Ch02.meagre_compl_dense}
+  \leanok
+  In a Baire space, every meagre set has dense complement.
 \end{theorem}
 
 \chapter{Convexity}
@@ -323,6 +355,14 @@
   $\sum_{n \ge 0} a^n = (1 - a)^{-1}$.
 \end{theorem}
 
+\begin{theorem}[$1 - a$ is a unit for small $a$]
+  \label{thm:one-sub-unit}
+  \uses{thm:neumann-series}
+  \lean{Rudin.Ch10.isUnit_one_sub}
+  \leanok
+  If $\|a\| < 1$ in a Banach algebra, then $1 - a$ is invertible.
+\end{theorem}
+
 \begin{theorem}[Rudin 10.13, spectrum nonempty]
   \label{thm:spectrum-nonempty}
   \lean{Rudin.Ch10.spectrum_nonempty}
@@ -417,6 +457,23 @@
   is an isometric $*$-isomorphism $A \cong C(\Delta, \mathbb{C})$.
 \end{theorem}
 
+\begin{definition}[Rudin 11.5, character from a maximal ideal]
+  \label{def:maximal-ideal-character}
+  \uses{def:character-space, thm:gelfand-mazur}
+  \lean{Rudin.Ch11.maximalIdealCharacter}
+  \leanok
+  Every maximal ideal $I \subseteq A$ determines a character via the
+  composition $A \twoheadrightarrow A/I \xrightarrow{\cong} \mathbb{C}$.
+\end{definition}
+
+\begin{theorem}[character vanishes on its ideal]
+  \label{thm:max-ideal-char-zero}
+  \uses{def:maximal-ideal-character}
+  \lean{Rudin.Ch11.maximalIdealCharacter_apply_eq_zero_of_mem}
+  \leanok
+  The character of a maximal ideal $I$ vanishes on every $a \in I$.
+\end{theorem}
+
 \chapter{Bounded Operators on a Hilbert Space}
 
 \begin{definition}[Rudin 12.9, adjoint of a bounded operator]
@@ -495,6 +552,22 @@
   For a normal operator $T$, $(\operatorname{range} T)^{\perp} = \ker T$.
 \end{theorem}
 
+\begin{definition}[orthogonal projection onto a closed subspace]
+  \label{def:ortho-proj}
+  \lean{Rudin.Ch12.orthogonalProjection}
+  \leanok
+  For a closed subspace $U \subseteq E$ admitting an orthogonal
+  projection, $P_U\colon E \to E$ projects onto $U$ along $U^{\perp}$.
+\end{definition}
+
+\begin{theorem}[Rudin 12.14, orthogonal projection is self-adjoint]
+  \label{thm:ortho-proj-self-adjoint}
+  \uses{def:ortho-proj, thm:self-adjoint-iff}
+  \lean{Rudin.Ch12.orthogonalProjection_isSelfAdjoint}
+  \leanok
+  Every orthogonal projection $P_U$ satisfies $P_U^{*} = P_U$.
+\end{theorem}
+
 \begin{theorem}[Rudin 12.22, spectral theorem (finite-dimensional)]
   \label{thm:spectral-diagonalization}
   \uses{def:adjoint}
@@ -568,4 +641,14 @@
   \lean{Rudin.Ch13.pmapAdjoint_isClosed}
   \leanok
   The adjoint of any densely-defined operator is a closed operator.
+\end{theorem}
+
+\begin{theorem}[Rudin 13.11, adjoint is a formal adjoint]
+  \label{thm:pmap-adjoint-formal}
+  \uses{def:pmap-adjoint}
+  \lean{Rudin.Ch13.pmapAdjoint_isFormalAdjoint}
+  \leanok
+  For a densely-defined $T$, $\langle T x, y\rangle = \langle x,
+  T^{*} y\rangle$ whenever $x \in \operatorname{dom} T$ and $y \in
+  \operatorname{dom} T^{*}$.
 \end{theorem}

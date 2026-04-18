@@ -72,6 +72,15 @@ theorem pmapAdjoint_isClosed {T : E →ₗ.[𝕜] F} (hT : Dense (T.domain : Set
     (pmapAdjoint T).IsClosed :=
   T.adjoint_isClosed hT
 
+omit [CompleteSpace F] in
+/-- **Theorem 13.11 (adjoint satisfies the formal-adjoint relation)** —
+For a densely-defined operator, `⟪T x, y⟫ = ⟪x, T† y⟫` whenever
+`x ∈ dom T` and `y ∈ dom T†`. -/
+theorem pmapAdjoint_isFormalAdjoint {T : E →ₗ.[𝕜] F}
+    (hT : Dense (T.domain : Set E)) :
+    (pmapAdjoint T).IsFormalAdjoint T :=
+  LinearPMap.adjoint_isFormalAdjoint hT
+
 end PMapAdjoint
 
 end Rudin.Ch13

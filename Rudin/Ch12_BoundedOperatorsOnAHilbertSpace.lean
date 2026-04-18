@@ -1,5 +1,6 @@
 import Mathlib.Analysis.InnerProductSpace.Adjoint
 import Mathlib.Analysis.InnerProductSpace.Spectrum
+import Mathlib.Analysis.InnerProductSpace.Projection.Basic
 
 /-!
 # Chapter 12 — Bounded Operators on a Hilbert Space
@@ -100,6 +101,27 @@ theorem normal_orthogonal_range {T : E →L[𝕜] E} (hT : IsStarNormal T) :
   ContinuousLinearMap.IsStarNormal.orthogonal_range hT
 
 end Normal
+
+section OrthogonalProjection
+
+variable {𝕜 E : Type*} [RCLike 𝕜]
+variable [NormedAddCommGroup E] [InnerProductSpace 𝕜 E] [CompleteSpace E]
+
+/-- **Definition (orthogonal projection onto a closed subspace)** —
+Projection onto `U` along `Uᗮ`, as a bounded operator `E →L[𝕜] E`. -/
+noncomputable def orthogonalProjection (U : Submodule 𝕜 E)
+    [U.HasOrthogonalProjection] : E →L[𝕜] E :=
+  U.starProjection
+
+/-- **Theorem 12.14 (orthogonal projection is self-adjoint)** —
+For any closed subspace `U` admitting an orthogonal projection,
+the projection operator is self-adjoint. -/
+theorem orthogonalProjection_isSelfAdjoint
+    (U : Submodule 𝕜 E) [U.HasOrthogonalProjection] :
+    IsSelfAdjoint (orthogonalProjection U) :=
+  isSelfAdjoint_starProjection U
+
+end OrthogonalProjection
 
 section SpectralTheorem
 

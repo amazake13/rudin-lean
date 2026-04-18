@@ -94,6 +94,11 @@ theorem neumann_series (a : R) (h : ‖a‖ < 1) :
     ∑' n : ℕ, a ^ n = Ring.inverse (1 - a) :=
   geom_series_eq_inverse a h
 
+/-- **Theorem 10.7 (`1 - a` is a unit for small `a`)** — If `‖a‖ < 1`,
+then `1 - a` is invertible. -/
+theorem isUnit_one_sub (a : R) (h : ‖a‖ < 1) : IsUnit (1 - a) :=
+  ⟨Units.oneSub a h, rfl⟩
+
 end UnitsOpen
 
 end Rudin.Ch10

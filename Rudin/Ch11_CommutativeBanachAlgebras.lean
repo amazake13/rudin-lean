@@ -38,6 +38,20 @@ noncomputable def gelfand : A →ₐ[ℂ] C(characterSpace ℂ A, ℂ) :=
 space of a commutative complex Banach algebra is weak-$*$ compact. -/
 example : CompactSpace (characterSpace ℂ A) := inferInstance
 
+/-- **Theorem 11.5 (maximal ideals → characters)** — Every maximal
+ideal `I` in a commutative complex Banach algebra determines a
+character via `A → A/I ≅ ℂ`. -/
+noncomputable def maximalIdealCharacter (I : Ideal A) [I.IsMaximal] :
+    characterSpace ℂ A :=
+  I.toCharacterSpace
+
+/-- **Theorem 11.5 (character vanishes on its ideal)** — The character
+associated to a maximal ideal `I` vanishes on every element of `I`. -/
+theorem maximalIdealCharacter_apply_eq_zero_of_mem
+    (I : Ideal A) [I.IsMaximal] {a : A} (ha : a ∈ I) :
+    I.toCharacterSpace a = 0 :=
+  I.toCharacterSpace_apply_eq_zero_of_mem ha
+
 end CommutativeComplexBanachAlgebra
 
 section CommutativeCStar

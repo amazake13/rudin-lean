@@ -2,6 +2,7 @@ import Mathlib.Analysis.Normed.Module.Basic
 import Mathlib.Analysis.Normed.Module.FiniteDimension
 import Mathlib.Analysis.Convex.Gauge
 import Mathlib.Analysis.Normed.Operator.ContinuousLinearMap
+import Mathlib.Analysis.LocallyConvex.BalancedCoreHull
 
 /-!
 # Chapter 1 — Topological Vector Spaces
@@ -73,5 +74,25 @@ def linear_continuous_of_bounded (f : E →ₗ[𝕜] F) (h : ∃ C, ∀ x, ‖f 
   f.mkContinuousOfExistsBound h
 
 end LinearContinuity
+
+section BalancedHull
+
+variable (𝕜 : Type*) [NormedField 𝕜] [NormOneClass 𝕜]
+variable {E : Type*} [SeminormedAddCommGroup E] [Module 𝕜 E]
+
+/-- **Definition 1.27** — The balanced hull of a set: the smallest
+balanced set containing it. -/
+abbrev balanced_hull (s : Set E) : Set E := balancedHull 𝕜 s
+
+omit [NormOneClass 𝕜] in
+/-- **Theorem 1.28** — The balanced hull of `s` is balanced. -/
+theorem balanced_hull_is_balanced (s : Set E) : Balanced 𝕜 (balancedHull 𝕜 s) :=
+  balancedHull.balanced s
+
+/-- **Theorem 1.28** — `s ⊆ balancedHull s`. -/
+theorem subset_balanced_hull {s : Set E} : s ⊆ balancedHull 𝕜 s :=
+  _root_.subset_balancedHull 𝕜
+
+end BalancedHull
 
 end Rudin.Ch01

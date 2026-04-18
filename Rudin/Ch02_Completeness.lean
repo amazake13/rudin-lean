@@ -2,6 +2,7 @@ import Mathlib.Topology.Baire.Lemmas
 import Mathlib.Analysis.Normed.Operator.BanachSteinhaus
 import Mathlib.Analysis.Normed.Operator.Banach
 import Mathlib.Analysis.Normed.Module.RieszLemma
+import Mathlib.Topology.GDelta.Basic
 
 /-!
 # Chapter 2 — Completeness
@@ -88,5 +89,22 @@ noncomputable def bounded_inverse (f : E →L[𝕜] F) (hker : f.ker = ⊥)
   ContinuousLinearEquiv.ofBijective f hker hrange
 
 end BoundedInverse
+
+section Meagre
+
+variable {X : Type*} [TopologicalSpace X]
+
+/-- **Definition (meagre / first category)** — A set is *meagre* if it
+is contained in a countable union of nowhere-dense sets. Rudin's
+"sets of the first category". -/
+abbrev isMeagre (s : Set X) : Prop := IsMeagre s
+
+/-- **Theorem (Baire's theorem, meagre form)** — In a Baire space, every
+meagre set has dense complement. (Corollary of Rudin 2.2.) -/
+theorem meagre_compl_dense [BaireSpace X] {s : Set X} (hs : IsMeagre s) :
+    Dense sᶜ :=
+  dense_of_mem_residual hs
+
+end Meagre
 
 end Rudin.Ch02

@@ -4,12 +4,17 @@ Rudin.Ch01.heine_borel
 Rudin.Ch01.minkowski
 Rudin.Ch01.minkowski_add_le
 Rudin.Ch01.linear_continuous_of_bounded
+Rudin.Ch01.balanced_hull
+Rudin.Ch01.balanced_hull_is_balanced
+Rudin.Ch01.subset_balanced_hull
 Rudin.Ch02.baire_category
 Rudin.Ch02.banach_steinhaus
 Rudin.Ch02.open_mapping
 Rudin.Ch02.closed_graph
 Rudin.Ch02.riesz_lemma
 Rudin.Ch02.bounded_inverse
+Rudin.Ch02.isMeagre
+Rudin.Ch02.meagre_compl_dense
 Rudin.Ch03.hahn_banach_extension
 Rudin.Ch03.hahn_banach_separation
 Rudin.Ch03.hahn_banach_closed_point
@@ -35,6 +40,7 @@ Rudin.Ch10.units_isOpen
 Rudin.Ch10.inverse_continuousAt
 Rudin.Ch10.oneSubUnit
 Rudin.Ch10.neumann_series
+Rudin.Ch10.isUnit_one_sub
 Rudin.Ch10.spectrum_nonempty
 Rudin.Ch10.gelfandMazur
 Rudin.Ch10.gelfand_formula
@@ -47,6 +53,8 @@ Rudin.Ch11.mem_spectrum_iff_exists_character
 Rudin.Ch11.gelfand
 Rudin.Ch11.gelfand_isometry
 Rudin.Ch11.gelfand_bijective
+Rudin.Ch11.maximalIdealCharacter
+Rudin.Ch11.maximalIdealCharacter_apply_eq_zero_of_mem
 Rudin.Ch12.adjoint
 Rudin.Ch12.adjoint_inner_left
 Rudin.Ch12.adjoint_adjoint
@@ -56,6 +64,8 @@ Rudin.Ch12.isSelfAdjoint_iff_adjoint_eq
 Rudin.Ch12.self_adjoint_eigenvalue_real
 Rudin.Ch12.isStarNormal_iff_norm_eq_adjoint
 Rudin.Ch12.normal_orthogonal_range
+Rudin.Ch12.orthogonalProjection
+Rudin.Ch12.orthogonalProjection_isSelfAdjoint
 Rudin.Ch12.spectralDiagonalization
 Rudin.Ch12.spectralDiagonalization_apply_self_apply
 Rudin.Ch13.IsClosedOperator
@@ -65,3 +75,4 @@ Rudin.Ch13.closure
 Rudin.Ch13.closure_isClosed
 Rudin.Ch13.pmapAdjoint
 Rudin.Ch13.pmapAdjoint_isClosed
+Rudin.Ch13.pmapAdjoint_isFormalAdjoint
