@@ -38,6 +38,14 @@
   If $s$ is convex and absorbent, then $\mu_s(x + y) \le \mu_s(x) + \mu_s(y)$.
 \end{theorem}
 
+\begin{theorem}[Rudin 1.18, continuity via boundedness]
+  \label{thm:linear-continuity-bound}
+  \lean{Rudin.Ch01.linear_continuous_of_bounded}
+  \leanok
+  A linear map between normed spaces is continuous iff there exists a
+  constant $C$ with $\|f(x)\| \le C\|x\|$ for all $x$.
+\end{theorem}
+
 \chapter{Completeness}
 
 \begin{theorem}[Rudin 2.2, Baire category]
@@ -104,6 +112,25 @@
   In a locally convex Hausdorff topological vector space, a compact
   convex set and a disjoint closed convex set can be strictly separated
   by a continuous linear functional.
+\end{theorem}
+
+\begin{theorem}[Rudin 3.5, closed convex vs. point]
+  \label{thm:hahn-banach-closed-point}
+  \uses{thm:hahn-banach-analytic}
+  \lean{Rudin.Ch03.hahn_banach_closed_point}
+  \leanok
+  A closed convex set $s$ and a point $x \notin s$ in a locally convex
+  Hausdorff TVS can be strictly separated by a continuous linear
+  functional.
+\end{theorem}
+
+\begin{theorem}[Rudin 3.5, two distinct points]
+  \label{thm:hahn-banach-point-point}
+  \uses{thm:hahn-banach-closed-point}
+  \lean{Rudin.Ch03.hahn_banach_point_point}
+  \leanok
+  In a locally convex $T_1$ TVS, any two distinct points are strictly
+  separated by a continuous linear functional.
 \end{theorem}
 
 \begin{theorem}[Rudin 3.23, Krein--Milman]
@@ -237,6 +264,23 @@
   The inversion map $x \mapsto x^{-1}$ is continuous at every unit.
 \end{theorem}
 
+\begin{definition}[Rudin 10.7, Neumann unit construction]
+  \label{def:neumann-unit}
+  \lean{Rudin.Ch10.oneSubUnit}
+  \leanok
+  For $\|a\| < 1$, $1 - a$ is explicitly a unit, witnessed by the
+  geometric series $\sum_{n \ge 0} a^n$.
+\end{definition}
+
+\begin{theorem}[Rudin 10.7, Neumann series formula]
+  \label{thm:neumann-series}
+  \uses{def:neumann-unit}
+  \lean{Rudin.Ch10.neumann_series}
+  \leanok
+  For $\|a\| < 1$ in a Banach algebra,
+  $\sum_{n \ge 0} a^n = (1 - a)^{-1}$.
+\end{theorem}
+
 \begin{theorem}[Rudin 10.13, spectrum nonempty]
   \label{thm:spectrum-nonempty}
   \lean{Rudin.Ch10.spectrum_nonempty}
@@ -358,6 +402,23 @@
   \lean{Rudin.Ch12.norm_adjoint_comp_self}
   \leanok
   $\|A^{*} A\| = \|A\|^{2}$.
+\end{theorem}
+
+\begin{theorem}[Rudin 12.12, self-adjoint iff $A^{*} = A$]
+  \label{thm:self-adjoint-iff}
+  \uses{def:adjoint}
+  \lean{Rudin.Ch12.isSelfAdjoint_iff_adjoint_eq}
+  \leanok
+  $A$ is self-adjoint iff $A^{*} = A$.
+\end{theorem}
+
+\begin{theorem}[Rudin 12.23, eigenvalues of a self-adjoint operator are real]
+  \label{thm:self-adjoint-real-eigenvalue}
+  \uses{thm:self-adjoint-iff}
+  \lean{Rudin.Ch12.self_adjoint_eigenvalue_real}
+  \leanok
+  Every eigenvalue $\mu$ of a self-adjoint operator satisfies
+  $\overline{\mu} = \mu$.
 \end{theorem}
 
 \begin{theorem}[Rudin 12.22, spectral theorem (finite-dimensional)]

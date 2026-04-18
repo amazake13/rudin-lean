@@ -3,6 +3,7 @@ Rudin.Ch01.smulHomeo
 Rudin.Ch01.heine_borel
 Rudin.Ch01.minkowski
 Rudin.Ch01.minkowski_add_le
+Rudin.Ch01.linear_continuous_of_bounded
 Rudin.Ch02.baire_category
 Rudin.Ch02.banach_steinhaus
 Rudin.Ch02.open_mapping
@@ -10,6 +11,8 @@ Rudin.Ch02.closed_graph
 Rudin.Ch02.riesz_lemma
 Rudin.Ch03.hahn_banach_extension
 Rudin.Ch03.hahn_banach_separation
+Rudin.Ch03.hahn_banach_closed_point
+Rudin.Ch03.hahn_banach_point_point
 Rudin.Ch03.krein_milman
 Rudin.Ch04.banach_alaoglu
 Rudin.Ch04.banach_alaoglu_polar
@@ -25,6 +28,8 @@ Rudin.Ch08.fourier_fderiv_eq
 Rudin.Ch09.abel_limit
 Rudin.Ch10.units_isOpen
 Rudin.Ch10.inverse_continuousAt
+Rudin.Ch10.oneSubUnit
+Rudin.Ch10.neumann_series
 Rudin.Ch10.spectrum_nonempty
 Rudin.Ch10.gelfandMazur
 Rudin.Ch10.gelfand_formula
@@ -40,6 +45,8 @@ Rudin.Ch12.adjoint_inner_left
 Rudin.Ch12.adjoint_adjoint
 Rudin.Ch12.adjoint_comp
 Rudin.Ch12.norm_adjoint_comp_self
+Rudin.Ch12.isSelfAdjoint_iff_adjoint_eq
+Rudin.Ch12.self_adjoint_eigenvalue_real
 Rudin.Ch12.spectralDiagonalization
 Rudin.Ch12.spectralDiagonalization_apply_self_apply
 Rudin.Ch13.IsClosedOperator

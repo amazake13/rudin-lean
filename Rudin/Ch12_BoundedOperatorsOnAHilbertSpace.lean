@@ -57,6 +57,30 @@ theorem norm_adjoint_comp_self (A : E →L[𝕜] F) :
 
 end AdjointAlgebra
 
+section SelfAdjoint
+
+variable {𝕜 E : Type*} [RCLike 𝕜]
+variable [NormedAddCommGroup E] [InnerProductSpace 𝕜 E] [CompleteSpace E]
+
+/-- **Theorem 12.12 (self-adjoint ⇔ equals its adjoint)** — A bounded
+operator `A` on a Hilbert space is self-adjoint iff `A† = A`. -/
+theorem isSelfAdjoint_iff_adjoint_eq (A : E →L[𝕜] E) :
+    IsSelfAdjoint A ↔ ContinuousLinearMap.adjoint A = A :=
+  ContinuousLinearMap.isSelfAdjoint_iff' (A := A)
+
+variable {T : E →ₗ[𝕜] E}
+
+omit [CompleteSpace E] in
+/-- **Theorem 12.23 (eigenvalues of a self-adjoint operator are real)** —
+Every eigenvalue `μ` of a self-adjoint operator on an inner product
+space satisfies `conj μ = μ`; in particular, for `𝕜 = ℂ` the spectrum
+lies on the real line. -/
+theorem self_adjoint_eigenvalue_real (hT : T.IsSymmetric) {μ : 𝕜}
+    (hμ : Module.End.HasEigenvalue T μ) : star μ = μ :=
+  hT.conj_eigenvalue_eq_self hμ
+
+end SelfAdjoint
+
 section SpectralTheorem
 
 variable {𝕜 E : Type*} [RCLike 𝕜]

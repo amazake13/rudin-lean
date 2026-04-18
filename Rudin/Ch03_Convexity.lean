@@ -52,6 +52,23 @@ theorem krein_milman {s : Set E} (hs_cpt : IsCompact s) (hs_conv : Convex ℝ s)
     closure (convexHull ℝ (s.extremePoints ℝ)) = s :=
   closure_convexHull_extremePoints hs_cpt hs_conv
 
+omit [T2Space E] in
+/-- **Theorem 3.5 (closed convex vs. point)** — A closed convex set and
+a point outside it can be strictly separated by a continuous linear
+functional. -/
+theorem hahn_banach_closed_point {s : Set E} {x : E}
+    (hs_conv : Convex ℝ s) (hs_closed : IsClosed s) (hx : x ∉ s) :
+    ∃ (f : StrongDual ℝ E) (u : ℝ), (∀ a ∈ s, f a < u) ∧ u < f x :=
+  geometric_hahn_banach_closed_point hs_conv hs_closed hx
+
+omit [T2Space E] in
+/-- **Theorem 3.5 (two distinct points)** — In a locally convex $T_1$
+TVS, any two distinct points are strictly separated by a continuous
+linear functional. -/
+theorem hahn_banach_point_point [T1Space E] {x y : E} (hxy : x ≠ y) :
+    ∃ f : StrongDual ℝ E, f x < f y :=
+  geometric_hahn_banach_point_point hxy
+
 end HahnBanachGeometric
 
 end Rudin.Ch03

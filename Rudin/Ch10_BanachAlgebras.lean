@@ -1,6 +1,7 @@
 import Mathlib.Analysis.Normed.Algebra.Spectrum
 import Mathlib.Analysis.Normed.Algebra.GelfandFormula
 import Mathlib.Analysis.Normed.Ring.Units
+import Mathlib.Analysis.SpecificLimits.Normed
 
 /-!
 # Chapter 10 — Banach Algebras
@@ -69,6 +70,18 @@ theorem units_isOpen : IsOpen { x : R | IsUnit x } :=
 the inversion map `x ↦ x⁻¹` is continuous at every unit. -/
 theorem inverse_continuousAt (x : Rˣ) : ContinuousAt Ring.inverse (x : R) :=
   NormedRing.inverse_continuousAt x
+
+/-- **Theorem 10.7 (Neumann series)** — For `‖a‖ < 1` in a Banach
+algebra, `1 - a` is a unit, witnessed explicitly via the geometric
+series. -/
+noncomputable def oneSubUnit (a : R) (h : ‖a‖ < 1) : Rˣ :=
+  Units.oneSub a h
+
+/-- **Theorem 10.7 (Neumann series formula)** — For `‖a‖ < 1`,
+$(1 - a)^{-1} = \sum_{n \ge 0} a^n$. -/
+theorem neumann_series (a : R) (h : ‖a‖ < 1) :
+    ∑' n : ℕ, a ^ n = Ring.inverse (1 - a) :=
+  geom_series_eq_inverse a h
 
 end UnitsOpen
 

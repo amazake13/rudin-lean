@@ -1,6 +1,7 @@
 import Mathlib.Analysis.Normed.Module.Basic
 import Mathlib.Analysis.Normed.Module.FiniteDimension
 import Mathlib.Analysis.Convex.Gauge
+import Mathlib.Analysis.Normed.Operator.ContinuousLinearMap
 
 /-!
 # Chapter 1 — Topological Vector Spaces
@@ -55,5 +56,22 @@ theorem minkowski_add_le {s : Set E} (hs : Convex ℝ s) (absorbs : Absorbent �
   gauge_add_le hs absorbs x y
 
 end Minkowski
+
+section LinearContinuity
+
+variable {𝕜 : Type*} [NontriviallyNormedField 𝕜]
+variable {E F : Type*} [SeminormedAddCommGroup E] [NormedSpace 𝕜 E]
+variable [SeminormedAddCommGroup F] [NormedSpace 𝕜 F]
+
+/-- **Theorem 1.18 (continuity via boundedness)** — A linear map between
+normed spaces is continuous as soon as it admits a constant `C` with
+`‖f x‖ ≤ C · ‖x‖`. In a TVS setting this corresponds to Rudin's
+characterisation of continuity of linear functionals by local boundedness
+at the origin. -/
+def linear_continuous_of_bounded (f : E →ₗ[𝕜] F) (h : ∃ C, ∀ x, ‖f x‖ ≤ C * ‖x‖) :
+    E →L[𝕜] F :=
+  f.mkContinuousOfExistsBound h
+
+end LinearContinuity
 
 end Rudin.Ch01

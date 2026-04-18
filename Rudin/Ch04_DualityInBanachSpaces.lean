@@ -38,4 +38,17 @@ noncomputable def doubleDualEmbedding (𝕜 : Type*) [RCLike 𝕜]
     E →ₗᵢ[𝕜] StrongDual 𝕜 (StrongDual 𝕜 E) :=
   NormedSpace.inclusionInDoubleDualLi 𝕜
 
+section DualComplete
+
+variable (𝕜 : Type*) [NontriviallyNormedField 𝕜]
+variable (E F : Type*) [SeminormedAddCommGroup E] [NormedSpace 𝕜 E]
+variable [NormedAddCommGroup F] [NormedSpace 𝕜 F] [CompleteSpace F]
+
+/-- **Theorem 4.1** — The space of bounded operators into a Banach space
+is itself a Banach space. In particular, the normed dual of any normed
+space is a Banach space. -/
+example : CompleteSpace (E →L[𝕜] F) := inferInstance
+
+end DualComplete
+
 end Rudin.Ch04
