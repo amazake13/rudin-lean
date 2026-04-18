@@ -28,6 +28,19 @@ def translationHomeo (a : E) : E ≃ₜ E := Homeomorph.addLeft a
 def smulHomeo {c : 𝕜} (hc : c ≠ 0) : E ≃ₜ E :=
   Homeomorph.smulOfNeZero c hc
 
+/-- **Corollary of 1.6** — left-translation by `a` sends open sets to
+open sets. Proven from the homeomorphism packaging in `translationHomeo`. -/
+theorem translation_image_isOpen (a : E) {s : Set E} (hs : IsOpen s) :
+    IsOpen ((a + ·) '' s) :=
+  (Homeomorph.addLeft a).isOpen_image.mpr hs
+
+omit [IsTopologicalAddGroup E] in
+/-- **Corollary of 1.6** — scalar multiplication by a nonzero `c` sends
+open sets to open sets. -/
+theorem smul_image_isOpen {c : 𝕜} (hc : c ≠ 0) {s : Set E} (hs : IsOpen s) :
+    IsOpen ((c • ·) '' s) :=
+  (Homeomorph.smulOfNeZero c hc).isOpen_image.mpr hs
+
 end TVS
 
 /-- **Theorem 1.22 (Heine–Borel in finite dimensions)** — In a

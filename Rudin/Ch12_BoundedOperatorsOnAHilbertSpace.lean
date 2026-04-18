@@ -35,6 +35,48 @@ theorem adjoint_adjoint (A : E →L[𝕜] F) :
     adjoint (adjoint A) = A :=
   ContinuousLinearMap.adjoint_adjoint A
 
+/-- **Corollary of 12.9** — The adjoint sends the zero operator to the
+zero operator. Proven directly from the defining inner-product relation. -/
+theorem adjoint_zero : adjoint (0 : E →L[𝕜] F) = 0 := by
+  apply ContinuousLinearMap.ext
+  intro y
+  refine ext_inner_right 𝕜 fun x => ?_
+  rw [adjoint_inner_left]
+  simp
+
+/-- **Corollary of 12.9** — The adjoint is additive: `(A + B)† = A† + B†`.
+The inner-product characterisation reduces this to additivity of inner
+products. -/
+theorem adjoint_add (A B : E →L[𝕜] F) :
+    adjoint (A + B) = adjoint A + adjoint B := by
+  apply ContinuousLinearMap.ext
+  intro y
+  refine ext_inner_right 𝕜 fun x => ?_
+  rw [adjoint_inner_left, ContinuousLinearMap.add_apply, inner_add_right,
+      ← adjoint_inner_left A, ← adjoint_inner_left B,
+      ← inner_add_left, ← ContinuousLinearMap.add_apply]
+
+/-- **Corollary of 12.9** — `(-A)† = -A†`. -/
+theorem adjoint_neg (A : E →L[𝕜] F) : adjoint (-A) = -adjoint A := by
+  apply ContinuousLinearMap.ext
+  intro y
+  refine ext_inner_right 𝕜 fun x => ?_
+  rw [adjoint_inner_left, ContinuousLinearMap.neg_apply, inner_neg_right,
+      ← adjoint_inner_left A, ← inner_neg_left,
+      ← ContinuousLinearMap.neg_apply]
+
+/-- **Corollary of 12.9** — `(A - B)† = A† - B†`. -/
+theorem adjoint_sub (A B : E →L[𝕜] F) :
+    adjoint (A - B) = adjoint A - adjoint B := by
+  rw [sub_eq_add_neg, adjoint_add, adjoint_neg, sub_eq_add_neg]
+
+/-- **Corollary of 12.9** — Adjoining preserves operator norm:
+`‖A†‖ = ‖A‖`. This follows because mathlib's `ContinuousLinearMap.adjoint`
+is packaged as a (conjugate-linear) isometry. -/
+theorem adjoint_norm (A : E →L[𝕜] F) :
+    ‖adjoint A‖ = ‖A‖ :=
+  ContinuousLinearMap.adjoint.norm_map A
+
 end Adjoint
 
 section AdjointAlgebra
@@ -55,6 +97,13 @@ theorem adjoint_comp (A : F →L[𝕜] G) (B : E →L[𝕜] F) :
 theorem norm_adjoint_comp_self (A : E →L[𝕜] F) :
     ‖ContinuousLinearMap.adjoint A ∘L A‖ = ‖A‖ * ‖A‖ :=
   ContinuousLinearMap.norm_adjoint_comp_self A
+
+/-- **Corollary of 12.10 + 12.9** — For any bounded operator `A`,
+`A† A` is self-adjoint. Proof: $(A^{*} A)^{*} = A^{*} (A^{*})^{*} = A^{*} A$. -/
+theorem isSelfAdjoint_adjoint_comp_self (A : E →L[𝕜] F) :
+    IsSelfAdjoint (ContinuousLinearMap.adjoint A ∘L A) :=
+  ContinuousLinearMap.isSelfAdjoint_iff'.mpr <| by
+    rw [ContinuousLinearMap.adjoint_comp, ContinuousLinearMap.adjoint_adjoint]
 
 end AdjointAlgebra
 

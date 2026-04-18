@@ -21,6 +21,16 @@
   every closed and bounded set is compact.
 \end{theorem}
 
+\begin{theorem}[corollary of 1.6, translation preserves openness]
+  \label{thm:translation-preserves-open}
+  \uses{thm:translation-homeo}
+  \lean{Rudin.Ch01.translation_image_isOpen, Rudin.Ch01.smul_image_isOpen}
+  \leanok
+  Left-translation by $a$ and scaling by a nonzero $c$ send open sets
+  to open sets. \emph{Proved in-project from Rudin 1.6's
+  homeomorphism packaging.}
+\end{theorem}
+
 \begin{definition}[Rudin 1.33, Minkowski functional]
   \label{def:minkowski}
   \lean{Rudin.Ch01.minkowski}
@@ -81,6 +91,17 @@
   Let $E$ be a Banach space, $F$ a normed space, and $(g_i)_{i\in I}$
   a family of continuous linear maps $E \to F$. If the family is
   pointwise bounded, then it is uniformly bounded in operator norm.
+\end{theorem}
+
+\begin{theorem}[Rudin 2.6, pointwise convergent $\Rightarrow$ uniformly bounded]
+  \label{thm:banach-steinhaus-pointwise}
+  \uses{thm:banach-steinhaus}
+  \lean{Rudin.Ch02.banach_steinhaus_of_pointwise_tendsto}
+  \leanok
+  If a sequence $(g_n)$ of continuous linear maps from a Banach space
+  converges pointwise, then the operator norms $\|g_n\|$ are uniformly
+  bounded. \emph{Proved in-project: convergence $\Rightarrow$ Cauchy
+  $\Rightarrow$ bounded range, then apply Banach--Steinhaus.}
 \end{theorem}
 
 \begin{theorem}[Rudin 2.11, Open mapping]
@@ -419,6 +440,15 @@
   $\rho(a) \le \|a\|$ for any element of a complex Banach algebra.
 \end{theorem}
 
+\begin{theorem}[corollary: $\rho(1) \le 1$]
+  \label{thm:spectralRadius-one-le}
+  \uses{thm:spectralRadius-le-norm}
+  \lean{Rudin.Ch10.spectralRadius_one_le}
+  \leanok
+  The spectral radius of the identity element is at most $1$.
+  \emph{Proved in-project from $\rho(a) \le \|a\|$ and $\|1\| = 1$.}
+\end{theorem}
+
 \chapter{Commutative Banach Algebras}
 
 \begin{definition}[Rudin 11.5, character space]
@@ -516,6 +546,27 @@
   \lean{Rudin.Ch12.norm_adjoint_comp_self}
   \leanok
   $\|A^{*} A\| = \|A\|^{2}$.
+\end{theorem}
+
+\begin{theorem}[in-project corollaries of 12.9]
+  \label{thm:adjoint-linear-laws}
+  \uses{def:adjoint}
+  \lean{Rudin.Ch12.adjoint_zero, Rudin.Ch12.adjoint_add, Rudin.Ch12.adjoint_neg, Rudin.Ch12.adjoint_sub, Rudin.Ch12.adjoint_norm}
+  \leanok
+  $0^{*} = 0$, $(A + B)^{*} = A^{*} + B^{*}$,
+  $(-A)^{*} = -A^{*}$, $(A - B)^{*} = A^{*} - B^{*}$, and
+  $\|A^{*}\| = \|A\|$.
+  \emph{Proved in-project from the defining inner-product relation.}
+\end{theorem}
+
+\begin{theorem}[in-project: $A^{*} A$ is self-adjoint]
+  \label{thm:adjoint-self-comp}
+  \uses{thm:adjoint-comp, thm:self-adjoint-iff}
+  \lean{Rudin.Ch12.isSelfAdjoint_adjoint_comp_self}
+  \leanok
+  For any bounded operator $A\colon E \to F$, $A^{*}A\colon E \to E$ is
+  self-adjoint. \emph{Proved in-project by
+  $(A^{*}A)^{*} = A^{*}(A^{*})^{*} = A^{*}A$.}
 \end{theorem}
 
 \begin{theorem}[Rudin 12.12, self-adjoint iff $A^{*} = A$]

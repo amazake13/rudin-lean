@@ -65,6 +65,13 @@ theorem spectralRadius_le_norm [NormOneClass A] (a : A) :
     spectralRadius ℂ a ≤ ‖a‖₊ :=
   spectrum.spectralRadius_le_nnnorm a
 
+/-- **Corollary of 10.13** — $\rho(1) \le 1$. Follows from the spectral
+radius formula and `‖1‖ = 1`. -/
+theorem spectralRadius_one_le [NormOneClass A] :
+    spectralRadius ℂ (1 : A) ≤ 1 := by
+  have h := spectralRadius_le_norm (1 : A)
+  simpa using h
+
 end ComplexBanachAlgebra
 
 section UnitsOpen

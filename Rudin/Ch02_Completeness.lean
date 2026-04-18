@@ -15,6 +15,8 @@ mapping, closed graph — are all in mathlib.
 
 namespace Rudin.Ch02
 
+open scoped Topology
+
 /-- **Theorem 2.2 (Baire category theorem)** — In a Baire space (e.g. a
 complete metric space, or a locally compact Hausdorff space) the
 intersection of a countable family of dense open sets is dense. -/
@@ -37,6 +39,20 @@ theorem banach_steinhaus {ι : Type*} {g : ι → E →L[𝕜] F}
     (h : ∀ x, ∃ C, ∀ i, ‖g i x‖ ≤ C) :
     ∃ C', ∀ i, ‖g i‖ ≤ C' :=
   _root_.banach_steinhaus (g := g) h
+
+/-- **Corollary 2.6 of Banach–Steinhaus** — If a sequence of continuous
+linear maps `gₙ : E → F` converges pointwise, then the sequence is
+uniformly bounded in operator norm.
+
+Proof: each sequence `(gₙ x)ₙ` is convergent, hence bounded in `F`;
+applying Banach–Steinhaus gives the uniform bound. -/
+theorem banach_steinhaus_of_pointwise_tendsto
+    {g : ℕ → E →L[𝕜] F} {ϕ : E → F}
+    (hϕ : ∀ x, Filter.Tendsto (fun n => g n x) Filter.atTop (𝓝 (ϕ x))) :
+    ∃ C', ∀ n, ‖g n‖ ≤ C' := by
+  refine banach_steinhaus (fun x => ?_)
+  obtain ⟨C, hC⟩ := (hϕ x).cauchySeq.isBounded_range.exists_norm_le
+  exact ⟨C, fun n => hC _ (Set.mem_range_self n)⟩
 
 end BanachSteinhaus
 

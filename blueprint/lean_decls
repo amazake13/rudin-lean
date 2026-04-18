@@ -1,6 +1,8 @@
 Rudin.Ch01.translationHomeo
 Rudin.Ch01.smulHomeo
 Rudin.Ch01.heine_borel
+Rudin.Ch01.translation_image_isOpen
+Rudin.Ch01.smul_image_isOpen
 Rudin.Ch01.minkowski
 Rudin.Ch01.minkowski_add_le
 Rudin.Ch01.linear_continuous_of_bounded
@@ -9,6 +11,7 @@ Rudin.Ch01.balanced_hull_is_balanced
 Rudin.Ch01.subset_balanced_hull
 Rudin.Ch02.baire_category
 Rudin.Ch02.banach_steinhaus
+Rudin.Ch02.banach_steinhaus_of_pointwise_tendsto
 Rudin.Ch02.open_mapping
 Rudin.Ch02.closed_graph
 Rudin.Ch02.riesz_lemma
@@ -48,6 +51,7 @@ Rudin.Ch10.spectrum_subset_closedBall
 Rudin.Ch10.spectrum_isCompact
 Rudin.Ch10.resolventSet_isOpen
 Rudin.Ch10.spectralRadius_le_norm
+Rudin.Ch10.spectralRadius_one_le
 Rudin.Ch11.CharacterSpace
 Rudin.Ch11.mem_spectrum_iff_exists_character
 Rudin.Ch11.gelfand
@@ -60,6 +64,12 @@ Rudin.Ch12.adjoint_inner_left
 Rudin.Ch12.adjoint_adjoint
 Rudin.Ch12.adjoint_comp
 Rudin.Ch12.norm_adjoint_comp_self
+Rudin.Ch12.adjoint_zero
+Rudin.Ch12.adjoint_add
+Rudin.Ch12.adjoint_neg
+Rudin.Ch12.adjoint_sub
+Rudin.Ch12.adjoint_norm
+Rudin.Ch12.isSelfAdjoint_adjoint_comp_self
 Rudin.Ch12.isSelfAdjoint_iff_adjoint_eq
 Rudin.Ch12.self_adjoint_eigenvalue_real
 Rudin.Ch12.isStarNormal_iff_norm_eq_adjoint
