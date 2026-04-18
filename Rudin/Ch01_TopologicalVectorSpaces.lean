@@ -1,5 +1,6 @@
-import Mathlib.Topology.Algebra.Module.Basic
 import Mathlib.Analysis.Normed.Module.Basic
+import Mathlib.Analysis.Normed.Module.FiniteDimension
+import Mathlib.Analysis.Convex.Gauge
 
 /-!
 # Chapter 1 — Topological Vector Spaces
@@ -26,5 +27,33 @@ def smulHomeo {c : 𝕜} (hc : c ≠ 0) : E ≃ₜ E :=
   Homeomorph.smulOfNeZero c hc
 
 end TVS
+
+/-- **Theorem 1.22 (Heine–Borel in finite dimensions)** — In a
+finite-dimensional normed space over `ℝ` or `ℂ`, a closed and bounded
+set is compact. -/
+theorem heine_borel (𝕜 : Type*) [NontriviallyNormedField 𝕜] [LocallyCompactSpace 𝕜]
+    {E : Type*} [NormedAddCommGroup E] [NormedSpace 𝕜 E] [FiniteDimensional 𝕜 E]
+    {s : Set E} (h_closed : IsClosed s) (h_bdd : Bornology.IsBounded s) :
+    IsCompact s :=
+  have : ProperSpace E := FiniteDimensional.proper 𝕜 E
+  Metric.isCompact_of_isClosed_isBounded h_closed h_bdd
+
+section Minkowski
+
+variable {E : Type*} [AddCommGroup E] [Module ℝ E] [TopologicalSpace E]
+
+/-- **Definition 1.33** — Minkowski functional (gauge) of a set. -/
+noncomputable def minkowski (s : Set E) : E → ℝ := gauge s
+
+omit [TopologicalSpace E] in
+/-- **Theorem 1.35 (subadditivity of the Minkowski functional)** — If
+`s` is convex and absorbs each point (equivalently, is absorbent), then
+the Minkowski functional of `s` is subadditive. -/
+theorem minkowski_add_le {s : Set E} (hs : Convex ℝ s) (absorbs : Absorbent ℝ s)
+    (x y : E) :
+    minkowski s (x + y) ≤ minkowski s x + minkowski s y :=
+  gauge_add_le hs absorbs x y
+
+end Minkowski
 
 end Rudin.Ch01

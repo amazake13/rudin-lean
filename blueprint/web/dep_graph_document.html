@@ -1,0 +1,1485 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dependency graph</title>
+  <meta name="generator" content="plasTeX" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles/theme-white.css" />
+  <link rel="stylesheet" href="styles/dep_graph.css" />
+  
+  <script type="text/x-mathjax-config">
+  
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+  
+  </script>
+
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">  </script>
+
+
+<link rel="stylesheet" href="styles/extra_styles.css" />
+
+</head>
+
+<body>
+<header>
+  <a class="toc" href="index.html">Home</a>
+  <h1 id="doc_title">Dependencies</h1>
+</header>
+<div class="wrapper">
+<div class="content">
+  <div id="Legend">
+    <span id="legend_title" class="title">Legend
+    <div class="btn">
+       <div class="bar"></div>
+       <div class="bar"></div>
+       <div class="bar"></div>
+    </div></span> 
+    <dl class="legend">
+      
+      <dt>Boxes</dt><dd>definitions</dd>
+      
+      <dt>Ellipses</dt><dd>theorems and lemmas</dd>
+      
+      <dt>Blue border</dt><dd>the <em>statement</em> of this result is ready to be formalized; all prerequisites are done</dd>
+      
+      <dt>Orange border</dt><dd>the <em>statement</em> of this result is not ready to be formalized; the blueprint needs more work</dd>
+      
+      <dt>Blue background</dt><dd>the <em>proof</em> of this result is ready to be formalized; all prerequisites are done</dd>
+      
+      <dt>Green border</dt><dd>the <em>statement</em> of this result is formalized</dd>
+      
+      <dt>Green background</dt><dd>the <em>proof</em> of this result is formalized</dd>
+      
+      <dt>Dark green background</dt><dd>the <em>proof</em> of this result and all its ancestors are formalized</dd>
+      
+      <dt>Dark green border</dt><dd>this is in Mathlib</dd>
+      
+    </dl>
+  </div>
+    <div id="graph"></div>
+<div id="statements">
+
+    
+    <div class="dep-modal-container" id="def:adjoint_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="def:adjoint" style="display: none">
+    <div class="thm_thmheading">
+      <span class="definition_thmcaption">
+      Definition
+      </span>
+      <span class="definition_thmlabel">34</span><span class="definition_thmtitle">Rudin 12.9, adjoint of a bounded operator</span></div>
+    <div class="thm_thmcontent"><p>   For Hilbert spaces \(E\), \(F\) and \(A \in \mathcal{B}(E,F)\), there is a unique bounded operator \(A^{*} \in \mathcal{B}(F,E)\) characterised by \(\langle A x, y\rangle = \langle x, A^{*} y\rangle \) for all \(x \in E\), \(y \in F\). </p>
+</div>
+
+    <a class="latex_link" href="sect0012.html#def:adjoint">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="/find/#doc/Rudin.Ch12.adjoint">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="def:character-space_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="def:character-space" style="display: none">
+    <div class="thm_thmheading">
+      <span class="definition_thmcaption">
+      Definition
+      </span>
+      <span class="definition_thmlabel">30</span><span class="definition_thmtitle">Rudin 11.5, character space</span></div>
+    <div class="thm_thmcontent"><p>   The character space \(\Delta \) of a commutative complex Banach algebra \(A\) is the set of continuous nonzero algebra homomorphisms \(A \to \mathbb {C}\), equipped with the weak-\(*\) topology. </p>
+</div>
+
+    <a class="latex_link" href="sect0011.html#def:character-space">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="/find/#doc/Rudin.Ch11.CharacterSpace">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="def:closable-operator_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="def:closable-operator" style="display: none">
+    <div class="thm_thmheading">
+      <span class="definition_thmcaption">
+      Definition
+      </span>
+      <span class="definition_thmlabel">41</span><span class="definition_thmtitle">Rudin 13.4, closable operator</span></div>
+    <div class="thm_thmcontent"><p>    An operator \(T\) is <em>closable</em> iff the closure of its graph is itself the graph of some (uniquely determined) operator. </p>
+</div>
+
+    <a class="latex_link" href="sect0013.html#def:closable-operator">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="/find/#doc/Rudin.Ch13.IsClosableOperator">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="def:closed-operator_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="def:closed-operator" style="display: none">
+    <div class="thm_thmheading">
+      <span class="definition_thmcaption">
+      Definition
+      </span>
+      <span class="definition_thmlabel">40</span><span class="definition_thmtitle">Rudin 13.1, closed operator</span></div>
+    <div class="thm_thmcontent"><p>   A densely-defined linear operator \(T\) is <em>closed</em> iff its graph \(\{ (x, T x) : x \in \operatorname {dom} T\} \) is closed in \(E \times F\). </p>
+</div>
+
+    <a class="latex_link" href="sect0013.html#def:closed-operator">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="/find/#doc/Rudin.Ch13.IsClosedOperator">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="def:closure-operator_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="def:closure-operator" style="display: none">
+    <div class="thm_thmheading">
+      <span class="definition_thmcaption">
+      Definition
+      </span>
+      <span class="definition_thmlabel">43</span><span class="definition_thmtitle">Rudin 13.6, closure of an operator</span></div>
+    <div class="thm_thmcontent"><p>    If \(T\) is closable, \(\overline{T}\) is the unique extension whose graph is the closure of the graph of \(T\). </p>
+</div>
+
+    <a class="latex_link" href="sect0013.html#def:closure-operator">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="/find/#doc/Rudin.Ch13.closure">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="def:double-dual-embedding_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="def:double-dual-embedding" style="display: none">
+    <div class="thm_thmheading">
+      <span class="definition_thmcaption">
+      Definition
+      </span>
+      <span class="definition_thmlabel">14</span><span class="definition_thmtitle">Rudin 4.4, canonical embedding into the bidual</span></div>
+    <div class="thm_thmcontent"><p>   The canonical map \(E \to E^{**}\), \(x \mapsto (\varphi \mapsto \varphi (x))\), is an isometric linear embedding. \(E\) is called <em>reflexive</em> if this map is surjective. </p>
+</div>
+
+    <a class="latex_link" href="sect0004.html#def:double-dual-embedding">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="/find/#doc/Rudin.Ch04.doubleDualEmbedding">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="def:gelfand-transform_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="def:gelfand-transform" style="display: none">
+    <div class="thm_thmheading">
+      <span class="definition_thmcaption">
+      Definition
+      </span>
+      <span class="definition_thmlabel">32</span><span class="definition_thmtitle">Rudin 11.18, Gelfand transform</span></div>
+    <div class="thm_thmcontent"><p>    The Gelfand transform \(A \to C(\Delta , \mathbb {C})\) sends \(a\) to \(\varphi \mapsto \varphi (a)\). </p>
+</div>
+
+    <a class="latex_link" href="sect0011.html#def:gelfand-transform">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="/find/#doc/Rudin.Ch11.gelfand">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="def:minkowski_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="def:minkowski" style="display: none">
+    <div class="thm_thmheading">
+      <span class="definition_thmcaption">
+      Definition
+      </span>
+      <span class="definition_thmlabel">3</span><span class="definition_thmtitle">Rudin 1.33, Minkowski functional</span></div>
+    <div class="thm_thmcontent"><p>   For a set \(s \subseteq E\) in a real topological vector space, the Minkowski functional of \(s\) is \(\mu _s(x) = \inf \{  t {\gt} 0 : x \in t s \} \). </p>
+</div>
+
+    <a class="latex_link" href="sect0001.html#def:minkowski">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="/find/#doc/Rudin.Ch01.minkowski">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="def:schwartz_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="def:schwartz" style="display: none">
+    <div class="thm_thmheading">
+      <span class="definition_thmcaption">
+      Definition
+      </span>
+      <span class="definition_thmlabel">17</span><span class="definition_thmtitle">Schwartz space</span></div>
+    <div class="thm_thmcontent"><p>   The space \(\mathcal{S}(E,F)\) of rapidly decreasing smooth functions from a finite-dimensional real vector space \(E\) to a normed space \(F\), with the Fréchet topology generated by the seminorms \(\| x\| ^k \| f^{(n)}(x)\| \). </p>
+</div>
+
+    <a class="latex_link" href="sect0006.html#def:schwartz">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="/find/#doc/Rudin.Ch06.Schwartz">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="thm:abel-limit_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="thm:abel-limit" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">22</span><span class="theorem_thmtitle">Abel’s limit theorem</span></div>
+    <div class="thm_thmcontent"><p>   If \(\sum a_n\) converges to \(l\), then \(\sum a_n x^n \to l\) as \(x \to 1^-\). (The elementary abelian partner to Wiener’s Tauberian theorem, which is not yet available in mathlib.) </p>
+</div>
+
+    <a class="latex_link" href="sect0009.html#thm:abel-limit">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="/find/#doc/Rudin.Ch09.abel_limit">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="thm:adjoint-adjoint_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="thm:adjoint-adjoint" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">36</span><span class="theorem_thmtitle">Rudin 12.9, adjoint is involutive</span></div>
+    <div class="thm_thmcontent"><p>    \((A^{*})^{*} = A\). </p>
+</div>
+
+    <a class="latex_link" href="sect0012.html#thm:adjoint-adjoint">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="/find/#doc/Rudin.Ch12.adjoint_adjoint">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="thm:adjoint-comp_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="thm:adjoint-comp" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">37</span><span class="theorem_thmtitle">Rudin 12.10, adjoint of composition</span></div>
+    <div class="thm_thmcontent"><p>    \((AB)^{*} = B^{*} A^{*}\). </p>
+</div>
+
+    <a class="latex_link" href="sect0012.html#thm:adjoint-comp">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="/find/#doc/Rudin.Ch12.adjoint_comp">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="thm:adjoint-inner-left_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="thm:adjoint-inner-left" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">35</span><span class="theorem_thmtitle">Rudin 12.9, defining relation of the adjoint</span></div>
+    <div class="thm_thmcontent"><p>    \(\langle A^{*} y, x\rangle = \langle y, A x\rangle \). </p>
+</div>
+
+    <a class="latex_link" href="sect0012.html#thm:adjoint-inner-left">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="/find/#doc/Rudin.Ch12.adjoint_inner_left">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="thm:baire-category_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="thm:baire-category" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">5</span><span class="theorem_thmtitle">Rudin 2.2, Baire category</span></div>
+    <div class="thm_thmcontent"><p>   In a Baire space (in particular, any complete metric space or locally compact Hausdorff space), the intersection of countably many dense open sets is dense. </p>
+</div>
+
+    <a class="latex_link" href="sect0002.html#thm:baire-category">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="/find/#doc/Rudin.Ch02.baire_category">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="thm:banach-alaoglu_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="thm:banach-alaoglu" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">13</span><span class="theorem_thmtitle">Rudin 4.3, Banach–Alaoglu</span></div>
+    <div class="thm_thmcontent"><p>   The closed unit ball of the continuous dual of a normed space is compact in the weak-\(*\) topology; more generally, the polar of any neighborhood of the origin is weak-\(*\) compact. </p>
+</div>
+
+    <a class="latex_link" href="sect0004.html#thm:banach-alaoglu">LaTeX</a>
+    
+    
+  <div class="tooltip">
+      <span class="lean_link">Lean</span>
+      <ul class="tooltip_list">
+        
+           <li><a href="/find/#doc/Rudin.Ch04.banach_alaoglu" class="lean_decl">Rudin.Ch04.banach_alaoglu</a></li>
+        
+           <li><a href="/find/#doc/Rudin.Ch04.banach_alaoglu_polar" class="lean_decl">Rudin.Ch04.banach_alaoglu_polar</a></li>
+        
+      </ul>
+  </div>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="thm:banach-steinhaus_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="thm:banach-steinhaus" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">6</span><span class="theorem_thmtitle">Rudin 2.5, Banach–Steinhaus</span></div>
+    <div class="thm_thmcontent"><p>    Let \(E\) be a Banach space, \(F\) a normed space, and \((g_i)_{i\in I}\) a family of continuous linear maps \(E \to F\). If the family is pointwise bounded, then it is uniformly bounded in operator norm. </p>
+</div>
+
+    <a class="latex_link" href="sect0002.html#thm:banach-steinhaus">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="/find/#doc/Rudin.Ch02.banach_steinhaus">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="thm:closed-closable_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="thm:closed-closable" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">42</span><span class="theorem_thmtitle">Closed operators are closable</span></div>
+    <div class="thm_thmcontent"><p>    Every closed operator is trivially closable. </p>
+</div>
+
+    <a class="latex_link" href="sect0013.html#thm:closed-closable">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="/find/#doc/Rudin.Ch13.isClosable_of_isClosed">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="thm:closed-graph_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="thm:closed-graph" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">8</span><span class="theorem_thmtitle">Rudin 2.15, Closed graph</span></div>
+    <div class="thm_thmcontent"><p>    A linear map between Banach spaces whose graph is closed is continuous. </p>
+</div>
+
+    <a class="latex_link" href="sect0002.html#thm:closed-graph">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="/find/#doc/Rudin.Ch02.closed_graph">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="thm:closure-closed_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="thm:closure-closed" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">44</span><span class="theorem_thmtitle">Rudin 13.7, the closure is closed</span></div>
+    <div class="thm_thmcontent"><p>    If \(T\) is closable, then \(\overline{T}\) is a closed operator. </p>
+</div>
+
+    <a class="latex_link" href="sect0013.html#thm:closure-closed">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="/find/#doc/Rudin.Ch13.closure_isClosed">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="thm:cstar-identity_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="thm:cstar-identity" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">38</span><span class="theorem_thmtitle">Rudin 12.11, C\(^{*}\)-identity</span></div>
+    <div class="thm_thmcontent"><p>    \(\| A^{*} A\|  = \| A\| ^{2}\). </p>
+</div>
+
+    <a class="latex_link" href="sect0012.html#thm:cstar-identity">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="/find/#doc/Rudin.Ch12.norm_adjoint_comp_self">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="thm:fderiv-schwartz_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="thm:fderiv-schwartz" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">18</span><span class="theorem_thmtitle">Rudin 6.4, differentiation is continuous on test functions</span></div>
+    <div class="thm_thmcontent"><p>    The Fréchet derivative defines a continuous linear map \(\mathcal{S}(E,F) \to \mathcal{S}(E, E\! \to _L\!  F)\). </p>
+</div>
+
+    <a class="latex_link" href="sect0006.html#thm:fderiv-schwartz">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="/find/#doc/Rudin.Ch06.fderivSchwartz">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="thm:fourier-derivative_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="thm:fourier-derivative" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">21</span><span class="theorem_thmtitle">Fourier transforms differentiation into multiplication</span></div>
+    <div class="thm_thmcontent"><p>    For \(f \in \mathcal{S}(V,E)\), \(\widehat{\partial f}(\xi ) = 2\pi i\, \xi \cdot \widehat{f}(\xi )\), reducing constant-coefficient linear PDEs in \(\mathcal{S}\) to algebraic (multiplication) problems. </p>
+</div>
+
+    <a class="latex_link" href="sect0008.html#thm:fourier-derivative">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="/find/#doc/Rudin.Ch08.fourier_fderiv_eq">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="thm:fourier-schwartz_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="thm:fourier-schwartz" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">19</span><span class="theorem_thmtitle">Rudin 7.4, Fourier transform on Schwartz space</span></div>
+    <div class="thm_thmcontent"><p>    The Fourier transform is a continuous linear self-map of \(\mathcal{S}(V, E)\). </p>
+</div>
+
+    <a class="latex_link" href="sect0007.html#thm:fourier-schwartz">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="/find/#doc/Rudin.Ch07.fourierSchwartz">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="thm:gelfand-formula_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="thm:gelfand-formula" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">27</span><span class="theorem_thmtitle">Rudin 10.13, Gelfand’s spectral radius formula</span></div>
+    <div class="thm_thmcontent"><p>   For \(a\) in a complex Banach algebra, \(\| a^n\| ^{1/n} \to \rho (a)\) as \(n \to \infty \), where \(\rho (a)\) is the spectral radius. </p>
+</div>
+
+    <a class="latex_link" href="sect0010.html#thm:gelfand-formula">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="/find/#doc/Rudin.Ch10.gelfand_formula">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="thm:gelfand-mazur_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="thm:gelfand-mazur" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">26</span><span class="theorem_thmtitle">Rudin 10.14, Gelfand–Mazur</span></div>
+    <div class="thm_thmcontent"><p>    If every nonzero element of a complex Banach algebra \(A\) is invertible, then the natural map \(\mathbb {C} \to A\) is an isometric algebra isomorphism. </p>
+</div>
+
+    <a class="latex_link" href="sect0010.html#thm:gelfand-mazur">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="/find/#doc/Rudin.Ch10.gelfandMazur">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="thm:gelfand-naimark_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="thm:gelfand-naimark" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">33</span><span class="theorem_thmtitle">Rudin 11.18, Gelfand–Naimark: commutative C\(^{*}\)-algebras</span></div>
+    <div class="thm_thmcontent"><p>    For a commutative unital C\(^{*}\)-algebra \(A\), the Gelfand transform is an isometric \(*\)-isomorphism \(A \cong C(\Delta , \mathbb {C})\). </p>
+</div>
+
+    <a class="latex_link" href="sect0011.html#thm:gelfand-naimark">LaTeX</a>
+    
+    
+  <div class="tooltip">
+      <span class="lean_link">Lean</span>
+      <ul class="tooltip_list">
+        
+           <li><a href="/find/#doc/Rudin.Ch11.gelfand_isometry" class="lean_decl">Rudin.Ch11.gelfand_isometry</a></li>
+        
+           <li><a href="/find/#doc/Rudin.Ch11.gelfand_bijective" class="lean_decl">Rudin.Ch11.gelfand_bijective</a></li>
+        
+      </ul>
+  </div>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="thm:hahn-banach-analytic_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="thm:hahn-banach-analytic" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">10</span><span class="theorem_thmtitle">Rudin 3.2, Hahn–Banach, analytic</span></div>
+    <div class="thm_thmcontent"><p>   Let \(E\) be a real vector space, \(N\colon E \to \mathbb {R}\) a sublinear functional, and \(f\) a linear functional defined on a subspace of \(E\) with \(f \le N\) on its domain. Then \(f\) extends to a linear functional \(g\colon E \to \mathbb {R}\) with \(g \le N\) everywhere. </p>
+</div>
+
+    <a class="latex_link" href="sect0003.html#thm:hahn-banach-analytic">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="/find/#doc/Rudin.Ch03.hahn_banach_extension">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="thm:hahn-banach-separation_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="thm:hahn-banach-separation" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">11</span><span class="theorem_thmtitle">Rudin 3.4, Geometric Hahn–Banach</span></div>
+    <div class="thm_thmcontent"><p>    In a locally convex Hausdorff topological vector space, a compact convex set and a disjoint closed convex set can be strictly separated by a continuous linear functional. </p>
+</div>
+
+    <a class="latex_link" href="sect0003.html#thm:hahn-banach-separation">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="/find/#doc/Rudin.Ch03.hahn_banach_separation">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="thm:heine-borel_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="thm:heine-borel" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">2</span><span class="theorem_thmtitle">Rudin 1.22, Heine–Borel in finite dimensions</span></div>
+    <div class="thm_thmcontent"><p>   In a finite-dimensional normed space over \(\mathbb {R}\) or \(\mathbb {C}\), every closed and bounded set is compact. </p>
+</div>
+
+    <a class="latex_link" href="sect0001.html#thm:heine-borel">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="/find/#doc/Rudin.Ch01.heine_borel">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="thm:inversion-continuous_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="thm:inversion-continuous" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">24</span><span class="theorem_thmtitle">Rudin 10.12, inversion is continuous</span></div>
+    <div class="thm_thmcontent"><p>    The inversion map \(x \mapsto x^{-1}\) is continuous at every unit. </p>
+</div>
+
+    <a class="latex_link" href="sect0010.html#thm:inversion-continuous">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="/find/#doc/Rudin.Ch10.inverse_continuousAt">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="thm:krein-milman_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="thm:krein-milman" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">12</span><span class="theorem_thmtitle">Rudin 3.23, Krein–Milman</span></div>
+    <div class="thm_thmcontent"><p>    In a locally convex Hausdorff topological vector space, every compact convex set is the closed convex hull of its extreme points. </p>
+</div>
+
+    <a class="latex_link" href="sect0003.html#thm:krein-milman">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="/find/#doc/Rudin.Ch03.krein_milman">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="thm:minkowski-subadditive_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="thm:minkowski-subadditive" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">4</span><span class="theorem_thmtitle">Rudin 1.35, subadditivity of Minkowski functional</span></div>
+    <div class="thm_thmcontent"><p>    If \(s\) is convex and absorbent, then \(\mu _s(x + y) \le \mu _s(x) + \mu _s(y)\). </p>
+</div>
+
+    <a class="latex_link" href="sect0001.html#thm:minkowski-subadditive">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="/find/#doc/Rudin.Ch01.minkowski_add_le">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="thm:open-mapping_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="thm:open-mapping" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">7</span><span class="theorem_thmtitle">Rudin 2.11, Open mapping</span></div>
+    <div class="thm_thmcontent"><p>    A surjective continuous linear map between Banach spaces is open. </p>
+</div>
+
+    <a class="latex_link" href="sect0002.html#thm:open-mapping">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="/find/#doc/Rudin.Ch02.open_mapping">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="thm:plancherel_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="thm:plancherel" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">20</span><span class="theorem_thmtitle">Rudin 7.9, Plancherel</span></div>
+    <div class="thm_thmcontent"><p>    The Fourier transform extends to a unitary automorphism of \(L^2(E;F)\); in particular, \(\| \widehat{f}\| _{L^2} = \| f\| _{L^2}\). </p>
+</div>
+
+    <a class="latex_link" href="sect0007.html#thm:plancherel">LaTeX</a>
+    
+    
+  <div class="tooltip">
+      <span class="lean_link">Lean</span>
+      <ul class="tooltip_list">
+        
+           <li><a href="/find/#doc/Rudin.Ch07.fourierL2" class="lean_decl">Rudin.Ch07.fourierL2</a></li>
+        
+           <li><a href="/find/#doc/Rudin.Ch07.plancherel" class="lean_decl">Rudin.Ch07.plancherel</a></li>
+        
+      </ul>
+  </div>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="thm:riesz-lemma_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="thm:riesz-lemma" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">9</span><span class="theorem_thmtitle">Rudin, Riesz’s lemma</span></div>
+    <div class="thm_thmcontent"><p>   For any closed proper subspace \(F\) of a normed space \(E\) and any \(r {\lt} 1\), there exists \(x_0 \notin F\) with \(r\, \| x_0\|  \le \| x_0 - y\| \) for all \(y \in F\). </p>
+</div>
+
+    <a class="latex_link" href="sect0002.html#thm:riesz-lemma">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="/find/#doc/Rudin.Ch02.riesz_lemma">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="thm:spectral-diagonalization_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="thm:spectral-diagonalization" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">39</span><span class="theorem_thmtitle">Rudin 12.22, spectral theorem (finite-dimensional)</span></div>
+    <div class="thm_thmcontent"><p>    A self-adjoint operator \(T\) on a finite-dimensional inner product space \(E\) is unitarily equivalent to the diagonal operator on the orthogonal direct sum of its eigenspaces: there is a linear isometry \(E \cong \bigoplus _\mu E_\mu \) conjugating \(T\) to multiplication by \(\mu \) on each summand. </p>
+</div>
+
+    <a class="latex_link" href="sect0012.html#thm:spectral-diagonalization">LaTeX</a>
+    
+    
+  <div class="tooltip">
+      <span class="lean_link">Lean</span>
+      <ul class="tooltip_list">
+        
+           <li><a href="/find/#doc/Rudin.Ch12.spectralDiagonalization" class="lean_decl">Rudin.Ch12.spectralDiagonalization</a></li>
+        
+           <li><a href="/find/#doc/Rudin.Ch12.spectralDiagonalization_apply_self_apply" class="lean_decl">Rudin.Ch12.spectralDiagonalization_apply_self_apply</a></li>
+        
+      </ul>
+  </div>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="thm:spectrum-compact_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="thm:spectrum-compact" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">29</span><span class="theorem_thmtitle">Rudin 10.13, spectrum is compact</span></div>
+    <div class="thm_thmcontent"><p>    The spectrum of any element of a complex Banach algebra is compact. </p>
+</div>
+
+    <a class="latex_link" href="sect0010.html#thm:spectrum-compact">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="/find/#doc/Rudin.Ch10.spectrum_isCompact">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="thm:spectrum-in-closed-ball_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="thm:spectrum-in-closed-ball" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">28</span><span class="theorem_thmtitle">Rudin 10.13, spectrum bounded by norm</span></div>
+    <div class="thm_thmcontent"><p>   \(\sigma (a) \subseteq \{ z : |z| \le \| a\| \} \). </p>
+</div>
+
+    <a class="latex_link" href="sect0010.html#thm:spectrum-in-closed-ball">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="/find/#doc/Rudin.Ch10.spectrum_subset_closedBall">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="thm:spectrum-nonempty_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="thm:spectrum-nonempty" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">25</span><span class="theorem_thmtitle">Rudin 10.13, spectrum nonempty</span></div>
+    <div class="thm_thmcontent"><p>   Every element of a nontrivial complex Banach algebra has nonempty spectrum. </p>
+</div>
+
+    <a class="latex_link" href="sect0010.html#thm:spectrum-nonempty">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="/find/#doc/Rudin.Ch10.spectrum_nonempty">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="thm:spectrum-via-characters_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="thm:spectrum-via-characters" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">31</span><span class="theorem_thmtitle">Rudin 11.9, characters detect the spectrum</span></div>
+    <div class="thm_thmcontent"><p>    \(z \in \sigma (a)\) iff there is a character \(\varphi \in \Delta \) with \(\varphi (a) = z\). </p>
+</div>
+
+    <a class="latex_link" href="sect0011.html#thm:spectrum-via-characters">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="/find/#doc/Rudin.Ch11.mem_spectrum_iff_exists_character">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="thm:stone-weierstrass_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="thm:stone-weierstrass" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">15</span><span class="theorem_thmtitle">Rudin 5.7, Stone–Weierstrass (real)</span></div>
+    <div class="thm_thmcontent"><p>   If \(X\) is a compact Hausdorff space and \(A\) is a real subalgebra of \(C(X,\mathbb {R})\) that separates points, then \(A\) is dense in \(C(X,\mathbb {R})\). </p>
+</div>
+
+    <a class="latex_link" href="sect0005.html#thm:stone-weierstrass">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="/find/#doc/Rudin.Ch05.stone_weierstrass">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="thm:stone-weierstrass-star_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="thm:stone-weierstrass-star" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">16</span><span class="theorem_thmtitle">Rudin 5.8, Stone–Weierstrass (\(\mathbb {R},\mathbb {C}\))</span></div>
+    <div class="thm_thmcontent"><p>   For \(\mathbb {K} \in \{ \mathbb {R}, \mathbb {C}\} \) and \(X\) compact, a self-adjoint star-subalgebra of \(C(X, \mathbb {K})\) that separates points is dense. </p>
+</div>
+
+    <a class="latex_link" href="sect0005.html#thm:stone-weierstrass-star">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="/find/#doc/Rudin.Ch05.stone_weierstrass_star">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="thm:translation-homeo_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="thm:translation-homeo" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">1</span><span class="theorem_thmtitle">Rudin 1.6</span></div>
+    <div class="thm_thmcontent"><p>   Let \(X\) be a topological vector space over \(\mathbb {K}\). For each \(a \in X\) the translation \(T_a\colon x \mapsto x + a\) is a homeomorphism of \(X\) onto itself, and for each nonzero scalar \(c\) the map \(M_c\colon x \mapsto cx\) is a homeomorphism as well. </p>
+</div>
+
+    <a class="latex_link" href="sect0001.html#thm:translation-homeo">LaTeX</a>
+    
+    
+  <div class="tooltip">
+      <span class="lean_link">Lean</span>
+      <ul class="tooltip_list">
+        
+           <li><a href="/find/#doc/Rudin.Ch01.translationHomeo" class="lean_decl">Rudin.Ch01.translationHomeo</a></li>
+        
+           <li><a href="/find/#doc/Rudin.Ch01.smulHomeo" class="lean_decl">Rudin.Ch01.smulHomeo</a></li>
+        
+      </ul>
+  </div>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+
+
+    
+    <div class="dep-modal-container" id="thm:units-open_modal">
+      <div class="dep-modal-content">
+          <button class="dep-closebtn">
+<svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        
+  <div class="thm" id="thm:units-open" style="display: none">
+    <div class="thm_thmheading">
+      <span class="theorem_thmcaption">
+      Theorem
+      </span>
+      <span class="theorem_thmlabel">23</span><span class="theorem_thmtitle">Rudin 10.11, units form an open set</span></div>
+    <div class="thm_thmcontent"><p>   In a Banach algebra, the set of invertible elements is open. </p>
+</div>
+
+    <a class="latex_link" href="sect0010.html#thm:units-open">LaTeX</a>
+    
+    
+  <a class="lean_link lean_decl" href="/find/#doc/Rudin.Ch10.units_isOpen">Lean</a>
+    
+    
+  
+    
+  </div>
+    
+      </div>
+    </div>
+</div>
+</div> <!-- content -->
+</div> <!-- wrapper -->
+<script src="js/jquery.min.js" type="text/javascript"></script>
+
+<script src="js/d3.min.js"></script>
+<script src="js/hpcc.min.js"></script>
+<script src="js/d3-graphviz.js"></script>
+
+<script type="text/javascript">
+const graphContainer = d3.select("#graph");
+const width = graphContainer.node().clientWidth;
+const height = graphContainer.node().clientHeight;
+
+
+graphContainer.graphviz({useWorker: true})
+    .width(width)
+    .height(height)
+    .fit(true)
+    .renderDot(`strict digraph "" {	graph [bgcolor=transparent];	node [label="\N",		penwidth=1.8	];	edge [arrowhead=vee];	"thm:minkowski-subadditive"	[color=green,		label="minkowski-subadditive",		shape=ellipse];	"thm:baire-category"	[color=green,		label="baire-category",		shape=ellipse];	"thm:open-mapping"	[color=green,		label="open-mapping",		shape=ellipse];	"thm:baire-category" -> "thm:open-mapping"	[style=dashed];	"thm:banach-steinhaus"	[color=green,		label="banach-steinhaus",		shape=ellipse];	"thm:baire-category" -> "thm:banach-steinhaus"	[style=dashed];	"thm:closed-graph"	[color=green,		label="closed-graph",		shape=ellipse];	"thm:open-mapping" -> "thm:closed-graph"	[style=dashed];	"thm:riesz-lemma"	[color=green,		label="riesz-lemma",		shape=ellipse];	"thm:plancherel"	[color=green,		label=plancherel,		shape=ellipse];	"thm:spectrum-via-characters"	[color=green,		label="spectrum-via-characters",		shape=ellipse];	"thm:gelfand-naimark"	[color=green,		label="gelfand-naimark",		shape=ellipse];	"thm:spectrum-via-characters" -> "thm:gelfand-naimark"	[style=dashed];	"thm:hahn-banach-separation"	[color=green,		label="hahn-banach-separation",		shape=ellipse];	"thm:krein-milman"	[color=green,		label="krein-milman",		shape=ellipse];	"thm:hahn-banach-separation" -> "thm:krein-milman"	[style=dashed];	"def:adjoint"	[color=green,		fillcolor="#B0ECA3",		label=adjoint,		shape=box,		style=filled];	"thm:adjoint-adjoint"	[color=green,		label="adjoint-adjoint",		shape=ellipse];	"def:adjoint" -> "thm:adjoint-adjoint"	[style=dashed];	"thm:spectral-diagonalization"	[color=green,		label="spectral-diagonalization",		shape=ellipse];	"def:adjoint" -> "thm:spectral-diagonalization"	[style=dashed];	"thm:cstar-identity"	[color=green,		label="cstar-identity",		shape=ellipse];	"def:adjoint" -> "thm:cstar-identity"	[style=dashed];	"thm:adjoint-comp"	[color=green,		label="adjoint-comp",		shape=ellipse];	"def:adjoint" -> "thm:adjoint-comp"	[style=dashed];	"thm:adjoint-inner-left"	[color=green,		label="adjoint-inner-left",		shape=ellipse];	"def:adjoint" -> "thm:adjoint-inner-left"	[style=dashed];	"thm:translation-homeo"	[color=green,		label="translation-homeo",		shape=ellipse];	"thm:hahn-banach-analytic"	[color=green,		label="hahn-banach-analytic",		shape=ellipse];	"thm:hahn-banach-analytic" -> "thm:hahn-banach-separation"	[style=dashed];	"thm:spectrum-nonempty"	[color=green,		label="spectrum-nonempty",		shape=ellipse];	"thm:spectrum-nonempty" -> "thm:spectrum-via-characters"	[style=dashed];	"thm:gelfand-mazur"	[color=green,		label="gelfand-mazur",		shape=ellipse];	"thm:spectrum-nonempty" -> "thm:gelfand-mazur"	[style=dashed];	"thm:closure-closed"	[color=green,		label="closure-closed",		shape=ellipse];	"def:schwartz"	[color=green,		fillcolor="#B0ECA3",		label=schwartz,		shape=box,		style=filled];	"thm:fderiv-schwartz"	[color=green,		label="fderiv-schwartz",		shape=ellipse];	"def:schwartz" -> "thm:fderiv-schwartz"	[style=dashed];	"thm:fourier-schwartz"	[color=green,		label="fourier-schwartz",		shape=ellipse];	"def:schwartz" -> "thm:fourier-schwartz"	[style=dashed];	"thm:fourier-schwartz" -> "thm:plancherel"	[style=dashed];	"thm:fourier-derivative"	[color=green,		label="fourier-derivative",		shape=ellipse];	"thm:fourier-schwartz" -> "thm:fourier-derivative"	[style=dashed];	"def:closable-operator"	[color=green,		fillcolor="#B0ECA3",		label="closable-operator",		shape=box,		style=filled];	"thm:closed-closable"	[color=green,		label="closed-closable",		shape=ellipse];	"def:closable-operator" -> "thm:closed-closable"	[style=dashed];	"def:closure-operator"	[color=green,		fillcolor="#B0ECA3",		label="closure-operator",		shape=box,		style=filled];	"def:closable-operator" -> "def:closure-operator"	[style=dashed];	"def:closure-operator" -> "thm:closure-closed"	[style=dashed];	"def:minkowski"	[color=green,		fillcolor="#B0ECA3",		label=minkowski,		shape=box,		style=filled];	"def:minkowski" -> "thm:minkowski-subadditive"	[style=dashed];	"def:character-space"	[color=green,		fillcolor="#B0ECA3",		label="character-space",		shape=box,		style=filled];	"def:character-space" -> "thm:spectrum-via-characters"	[style=dashed];	"def:gelfand-transform"	[color=green,		fillcolor="#B0ECA3",		label="gelfand-transform",		shape=box,		style=filled];	"def:character-space" -> "def:gelfand-transform"	[style=dashed];	"def:gelfand-transform" -> "thm:gelfand-naimark"	[style=dashed];	"thm:stone-weierstrass-star"	[color=green,		label="stone-weierstrass-star",		shape=ellipse];	"thm:gelfand-formula"	[color=green,		label="gelfand-formula",		shape=ellipse];	"thm:spectrum-in-closed-ball"	[color=green,		label="spectrum-in-closed-ball",		shape=ellipse];	"thm:spectrum-compact"	[color=green,		label="spectrum-compact",		shape=ellipse];	"thm:spectrum-in-closed-ball" -> "thm:spectrum-compact"	[style=dashed];	"def:double-dual-embedding"	[color=green,		fillcolor="#B0ECA3",		label="double-dual-embedding",		shape=box,		style=filled];	"def:closed-operator"	[color=green,		fillcolor="#B0ECA3",		label="closed-operator",		shape=box,		style=filled];	"def:closed-operator" -> "def:closable-operator"	[style=dashed];	"thm:heine-borel"	[color=green,		label="heine-borel",		shape=ellipse];	"thm:banach-alaoglu"	[color=green,		label="banach-alaoglu",		shape=ellipse];	"thm:stone-weierstrass"	[color=green,		label="stone-weierstrass",		shape=ellipse];	"thm:units-open"	[color=green,		label="units-open",		shape=ellipse];	"thm:inversion-continuous"	[color=green,		label="inversion-continuous",		shape=ellipse];	"thm:units-open" -> "thm:inversion-continuous"	[style=dashed];	"thm:abel-limit"	[color=green,		label="abel-limit",		shape=ellipse];}`)
+    .on("end", interactive);
+
+latexLabelEscaper = function(label) {
+  return label.replace(/\./g, '\\.').replace(/:/g, '\\:')
+}
+
+clickNode = function() {
+  $("#statements div").hide()
+  var node_id = $('text', this).text();
+  $('.thm').hide();
+  $('#'+latexLabelEscaper(node_id)).show().children().show();
+}
+function interactive() {
+    $("span#legend_title").on("click", function () {
+           $(this).siblings('dl').toggle();
+        })
+
+    d3.selectAll('.node')
+        .attr('pointer-events', 'fill')
+        .on('click', function () {
+           var title = d3.select(this).selectAll('title').text().trim();
+           $('#statements > div').hide()
+           $('.thm').hide();
+           $('#'+latexLabelEscaper(title)+'_modal').show().children().show().children().show();
+           $('#statements').show()
+        });
+
+    d3.selectAll('.dep-closebtn').on('click', function() {
+        var modal =
+            d3.select(this).node().parentNode.parentNode.parentNode ;
+        d3.select(modal).style('display', 'none');
+    });
+}
+
+</script>
+
+</body>
+</html>

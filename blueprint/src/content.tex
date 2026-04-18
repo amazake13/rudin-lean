@@ -1,0 +1,417 @@
+% Content of the Rudin Functional Analysis blueprint.
+% Each \chapter mirrors one chapter of Rudin, Functional Analysis (2nd ed.).
+
+\chapter{Topological Vector Spaces}
+
+\begin{theorem}[Rudin 1.6]
+  \label{thm:translation-homeo}
+  \lean{Rudin.Ch01.translationHomeo, Rudin.Ch01.smulHomeo}
+  \leanok
+  Let $X$ be a topological vector space over $\mathbb{K}$.
+  For each $a \in X$ the translation $T_a\colon x \mapsto x + a$
+  is a homeomorphism of $X$ onto itself, and for each nonzero
+  scalar $c$ the map $M_c\colon x \mapsto cx$ is a homeomorphism as well.
+\end{theorem}
+
+\begin{theorem}[Rudin 1.22, Heine--Borel in finite dimensions]
+  \label{thm:heine-borel}
+  \lean{Rudin.Ch01.heine_borel}
+  \leanok
+  In a finite-dimensional normed space over $\mathbb{R}$ or $\mathbb{C}$,
+  every closed and bounded set is compact.
+\end{theorem}
+
+\begin{definition}[Rudin 1.33, Minkowski functional]
+  \label{def:minkowski}
+  \lean{Rudin.Ch01.minkowski}
+  \leanok
+  For a set $s \subseteq E$ in a real topological vector space, the
+  Minkowski functional of $s$ is
+  $\mu_s(x) = \inf\{ t > 0 : x \in t s \}$.
+\end{definition}
+
+\begin{theorem}[Rudin 1.35, subadditivity of Minkowski functional]
+  \label{thm:minkowski-subadditive}
+  \uses{def:minkowski}
+  \lean{Rudin.Ch01.minkowski_add_le}
+  \leanok
+  If $s$ is convex and absorbent, then $\mu_s(x + y) \le \mu_s(x) + \mu_s(y)$.
+\end{theorem}
+
+\chapter{Completeness}
+
+\begin{theorem}[Rudin 2.2, Baire category]
+  \label{thm:baire-category}
+  \lean{Rudin.Ch02.baire_category}
+  \leanok
+  In a Baire space (in particular, any complete metric space or locally
+  compact Hausdorff space), the intersection of countably many dense open
+  sets is dense.
+\end{theorem}
+
+\begin{theorem}[Rudin 2.5, Banach--Steinhaus]
+  \label{thm:banach-steinhaus}
+  \uses{thm:baire-category}
+  \lean{Rudin.Ch02.banach_steinhaus}
+  \leanok
+  Let $E$ be a Banach space, $F$ a normed space, and $(g_i)_{i\in I}$
+  a family of continuous linear maps $E \to F$. If the family is
+  pointwise bounded, then it is uniformly bounded in operator norm.
+\end{theorem}
+
+\begin{theorem}[Rudin 2.11, Open mapping]
+  \label{thm:open-mapping}
+  \uses{thm:baire-category}
+  \lean{Rudin.Ch02.open_mapping}
+  \leanok
+  A surjective continuous linear map between Banach spaces is open.
+\end{theorem}
+
+\begin{theorem}[Rudin 2.15, Closed graph]
+  \label{thm:closed-graph}
+  \uses{thm:open-mapping}
+  \lean{Rudin.Ch02.closed_graph}
+  \leanok
+  A linear map between Banach spaces whose graph is closed is continuous.
+\end{theorem}
+
+\begin{theorem}[Rudin, Riesz's lemma]
+  \label{thm:riesz-lemma}
+  \lean{Rudin.Ch02.riesz_lemma}
+  \leanok
+  For any closed proper subspace $F$ of a normed space $E$ and any
+  $r < 1$, there exists $x_0 \notin F$ with $r\,\|x_0\| \le \|x_0 - y\|$
+  for all $y \in F$.
+\end{theorem}
+
+\chapter{Convexity}
+
+\begin{theorem}[Rudin 3.2, Hahn--Banach, analytic]
+  \label{thm:hahn-banach-analytic}
+  \lean{Rudin.Ch03.hahn_banach_extension}
+  \leanok
+  Let $E$ be a real vector space, $N\colon E \to \mathbb{R}$ a sublinear
+  functional, and $f$ a linear functional defined on a subspace of $E$
+  with $f \le N$ on its domain. Then $f$ extends to a linear functional
+  $g\colon E \to \mathbb{R}$ with $g \le N$ everywhere.
+\end{theorem}
+
+\begin{theorem}[Rudin 3.4, Geometric Hahn--Banach]
+  \label{thm:hahn-banach-separation}
+  \uses{thm:hahn-banach-analytic}
+  \lean{Rudin.Ch03.hahn_banach_separation}
+  \leanok
+  In a locally convex Hausdorff topological vector space, a compact
+  convex set and a disjoint closed convex set can be strictly separated
+  by a continuous linear functional.
+\end{theorem}
+
+\begin{theorem}[Rudin 3.23, Krein--Milman]
+  \label{thm:krein-milman}
+  \uses{thm:hahn-banach-separation}
+  \lean{Rudin.Ch03.krein_milman}
+  \leanok
+  In a locally convex Hausdorff topological vector space, every compact
+  convex set is the closed convex hull of its extreme points.
+\end{theorem}
+
+\chapter{Duality in Banach Spaces}
+
+\begin{theorem}[Rudin 4.3, Banach--Alaoglu]
+  \label{thm:banach-alaoglu}
+  \lean{Rudin.Ch04.banach_alaoglu, Rudin.Ch04.banach_alaoglu_polar}
+  \leanok
+  The closed unit ball of the continuous dual of a normed space is
+  compact in the weak-$*$ topology; more generally, the polar of any
+  neighborhood of the origin is weak-$*$ compact.
+\end{theorem}
+
+\begin{definition}[Rudin 4.4, canonical embedding into the bidual]
+  \label{def:double-dual-embedding}
+  \lean{Rudin.Ch04.doubleDualEmbedding}
+  \leanok
+  The canonical map $E \to E^{**}$, $x \mapsto (\varphi \mapsto \varphi(x))$,
+  is an isometric linear embedding. $E$ is called \emph{reflexive} if
+  this map is surjective.
+\end{definition}
+
+\chapter{Some Applications}
+
+\begin{theorem}[Rudin 5.7, Stone--Weierstrass (real)]
+  \label{thm:stone-weierstrass}
+  \lean{Rudin.Ch05.stone_weierstrass}
+  \leanok
+  If $X$ is a compact Hausdorff space and $A$ is a real subalgebra of
+  $C(X,\mathbb{R})$ that separates points, then $A$ is dense in
+  $C(X,\mathbb{R})$.
+\end{theorem}
+
+\begin{theorem}[Rudin 5.8, Stone--Weierstrass ($\mathbb{R},\mathbb{C}$)]
+  \label{thm:stone-weierstrass-star}
+  \lean{Rudin.Ch05.stone_weierstrass_star}
+  \leanok
+  For $\mathbb{K} \in \{\mathbb{R}, \mathbb{C}\}$ and $X$ compact, a
+  self-adjoint star-subalgebra of $C(X, \mathbb{K})$ that separates
+  points is dense.
+\end{theorem}
+
+\chapter{Test Functions and Distributions}
+
+\begin{definition}[Schwartz space]
+  \label{def:schwartz}
+  \lean{Rudin.Ch06.Schwartz}
+  \leanok
+  The space $\mathcal{S}(E,F)$ of rapidly decreasing smooth functions
+  from a finite-dimensional real vector space $E$ to a normed space
+  $F$, with the Fréchet topology generated by the seminorms
+  $\|x\|^k \|f^{(n)}(x)\|$.
+\end{definition}
+
+\begin{theorem}[Rudin 6.4, differentiation is continuous on test functions]
+  \label{thm:fderiv-schwartz}
+  \uses{def:schwartz}
+  \lean{Rudin.Ch06.fderivSchwartz}
+  \leanok
+  The Fréchet derivative defines a continuous linear map
+  $\mathcal{S}(E,F) \to \mathcal{S}(E, E\!\to_L\! F)$.
+\end{theorem}
+
+\chapter{Fourier Transforms}
+
+\begin{theorem}[Rudin 7.4, Fourier transform on Schwartz space]
+  \label{thm:fourier-schwartz}
+  \uses{def:schwartz}
+  \lean{Rudin.Ch07.fourierSchwartz}
+  \leanok
+  The Fourier transform is a continuous linear self-map of
+  $\mathcal{S}(V, E)$.
+\end{theorem}
+
+\begin{theorem}[Rudin 7.9, Plancherel]
+  \label{thm:plancherel}
+  \uses{thm:fourier-schwartz}
+  \lean{Rudin.Ch07.fourierL2, Rudin.Ch07.plancherel}
+  \leanok
+  The Fourier transform extends to a unitary automorphism of $L^2(E;F)$;
+  in particular, $\|\widehat{f}\|_{L^2} = \|f\|_{L^2}$.
+\end{theorem}
+
+\chapter{Applications to Differential Equations}
+
+\begin{theorem}[Fourier transforms differentiation into multiplication]
+  \label{thm:fourier-derivative}
+  \uses{thm:fourier-schwartz}
+  \lean{Rudin.Ch08.fourier_fderiv_eq}
+  \leanok
+  For $f \in \mathcal{S}(V,E)$,
+  $\widehat{\partial f}(\xi) = 2\pi i\,\xi \cdot \widehat{f}(\xi)$,
+  reducing constant-coefficient linear PDEs in $\mathcal{S}$ to
+  algebraic (multiplication) problems.
+\end{theorem}
+
+\chapter{Tauberian Theory}
+
+\begin{theorem}[Abel's limit theorem]
+  \label{thm:abel-limit}
+  \lean{Rudin.Ch09.abel_limit}
+  \leanok
+  If $\sum a_n$ converges to $l$, then $\sum a_n x^n \to l$ as
+  $x \to 1^-$. (The elementary abelian partner to Wiener's Tauberian
+  theorem, which is not yet available in mathlib.)
+\end{theorem}
+
+\chapter{Banach Algebras}
+
+\begin{theorem}[Rudin 10.11, units form an open set]
+  \label{thm:units-open}
+  \lean{Rudin.Ch10.units_isOpen}
+  \leanok
+  In a Banach algebra, the set of invertible elements is open.
+\end{theorem}
+
+\begin{theorem}[Rudin 10.12, inversion is continuous]
+  \label{thm:inversion-continuous}
+  \uses{thm:units-open}
+  \lean{Rudin.Ch10.inverse_continuousAt}
+  \leanok
+  The inversion map $x \mapsto x^{-1}$ is continuous at every unit.
+\end{theorem}
+
+\begin{theorem}[Rudin 10.13, spectrum nonempty]
+  \label{thm:spectrum-nonempty}
+  \lean{Rudin.Ch10.spectrum_nonempty}
+  \leanok
+  Every element of a nontrivial complex Banach algebra has nonempty spectrum.
+\end{theorem}
+
+\begin{theorem}[Rudin 10.14, Gelfand--Mazur]
+  \label{thm:gelfand-mazur}
+  \uses{thm:spectrum-nonempty}
+  \lean{Rudin.Ch10.gelfandMazur}
+  \leanok
+  If every nonzero element of a complex Banach algebra $A$ is invertible,
+  then the natural map $\mathbb{C} \to A$ is an isometric algebra
+  isomorphism.
+\end{theorem}
+
+\begin{theorem}[Rudin 10.13, Gelfand's spectral radius formula]
+  \label{thm:gelfand-formula}
+  \lean{Rudin.Ch10.gelfand_formula}
+  \leanok
+  For $a$ in a complex Banach algebra,
+  $\|a^n\|^{1/n} \to \rho(a)$ as $n \to \infty$,
+  where $\rho(a)$ is the spectral radius.
+\end{theorem}
+
+\begin{theorem}[Rudin 10.13, spectrum bounded by norm]
+  \label{thm:spectrum-in-closed-ball}
+  \lean{Rudin.Ch10.spectrum_subset_closedBall}
+  \leanok
+  $\sigma(a) \subseteq \{z : |z| \le \|a\|\}$.
+\end{theorem}
+
+\begin{theorem}[Rudin 10.13, spectrum is compact]
+  \label{thm:spectrum-compact}
+  \uses{thm:spectrum-in-closed-ball}
+  \lean{Rudin.Ch10.spectrum_isCompact}
+  \leanok
+  The spectrum of any element of a complex Banach algebra is compact.
+\end{theorem}
+
+\chapter{Commutative Banach Algebras}
+
+\begin{definition}[Rudin 11.5, character space]
+  \label{def:character-space}
+  \lean{Rudin.Ch11.CharacterSpace}
+  \leanok
+  The character space $\Delta$ of a commutative complex Banach algebra
+  $A$ is the set of continuous nonzero algebra homomorphisms $A \to \mathbb{C}$,
+  equipped with the weak-$*$ topology.
+\end{definition}
+
+\begin{theorem}[Rudin 11.9, characters detect the spectrum]
+  \label{thm:spectrum-via-characters}
+  \uses{def:character-space, thm:spectrum-nonempty}
+  \lean{Rudin.Ch11.mem_spectrum_iff_exists_character}
+  \leanok
+  $z \in \sigma(a)$ iff there is a character $\varphi \in \Delta$ with
+  $\varphi(a) = z$.
+\end{theorem}
+
+\begin{definition}[Rudin 11.18, Gelfand transform]
+  \label{def:gelfand-transform}
+  \uses{def:character-space}
+  \lean{Rudin.Ch11.gelfand}
+  \leanok
+  The Gelfand transform $A \to C(\Delta, \mathbb{C})$ sends $a$ to
+  $\varphi \mapsto \varphi(a)$.
+\end{definition}
+
+\begin{theorem}[Rudin 11.18, Gelfand--Naimark: commutative C$^{*}$-algebras]
+  \label{thm:gelfand-naimark}
+  \uses{def:gelfand-transform, thm:spectrum-via-characters}
+  \lean{Rudin.Ch11.gelfand_isometry, Rudin.Ch11.gelfand_bijective}
+  \leanok
+  For a commutative unital C$^{*}$-algebra $A$, the Gelfand transform
+  is an isometric $*$-isomorphism $A \cong C(\Delta, \mathbb{C})$.
+\end{theorem}
+
+\chapter{Bounded Operators on a Hilbert Space}
+
+\begin{definition}[Rudin 12.9, adjoint of a bounded operator]
+  \label{def:adjoint}
+  \lean{Rudin.Ch12.adjoint}
+  \leanok
+  For Hilbert spaces $E$, $F$ and $A \in \mathcal{B}(E,F)$, there is a
+  unique bounded operator $A^{*} \in \mathcal{B}(F,E)$ characterised
+  by $\langle A x, y\rangle = \langle x, A^{*} y\rangle$ for all
+  $x \in E$, $y \in F$.
+\end{definition}
+
+\begin{theorem}[Rudin 12.9, defining relation of the adjoint]
+  \label{thm:adjoint-inner-left}
+  \uses{def:adjoint}
+  \lean{Rudin.Ch12.adjoint_inner_left}
+  \leanok
+  $\langle A^{*} y, x\rangle = \langle y, A x\rangle$.
+\end{theorem}
+
+\begin{theorem}[Rudin 12.9, adjoint is involutive]
+  \label{thm:adjoint-adjoint}
+  \uses{def:adjoint}
+  \lean{Rudin.Ch12.adjoint_adjoint}
+  \leanok
+  $(A^{*})^{*} = A$.
+\end{theorem}
+
+\begin{theorem}[Rudin 12.10, adjoint of composition]
+  \label{thm:adjoint-comp}
+  \uses{def:adjoint}
+  \lean{Rudin.Ch12.adjoint_comp}
+  \leanok
+  $(AB)^{*} = B^{*} A^{*}$.
+\end{theorem}
+
+\begin{theorem}[Rudin 12.11, C$^{*}$-identity]
+  \label{thm:cstar-identity}
+  \uses{def:adjoint}
+  \lean{Rudin.Ch12.norm_adjoint_comp_self}
+  \leanok
+  $\|A^{*} A\| = \|A\|^{2}$.
+\end{theorem}
+
+\begin{theorem}[Rudin 12.22, spectral theorem (finite-dimensional)]
+  \label{thm:spectral-diagonalization}
+  \uses{def:adjoint}
+  \lean{Rudin.Ch12.spectralDiagonalization, Rudin.Ch12.spectralDiagonalization_apply_self_apply}
+  \leanok
+  A self-adjoint operator $T$ on a finite-dimensional inner product
+  space $E$ is unitarily equivalent to the diagonal operator on the
+  orthogonal direct sum of its eigenspaces: there is a linear isometry
+  $E \cong \bigoplus_\mu E_\mu$ conjugating $T$ to multiplication by
+  $\mu$ on each summand.
+\end{theorem}
+
+\chapter{Unbounded Operators}
+
+\begin{definition}[Rudin 13.1, closed operator]
+  \label{def:closed-operator}
+  \lean{Rudin.Ch13.IsClosedOperator}
+  \leanok
+  A densely-defined linear operator $T$ is \emph{closed} iff its graph
+  $\{(x, T x) : x \in \operatorname{dom} T\}$ is closed in $E \times F$.
+\end{definition}
+
+\begin{definition}[Rudin 13.4, closable operator]
+  \label{def:closable-operator}
+  \uses{def:closed-operator}
+  \lean{Rudin.Ch13.IsClosableOperator}
+  \leanok
+  An operator $T$ is \emph{closable} iff the closure of its graph is
+  itself the graph of some (uniquely determined) operator.
+\end{definition}
+
+\begin{theorem}[Closed operators are closable]
+  \label{thm:closed-closable}
+  \uses{def:closed-operator, def:closable-operator}
+  \lean{Rudin.Ch13.isClosable_of_isClosed}
+  \leanok
+  Every closed operator is trivially closable.
+\end{theorem}
+
+\begin{definition}[Rudin 13.6, closure of an operator]
+  \label{def:closure-operator}
+  \uses{def:closable-operator}
+  \lean{Rudin.Ch13.closure}
+  \leanok
+  If $T$ is closable, $\overline{T}$ is the unique extension whose
+  graph is the closure of the graph of $T$.
+\end{definition}
+
+\begin{theorem}[Rudin 13.7, the closure is closed]
+  \label{thm:closure-closed}
+  \uses{def:closure-operator}
+  \lean{Rudin.Ch13.closure_isClosed}
+  \leanok
+  If $T$ is closable, then $\overline{T}$ is a closed operator.
+\end{theorem}
