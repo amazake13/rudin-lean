@@ -106,6 +106,20 @@ theorem balanced_hull_is_balanced (s : Set E) : Balanced 𝕜 (balancedHull 𝕜
 theorem subset_balanced_hull {s : Set E} : s ⊆ balancedHull 𝕜 s :=
   _root_.subset_balancedHull 𝕜
 
+omit [NormOneClass 𝕜] in
+/-- **Theorem 1.28 (minimality)** — The balanced hull is the smallest
+balanced set containing `s`: if `t` is balanced and `s ⊆ t`, then
+`balancedHull s ⊆ t`. -/
+theorem balanced_hull_minimal {s t : Set E} (ht : Balanced 𝕜 t) (h : s ⊆ t) :
+    balancedHull 𝕜 s ⊆ t :=
+  ht.balancedHull_subset_of_subset h
+
+omit [NormOneClass 𝕜] in
+/-- **Theorem 1.28 (monotonicity)** — `balancedHull` is monotone. -/
+theorem balanced_hull_mono {s t : Set E} (hst : s ⊆ t) :
+    balancedHull 𝕜 s ⊆ balancedHull 𝕜 t :=
+  _root_.balancedHull_mono hst
+
 end BalancedHull
 
 end Rudin.Ch01
