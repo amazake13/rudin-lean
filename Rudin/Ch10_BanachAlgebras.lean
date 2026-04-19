@@ -2,6 +2,7 @@ import Mathlib.Analysis.Normed.Algebra.Spectrum
 import Mathlib.Analysis.Normed.Algebra.GelfandFormula
 import Mathlib.Analysis.Normed.Ring.Units
 import Mathlib.Analysis.SpecificLimits.Normed
+import Mathlib.FieldTheory.IsAlgClosed.Spectrum
 
 /-!
 # Chapter 10 — Banach Algebras
@@ -176,5 +177,38 @@ theorem exp_mem_spectrum_exp [CompleteSpace A] {a : A} {z : ℂ}
   spectrum.exp_mem_exp a hz
 
 end SpectralRadiusPower
+
+section SpectralMappingPolynomial
+
+variable {A : Type*} [NormedRing A] [NormedAlgebra ℂ A]
+
+open Polynomial
+
+/-- **Spectral mapping, polynomial inclusion** — For any polynomial `p`
+and any `a`, `p(σ(a)) ⊆ σ(p(a))`. -/
+theorem subset_polynomial_aeval (a : A) (p : ℂ[X]) :
+    (eval · p) '' spectrum ℂ a ⊆ spectrum ℂ (aeval a p) :=
+  spectrum.subset_polynomial_aeval a p
+
+/-- **Spectral mapping for powers** — `k ∈ σ(a) → kⁿ ∈ σ(aⁿ)`. -/
+theorem pow_mem_pow (a : A) (n : ℕ) {k : ℂ} (hk : k ∈ spectrum ℂ a) :
+    k ^ n ∈ spectrum ℂ (a ^ n) :=
+  spectrum.pow_mem_pow a n hk
+
+/-- **Spectral mapping for polynomials (equality, complex case)** — If
+`a` has nonempty spectrum in a complex Banach algebra and `deg p > 0`,
+then `σ(p(a)) = p(σ(a))`. -/
+theorem map_polynomial_aeval_of_degree_pos [CompleteSpace A] (a : A)
+    (p : ℂ[X]) (hdeg : 0 < p.degree) :
+    spectrum ℂ (aeval a p) = (fun k : ℂ => eval k p) '' spectrum ℂ a :=
+  spectrum.map_polynomial_aeval_of_degree_pos a p hdeg
+
+/-- **Spectral mapping for powers (equality, complex case)** — `σ(aⁿ) = (σ(a))ⁿ`
+for `n > 0`. -/
+theorem map_pow_of_pos [CompleteSpace A] (a : A) {n : ℕ} (hn : 0 < n) :
+    spectrum ℂ (a ^ n) = (· ^ n) '' spectrum ℂ a :=
+  spectrum.map_pow_of_pos a hn
+
+end SpectralMappingPolynomial
 
 end Rudin.Ch10
