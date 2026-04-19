@@ -35,6 +35,19 @@ The Fréchet derivative gives a continuous linear map
 noncomputable def fderivSchwartz : 𝓢(E, F) →L[𝕜] 𝓢(E, E →L[ℝ] F) :=
   SchwartzMap.fderivCLM 𝕜 E F
 
+/-- **Theorem 6.4 (the Fréchet derivative is the pointwise derivative)** —
+`fderivCLM` applied to a Schwartz function evaluates to the ordinary
+Fréchet derivative of the underlying smooth function. -/
+theorem fderivSchwartz_apply (f : 𝓢(E, F)) (x : E) :
+    fderivSchwartz 𝕜 E F f x = fderiv ℝ f x :=
+  SchwartzMap.fderivCLM_apply 𝕜 f x
+
+/-- **Theorem 6.4 (support of the derivative)** — Taking the Fréchet
+derivative does not enlarge the topological support. -/
+theorem tsupport_fderivSchwartz (f : 𝓢(E, F)) :
+    tsupport (fderivSchwartz 𝕜 E F f) ⊆ tsupport f :=
+  SchwartzMap.tsupport_fderivCLM_subset 𝕜 f
+
 end SchwartzSpace
 
 end Rudin.Ch06
