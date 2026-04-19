@@ -126,6 +126,18 @@ theorem isSelfAdjoint_adjoint_comp_self (A : E →L[𝕜] F) :
   ContinuousLinearMap.isSelfAdjoint_iff'.mpr <| by
     rw [ContinuousLinearMap.adjoint_comp, ContinuousLinearMap.adjoint_adjoint]
 
+/-- **Corollary of 12.9** — `‖A x‖² = re ⟪A†A x, x⟫`. -/
+theorem apply_norm_sq_eq_inner_adjoint (A : E →L[𝕜] F) (x : E) :
+    ‖A x‖ ^ 2 = RCLike.re ⟪(ContinuousLinearMap.adjoint A ∘L A) x, x⟫_𝕜 :=
+  ContinuousLinearMap.apply_norm_sq_eq_inner_adjoint_left A x
+
+/-- **Corollary of 12.9 (uniqueness of the adjoint)** — A map `A` equals
+`B†` iff it satisfies the adjoint relation `⟪A x, y⟫ = ⟪x, B y⟫`. -/
+theorem eq_adjoint_iff (A : E →L[𝕜] F) (B : F →L[𝕜] E) :
+    A = ContinuousLinearMap.adjoint B ↔
+      ∀ x y, ⟪A x, y⟫_𝕜 = ⟪x, B y⟫_𝕜 :=
+  ContinuousLinearMap.eq_adjoint_iff A B
+
 end AdjointAlgebra
 
 section SelfAdjoint
