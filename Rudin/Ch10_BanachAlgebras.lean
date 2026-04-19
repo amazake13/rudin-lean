@@ -169,6 +169,12 @@ theorem resolvent_tendsto_zero [CompleteSpace A] (a : A) :
     Filter.Tendsto (resolvent a) (Bornology.cobounded ℂ) (nhds 0) :=
   spectrum.resolvent_tendsto_cobounded a
 
+/-- **Spectral mapping for the exponential** — If `z ∈ σ(a)`, then
+`exp z ∈ σ(exp a)`. -/
+theorem exp_mem_spectrum_exp [CompleteSpace A] {a : A} {z : ℂ}
+    (hz : z ∈ spectrum ℂ a) : NormedSpace.exp z ∈ spectrum ℂ (NormedSpace.exp a) :=
+  spectrum.exp_mem_exp a hz
+
 end SpectralRadiusPower
 
 end Rudin.Ch10
