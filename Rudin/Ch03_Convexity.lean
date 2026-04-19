@@ -75,6 +75,25 @@ theorem krein_milman_lemma {s : Set E} (hs_cpt : IsCompact s)
     (hs_ne : s.Nonempty) : (s.extremePoints ℝ).Nonempty :=
   hs_cpt.extremePoints_nonempty hs_ne
 
+omit [T2Space E] [LocallyConvexSpace ℝ E] in
+/-- **Theorem 3.4 (open convex vs. point)** — An open convex set and a
+point not in it can be separated: some functional exceeds its supremum
+on the set at the point. -/
+theorem hahn_banach_open_point {s : Set E} {x : E}
+    (hs_conv : Convex ℝ s) (hs_open : IsOpen s) (hx : x ∉ s) :
+    ∃ f : StrongDual ℝ E, ∀ a ∈ s, f a < f x :=
+  geometric_hahn_banach_open_point hs_conv hs_open hx
+
+omit [T2Space E] in
+/-- **Theorem 3.4 (closed vs. compact, dual orientation)** — A closed
+convex set and a disjoint compact convex set can be strictly separated. -/
+theorem hahn_banach_closed_compact {s t : Set E}
+    (hs_conv : Convex ℝ s) (hs_closed : IsClosed s)
+    (ht_conv : Convex ℝ t) (ht_cpt : IsCompact t) (h_disj : Disjoint s t) :
+    ∃ (f : StrongDual ℝ E) (u v : ℝ),
+      (∀ a ∈ s, f a < u) ∧ u < v ∧ ∀ b ∈ t, v < f b :=
+  geometric_hahn_banach_closed_compact hs_conv hs_closed ht_conv ht_cpt h_disj
+
 end HahnBanachGeometric
 
 end Rudin.Ch03
