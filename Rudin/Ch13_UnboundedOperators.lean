@@ -12,6 +12,8 @@ mathlib models densely-defined operators as `LinearPMap`: a submodule
 Closedness of an operator is then closedness of its graph in `E × F`.
 -/
 
+open scoped InnerProductSpace
+
 namespace Rudin.Ch13
 
 section ClosedOperators
@@ -91,6 +93,24 @@ theorem pmapAdjoint_isFormalAdjoint {T : E →ₗ.[𝕜] F}
     (hT : Dense (T.domain : Set E)) :
     (pmapAdjoint T).IsFormalAdjoint T :=
   LinearPMap.adjoint_isFormalAdjoint hT
+
+omit [CompleteSpace F] in
+/-- **Theorem 13.9 (domain characterisation)** — `y` is in the domain of
+the adjoint `T†` iff the linear form `x ↦ ⟪y, T x⟫` on `dom T` is
+continuous. -/
+theorem pmapAdjoint_domain_iff {T : E →ₗ.[𝕜] F} (y : F) :
+    y ∈ (pmapAdjoint T).domain ↔
+      Continuous ((innerₛₗ 𝕜 y).comp T.toFun) :=
+  LinearPMap.mem_adjoint_domain_iff T y
+
+omit [CompleteSpace F] in
+/-- **Theorem 13.9 (domain via existence of a dual vector)** — If some
+`w` satisfies `⟪w, x⟫ = ⟪y, T x⟫` for all `x ∈ dom T`, then `y` lies in
+`dom T†`. -/
+theorem pmapAdjoint_domain_of_exists {T : E →ₗ.[𝕜] F} (y : F)
+    (h : ∃ w : E, ∀ x : T.domain, ⟪w, (x : E)⟫_𝕜 = ⟪y, T x⟫_𝕜) :
+    y ∈ (pmapAdjoint T).domain :=
+  T.mem_adjoint_domain_of_exists y h
 
 end PMapAdjoint
 
