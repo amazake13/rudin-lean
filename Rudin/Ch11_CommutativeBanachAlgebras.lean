@@ -83,6 +83,18 @@ bijective, giving an isometric *-isomorphism `A ≃ C(Δ, ℂ)`. -/
 theorem gelfand_bijective : Function.Bijective (gelfandTransform ℂ A) :=
   gelfandTransform_bijective A
 
+/-- **Theorem 11.18 (Gelfand transform preserves star)** — The Gelfand
+transform intertwines the involution on a commutative C*-algebra with
+pointwise complex conjugation on `C(Δ, ℂ)`. -/
+theorem gelfand_map_star (a : A) :
+    gelfandTransform ℂ A (star a) = star (gelfandTransform ℂ A a) :=
+  gelfandTransform_map_star a
+
+/-- **Theorem 11.18 (Gelfand star-isomorphism)** — Packaged as an
+isometric `*`-algebra equivalence `A ≃⋆ₐ[ℂ] C(Δ, ℂ)`. -/
+noncomputable def gelfandStar : A ≃⋆ₐ[ℂ] C(characterSpace ℂ A, ℂ) :=
+  gelfandStarTransform A
+
 end CommutativeCStar
 
 end Rudin.Ch11
