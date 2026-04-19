@@ -9,6 +9,8 @@ import Mathlib.Analysis.Normed.Operator.FredholmAlternative
 Rudin, *Functional Analysis* (2nd ed.), Chapter 4.
 -/
 
+open scoped Topology
+
 namespace Rudin.Ch04
 
 section BanachAlaoglu
@@ -67,7 +69,39 @@ in the strong dual. -/
 theorem polar_isClosed (s : Set E) : IsClosed (StrongDual.polar 𝕜 s) :=
   NormedSpace.isClosed_polar 𝕜 s
 
+/-- **Theorem 4.X (polar of closure equals polar)** — Taking the closure
+of `s` does not change its polar. -/
+theorem polar_closure (s : Set E) :
+    StrongDual.polar 𝕜 (closure s) = StrongDual.polar 𝕜 s :=
+  NormedSpace.polar_closure 𝕜 s
+
+/-- **Corollary of Banach–Alaoglu** — The polar of a neighborhood of
+zero in a normed space is norm-bounded in the strong dual. -/
+theorem polar_isBounded_of_mem_nhds_zero {s : Set E} (hs : s ∈ 𝓝 (0 : E)) :
+    Bornology.IsBounded (StrongDual.polar 𝕜 s) :=
+  NormedSpace.isBounded_polar_of_mem_nhds_zero 𝕜 hs
+
 end Polar
+
+section SeparatingDual
+
+variable {𝕜 E : Type*} [RCLike 𝕜]
+variable [NormedAddCommGroup E] [NormedSpace 𝕜 E]
+
+/-- **Corollary of Hahn–Banach (separation of points)** — A vector in a
+normed space is zero iff every continuous linear functional vanishes on
+it. -/
+theorem eq_zero_iff_forall_dual_eq_zero (x : E) :
+    x = 0 ↔ ∀ g : StrongDual 𝕜 E, g x = 0 :=
+  SeparatingDual.eq_zero_iff_forall_dual_eq_zero x
+
+/-- **Corollary of Hahn–Banach** — Two vectors are equal iff every
+continuous linear functional agrees on them. -/
+theorem eq_iff_forall_dual_eq {x y : E} :
+    x = y ↔ ∀ g : StrongDual 𝕜 E, g x = g y :=
+  SeparatingDual.eq_iff_forall_dual_eq
+
+end SeparatingDual
 
 section CompactOperators
 
