@@ -298,4 +298,28 @@ theorem isPositive_add {T S : E →L[𝕜] E}
 
 end PositiveOperators
 
+section Unitary
+
+variable {𝕜 E : Type*} [RCLike 𝕜]
+variable [NormedAddCommGroup E] [InnerProductSpace 𝕜 E] [CompleteSpace E]
+
+/-- **Definition 12.13 (unitary operator)** — An operator `U` is unitary
+iff `U* U = 1` and `U U* = 1`, which is the general C*-algebra notion
+of unitary specialised to `E →L[𝕜] E`. -/
+abbrev isUnitary (U : E →L[𝕜] E) : Prop := U ∈ unitary (E →L[𝕜] E)
+
+/-- **Theorem 12.13 (unitary preserves norms)** — A unitary operator is
+isometric: `‖U x‖ = ‖x‖` for all `x`. -/
+theorem unitary_norm_map {U : E →L[𝕜] E} (hU : isUnitary U) (x : E) :
+    ‖U x‖ = ‖x‖ :=
+  ContinuousLinearMap.norm_map_of_mem_unitary hU x
+
+/-- **Theorem 12.13 (unitary preserves inner products)** — A unitary
+operator preserves inner products: `⟪U x, U y⟫ = ⟪x, y⟫`. -/
+theorem unitary_inner_map {U : E →L[𝕜] E} (hU : isUnitary U) (x y : E) :
+    ⟪U x, U y⟫_𝕜 = ⟪x, y⟫_𝕜 :=
+  ContinuousLinearMap.inner_map_map_of_mem_unitary hU x y
+
+end Unitary
+
 end Rudin.Ch12
