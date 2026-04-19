@@ -1,6 +1,8 @@
 import Mathlib.Topology.ContinuousMap.StoneWeierstrass
 import Mathlib.Topology.MetricSpace.Contracting
 
+open scoped Topology NNReal
+
 /-!
 # Chapter 5 — Some Applications
 
