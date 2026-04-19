@@ -31,4 +31,13 @@ theorem fourier_fderiv_eq (f : 𝓢(V, E)) :
       = (2 * Real.pi * Complex.I) • smulRightCLM ℂ E (innerSL ℝ) (𝓕 f) :=
   fourier_fderivCLM_eq 𝕜 f
 
+/-- **Theorem 8.X (dual: differentiation of the Fourier transform)** —
+Conversely, differentiating the Fourier transform corresponds to
+multiplication by `-(2πi) · x` before transforming: the Fourier
+transform intertwines multiplication and differentiation on both sides. -/
+theorem fderiv_fourier_eq (f : 𝓢(V, E)) :
+    fderivCLM 𝕜 V E (𝓕 f)
+      = 𝓕 (-(2 * Real.pi * Complex.I) • smulRightCLM ℂ E (innerSL ℝ) f) :=
+  fderivCLM_fourier_eq 𝕜 f
+
 end Rudin.Ch08
