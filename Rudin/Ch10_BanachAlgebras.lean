@@ -152,6 +152,23 @@ theorem mem_resolventSet_of_spectralRadius_lt [CompleteSpace A] {a : A} {k : ℂ
     (h : spectralRadius ℂ a < ‖k‖₊) : k ∈ resolventSet ℂ a :=
   spectrum.mem_resolventSet_of_spectralRadius_lt h
 
+/-- **Corollary of 10.13** — Norm bound for spectrum elements (general
+form). -/
+theorem norm_le_norm_mul_of_mem_spectrum [CompleteSpace A] {a : A} {k : ℂ}
+    (hk : k ∈ spectrum ℂ a) : ‖k‖ ≤ ‖a‖ * ‖(1 : A)‖ :=
+  spectrum.norm_le_norm_mul_of_mem hk
+
+/-- **Corollary of 10.13** — The spectrum is bounded. -/
+theorem spectrum_isBounded [CompleteSpace A] (a : A) :
+    Bornology.IsBounded (spectrum ℂ a) :=
+  spectrum.isBounded a
+
+/-- **Corollary of 10.13** — The resolvent function tends to 0 at
+infinity. -/
+theorem resolvent_tendsto_zero [CompleteSpace A] (a : A) :
+    Filter.Tendsto (resolvent a) (Bornology.cobounded ℂ) (nhds 0) :=
+  spectrum.resolvent_tendsto_cobounded a
+
 end SpectralRadiusPower
 
 end Rudin.Ch10
