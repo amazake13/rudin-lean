@@ -75,6 +75,20 @@ theorem closed_graph (g : E →ₗ[𝕜] F) (hg : IsClosed (g.graph : Set (E × 
     Continuous g :=
   g.continuous_of_isClosed_graph hg
 
+/-- **Corollary of 2.11 (Open mapping ⇒ preimage commutes with interior)** —
+For a surjective continuous linear map between Banach spaces, preimage
+commutes with taking interior. -/
+theorem open_mapping_interior_preimage (f : E →L[𝕜] F) (hf : Function.Surjective f)
+    (s : Set F) : interior (f ⁻¹' s) = f ⁻¹' interior s :=
+  f.interior_preimage hf s
+
+/-- **Corollary of 2.11 (Open mapping ⇒ preimage commutes with closure)** —
+For a surjective continuous linear map between Banach spaces, preimage
+commutes with taking closure. -/
+theorem open_mapping_closure_preimage (f : E →L[𝕜] F) (hf : Function.Surjective f)
+    (s : Set F) : closure (f ⁻¹' s) = f ⁻¹' closure s :=
+  f.closure_preimage hf s
+
 end OpenMappingAndClosedGraph
 
 section RieszLemma
