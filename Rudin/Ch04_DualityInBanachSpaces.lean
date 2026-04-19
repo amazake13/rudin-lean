@@ -117,6 +117,26 @@ theorem eq_iff_forall_dual_eq {x y : E} :
 
 end SeparatingDual
 
+section DualVector
+
+variable {𝕜 E : Type*} [RCLike 𝕜]
+variable [NormedAddCommGroup E] [NormedSpace 𝕜 E]
+
+/-- **Corollary of Hahn–Banach** — For any nonzero `x` in a normed
+space, there is a continuous linear functional of norm `1` whose value
+at `x` equals `‖x‖`. -/
+theorem exists_dual_norm_eq (x : E) (h : ‖x‖ ≠ 0) :
+    ∃ g : StrongDual 𝕜 E, ‖g‖ = 1 ∧ g x = ‖x‖ :=
+  _root_.exists_dual_vector 𝕜 x h
+
+/-- **Corollary of Hahn–Banach (unnormalised form)** — For every `x`,
+there is a functional of norm `≤ 1` realising `‖x‖` at `x`. -/
+theorem exists_dual_norm_le_one (x : E) :
+    ∃ g : StrongDual 𝕜 E, ‖g‖ ≤ 1 ∧ g x = ‖x‖ :=
+  _root_.exists_dual_vector'' 𝕜 x
+
+end DualVector
+
 section CompactOperators
 
 variable {𝕜 E F : Type*} [NontriviallyNormedField 𝕜]
