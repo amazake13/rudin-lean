@@ -52,6 +52,19 @@ theorem maximalIdealCharacter_apply_eq_zero_of_mem
     I.toCharacterSpace a = 0 :=
   I.toCharacterSpace_apply_eq_zero_of_mem ha
 
+omit [CompleteSpace A] in
+/-- **Corollary of 11.9** — The value of any character at `a` lies in the
+spectrum of `a`. (This is one direction of 11.9 packaged directly.) -/
+theorem character_apply_mem_spectrum (φ : characterSpace ℂ A) (a : A) :
+    φ a ∈ spectrum ℂ a :=
+  WeakDual.CharacterSpace.apply_mem_spectrum φ a
+
+omit [CompleteSpace A] in
+/-- **Corollary** — Characters are determined by their values. -/
+theorem character_ext {φ ψ : characterSpace ℂ A} (h : ∀ a, φ a = ψ a) :
+    φ = ψ :=
+  WeakDual.CharacterSpace.ext h
+
 end CommutativeComplexBanachAlgebra
 
 section CommutativeCStar
