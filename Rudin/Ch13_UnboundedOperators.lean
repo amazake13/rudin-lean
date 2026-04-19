@@ -50,6 +50,17 @@ theorem closure_isClosed {T : E →ₗ.[R] F} (hT : IsClosableOperator T) :
     IsClosedOperator (closure T) :=
   hT.closure_isClosed
 
+/-- **Theorem 13.7 (extension property of the closure)** — Every
+closable operator extends to its closure: `T ≤ T̄`. -/
+theorem le_closure (T : E →ₗ.[R] F) : T ≤ closure T :=
+  LinearPMap.le_closure T
+
+/-- **Theorem 13.7 (monotonicity of closure)** — If `T ≤ S` and `S` is
+closable, then `T̄ ≤ S̄`. -/
+theorem closure_mono {T S : E →ₗ.[R] F} (hS : IsClosableOperator S)
+    (h : T ≤ S) : closure T ≤ closure S :=
+  hS.closure_mono h
+
 end ClosedOperators
 
 section PMapAdjoint
