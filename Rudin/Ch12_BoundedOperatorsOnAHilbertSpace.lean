@@ -2,6 +2,8 @@ import Mathlib.Analysis.InnerProductSpace.Adjoint
 import Mathlib.Analysis.InnerProductSpace.Spectrum
 import Mathlib.Analysis.InnerProductSpace.Projection.Basic
 import Mathlib.Analysis.InnerProductSpace.Positive
+import Mathlib.Analysis.InnerProductSpace.StarOrder
+import Mathlib.Analysis.SpecialFunctions.ContinuousFunctionalCalculus.Rpow.Basic
 
 /-!
 # Chapter 12 — Bounded Operators on a Hilbert Space
@@ -321,5 +323,39 @@ theorem unitary_inner_map {U : E →L[𝕜] E} (hU : isUnitary U) (x y : E) :
   ContinuousLinearMap.inner_map_map_of_mem_unitary hU x y
 
 end Unitary
+
+section SquareRoot
+
+variable {E : Type*}
+variable [NormedAddCommGroup E] [InnerProductSpace ℂ E] [CompleteSpace E]
+
+/-- **Theorem 12.33 (positive square root)** — For any positive bounded
+operator `T` on a complex Hilbert space, the continuous functional
+calculus supplies a (positive) square root `√T`. -/
+noncomputable def sqrt (T : E →L[ℂ] E) : E →L[ℂ] E := CFC.sqrt T
+
+/-- **Theorem 12.33 (the square root is positive)** — `0 ≤ √T` in the
+Löwner partial order. -/
+theorem sqrt_nonneg (T : E →L[ℂ] E) : 0 ≤ sqrt T := CFC.sqrt_nonneg T
+
+/-- **Theorem 12.33 (defining relation)** — If `T ≥ 0`, then
+`√T · √T = T`. -/
+theorem sqrt_mul_sqrt_self (T : E →L[ℂ] E) (hT : 0 ≤ T) :
+    sqrt T * sqrt T = T :=
+  CFC.sqrt_mul_sqrt_self T hT
+
+/-- **Corollary of 12.33** — `√0 = 0`. -/
+theorem sqrt_zero : sqrt (0 : E →L[ℂ] E) = 0 := CFC.sqrt_zero
+
+/-- **Corollary (polar form)** — Every positive operator `T` equals
+`S* S` for some self-adjoint `S`, namely `S = √T`. -/
+theorem eq_adjoint_comp_self_of_nonneg (T : E →L[ℂ] E) (hT : 0 ≤ T) :
+    T = ContinuousLinearMap.adjoint (sqrt T) ∘L sqrt T := by
+  have hsa : ContinuousLinearMap.adjoint (sqrt T) = sqrt T :=
+    ContinuousLinearMap.isSelfAdjoint_iff'.mp (IsSelfAdjoint.of_nonneg (sqrt_nonneg T))
+  rw [hsa]
+  exact (sqrt_mul_sqrt_self T hT).symm
+
+end SquareRoot
 
 end Rudin.Ch12
