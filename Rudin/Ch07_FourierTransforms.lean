@@ -10,7 +10,7 @@ Rudin, *Functional Analysis* (2nd ed.), Chapter 7.
 namespace Rudin.Ch07
 
 open SchwartzMap
-open scoped SchwartzMap FourierTransform
+open scoped SchwartzMap FourierTransform InnerProductSpace
 
 section SchwartzFourier
 
@@ -47,6 +47,13 @@ open MeasureTheory in
 preserves the L² norm. -/
 theorem plancherel (f : Lp (α := E) F 2) : ‖(𝓕 f : Lp (α := E) F 2)‖ = ‖f‖ :=
   Lp.norm_fourier_eq f
+
+open MeasureTheory in
+/-- **Theorem 7.9 (Parseval's identity)** — The Fourier transform
+preserves the L² inner product. -/
+theorem parseval (f g : Lp (α := E) F 2) :
+    ⟪(𝓕 f : Lp (α := E) F 2), (𝓕 g : Lp (α := E) F 2)⟫_ℂ = ⟪f, g⟫_ℂ :=
+  Lp.inner_fourier_eq f g
 
 end L2Fourier
 
