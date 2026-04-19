@@ -48,6 +48,12 @@ theorem tsupport_fderivSchwartz (f : 𝓢(E, F)) :
     tsupport (fderivSchwartz 𝕜 E F f) ⊆ tsupport f :=
   SchwartzMap.tsupport_fderivCLM_subset 𝕜 f
 
+/-- **Theorem (pointwise bound by seminorm)** — Every Schwartz function
+is bounded by its zeroth seminorm: `‖f x‖ ≤ (SchwartzMap.seminorm 0 0) f`. -/
+theorem schwartz_pointwise_le_seminorm (f : 𝓢(E, F)) (x : E) :
+    ‖f x‖ ≤ (SchwartzMap.seminorm 𝕜 0 0) f :=
+  SchwartzMap.norm_le_seminorm 𝕜 f x
+
 end SchwartzSpace
 
 end Rudin.Ch06
