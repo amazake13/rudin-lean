@@ -1,6 +1,7 @@
 import Mathlib.Topology.Baire.Lemmas
 import Mathlib.Analysis.Normed.Operator.BanachSteinhaus
 import Mathlib.Analysis.Normed.Operator.Banach
+import Mathlib.Analysis.Normed.Operator.BoundedLinearMaps
 import Mathlib.Analysis.Normed.Module.RieszLemma
 import Mathlib.Topology.GDelta.Basic
 
@@ -122,5 +123,25 @@ theorem meagre_compl_dense [BaireSpace X] {s : Set X} (hs : IsMeagre s) :
   dense_of_mem_residual hs
 
 end Meagre
+
+section BilinearContinuity
+
+variable {𝕜 E F G : Type*} [NontriviallyNormedField 𝕜]
+variable [NormedAddCommGroup E] [NormedSpace 𝕜 E]
+variable [NormedAddCommGroup F] [NormedSpace 𝕜 F]
+variable [NormedAddCommGroup G] [NormedSpace 𝕜 G]
+
+/-- **Theorem 2.17 (joint continuity of bounded bilinear maps)** — A
+bilinear map `B : E × F → G` between normed spaces is (jointly)
+continuous if and only if there exists `C` such that
+`‖B (x, y)‖ ≤ C * ‖x‖ * ‖y‖`. In particular, every separately
+continuous bilinear map from Banach spaces is jointly continuous
+(a consequence of Banach–Steinhaus). Mathlib packages this as
+`IsBoundedBilinearMap.continuous`. -/
+theorem bounded_bilinear_continuous {B : E × F → G}
+    (hB : IsBoundedBilinearMap 𝕜 B) : Continuous B :=
+  hB.continuous
+
+end BilinearContinuity
 
 end Rudin.Ch02

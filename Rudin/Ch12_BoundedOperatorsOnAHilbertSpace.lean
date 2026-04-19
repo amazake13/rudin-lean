@@ -1,6 +1,7 @@
 import Mathlib.Analysis.InnerProductSpace.Adjoint
 import Mathlib.Analysis.InnerProductSpace.Spectrum
 import Mathlib.Analysis.InnerProductSpace.Projection.Basic
+import Mathlib.Analysis.InnerProductSpace.Positive
 
 /-!
 # Chapter 12 — Bounded Operators on a Hilbert Space
@@ -228,5 +229,51 @@ theorem spectralDiagonalization_apply_self_apply (hT : T.IsSymmetric)
   hT.diagonalization_apply_self_apply v μ
 
 end SpectralTheorem
+
+section PositiveOperators
+
+variable {𝕜 E : Type*} [RCLike 𝕜]
+variable [NormedAddCommGroup E] [InnerProductSpace 𝕜 E]
+
+/-- **Definition 12.32 (positive operator)** — A continuous linear
+operator `T` on a Hilbert space is *positive* if it is symmetric (i.e.
+`⟪T x, y⟫ = ⟪x, T y⟫` for all `x, y`) and `0 ≤ re ⟪T x, x⟫` for
+all `x`. -/
+abbrev isPositiveOp (T : E →L[𝕜] E) : Prop := T.IsPositive
+
+/-- **Theorem 12.32 (positive ⇒ symmetric)** — Every positive operator
+is symmetric: `⟪T x, y⟫ = ⟪x, T y⟫`. -/
+theorem positive_isSymmetric {T : E →L[𝕜] E} (hT : T.IsPositive) :
+    T.IsSymmetric :=
+  hT.isSymmetric
+
+/-- **Theorem 12.32 (positive ⇒ self-adjoint)** — In a complete inner
+product space (Hilbert space), every positive operator is self-adjoint. -/
+theorem positive_isSelfAdjoint [CompleteSpace E] {T : E →L[𝕜] E}
+    (hT : T.IsPositive) : IsSelfAdjoint T :=
+  hT.isSelfAdjoint
+
+/-- **Theorem 12.33 (nonneg inner product)** — For a positive operator
+`T`, `0 ≤ re ⟪T x, x⟫` for all `x`. -/
+theorem positive_re_inner_nonneg {T : E →L[𝕜] E} (hT : T.IsPositive)
+    (x : E) : 0 ≤ T.reApplyInnerSelf x :=
+  hT.2 x
+
+/-- **Theorem 12.33** — For a positive operator `T`, the inner product
+`⟪T x, y⟫ = ⟪x, T y⟫` (commutativity of the form). -/
+theorem positive_inner_comm {T : E →L[𝕜] E} (hT : T.IsPositive)
+    (x y : E) : ⟪T x, y⟫_𝕜 = ⟪x, T y⟫_𝕜 :=
+  hT.isSymmetric x y
+
+/-- **Corollary of 12.32** — The zero operator is positive. -/
+theorem isPositive_zero : (0 : E →L[𝕜] E).IsPositive :=
+  ContinuousLinearMap.isPositive_zero
+
+/-- **Corollary of 12.32** — The sum of two positive operators is positive. -/
+theorem isPositive_add {T S : E →L[𝕜] E}
+    (hT : T.IsPositive) (hS : S.IsPositive) : (T + S).IsPositive :=
+  hT.add hS
+
+end PositiveOperators
 
 end Rudin.Ch12

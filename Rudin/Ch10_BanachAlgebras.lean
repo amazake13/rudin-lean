@@ -80,6 +80,17 @@ theorem spectralRadius_one_le [NormOneClass A] :
   have h := spectralRadius_le_norm (1 : A)
   simpa using h
 
+omit [CompleteSpace A] in
+/-- **Corollary of 10.13** — $\rho(0) = 0$. -/
+theorem spectralRadius_zero_eq : spectralRadius ℂ (0 : A) = 0 :=
+  spectrum.spectralRadius_zero
+
+omit [CompleteSpace A] in
+/-- **Corollary of 10.13** — In a nontrivial Banach algebra, $\rho(1) = 1$. -/
+theorem spectralRadius_one_eq [Nontrivial A] :
+    spectralRadius ℂ (1 : A) = 1 :=
+  spectrum.spectralRadius_one
+
 end ComplexBanachAlgebra
 
 section UnitsOpen
@@ -122,5 +133,25 @@ theorem isUnit_one_add (a : R) (h : ‖a‖ < 1) : IsUnit (1 + a) := by
   rwa [sub_neg_eq_add] at this
 
 end UnitsOpen
+
+section SpectralRadiusPower
+
+variable {A : Type*} [NormedRing A] [NormedAlgebra ℂ A]
+
+/-- **Theorem 10.13 (spectral radius and powers)** — For any element
+`a` of a Banach algebra and any positive `n`, `ρ(a)ⁿ ≤ ρ(aⁿ)`.
+This follows from the polynomial spectral mapping theorem. -/
+theorem spectralRadius_pow_le (a : A) {n : ℕ} (hn : n ≠ 0) :
+    (spectralRadius ℂ a) ^ n ≤ spectralRadius ℂ (a ^ n) :=
+  spectrum.spectralRadius_pow_le a n hn
+
+/-- **Corollary of 10.13** — Membership of the resolvent set can be
+checked against the spectral radius: if `‖k‖ > ρ(a)`, then `k`
+is in the resolvent set of `a`. -/
+theorem mem_resolventSet_of_spectralRadius_lt [CompleteSpace A] {a : A} {k : ℂ}
+    (h : spectralRadius ℂ a < ‖k‖₊) : k ∈ resolventSet ℂ a :=
+  spectrum.mem_resolventSet_of_spectralRadius_lt h
+
+end SpectralRadiusPower
 
 end Rudin.Ch10

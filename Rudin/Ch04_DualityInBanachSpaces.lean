@@ -1,6 +1,7 @@
 import Mathlib.Analysis.Normed.Module.Dual
 import Mathlib.Analysis.Normed.Module.WeakDual
 import Mathlib.Analysis.Normed.Module.DoubleDual
+import Mathlib.Analysis.Normed.Operator.FredholmAlternative
 
 /-!
 # Chapter 4 — Duality in Banach Spaces
@@ -67,5 +68,48 @@ theorem polar_isClosed (s : Set E) : IsClosed (StrongDual.polar 𝕜 s) :=
   NormedSpace.isClosed_polar 𝕜 s
 
 end Polar
+
+section CompactOperators
+
+variable {𝕜 E F : Type*} [NontriviallyNormedField 𝕜]
+variable [NormedAddCommGroup E] [NormedSpace 𝕜 E]
+variable [NormedAddCommGroup F] [NormedSpace 𝕜 F]
+
+/-- **Definition 4.18 (compact operator)** — A map `T : E → F`
+between topological spaces is *compact* if there exists a compact set
+`K ⊆ F` whose preimage under `T` is a neighborhood of zero. Equivalently
+(for linear maps), `T` maps bounded sets to precompact sets. -/
+abbrev isCompactOp (T : E → F) : Prop := IsCompactOperator T
+
+/-- **Theorem 4.18 (zero is compact)** — The zero operator is compact. -/
+theorem compact_operator_zero : IsCompactOperator (0 : E → F) :=
+  isCompactOperator_zero
+
+end CompactOperators
+
+section FredholmAlternative
+
+variable {𝕜 X : Type*} [NontriviallyNormedField 𝕜]
+variable [NormedAddCommGroup X] [NormedSpace 𝕜 X] [CompleteSpace X]
+
+open Module End
+
+/-- **Theorem 4.25 (Fredholm alternative)** — Let `T` be a compact
+operator on a Banach space `X` and let `μ ≠ 0`. Then either `μ` is
+an eigenvalue of `T`, or `μ` belongs to the resolvent set of `T`
+(i.e. `T − μI` is invertible). There is no middle ground. -/
+theorem fredholm_alternative {T : X →L[𝕜] X} (hT : IsCompactOperator T)
+    {μ : 𝕜} (hμ : μ ≠ 0) :
+    HasEigenvalue (T : End 𝕜 X) μ ∨ μ ∈ resolventSet 𝕜 T :=
+  hT.hasEigenvalue_or_mem_resolventSet hμ
+
+/-- **Corollary of Theorem 4.25** — For a compact operator on a Banach
+space, the nonzero spectrum consists precisely of eigenvalues. -/
+theorem compact_spectrum_eq_eigenvalues {T : X →L[𝕜] X}
+    (hT : IsCompactOperator T) {μ : 𝕜} (hμ : μ ≠ 0) :
+    HasEigenvalue (T : End 𝕜 X) μ ↔ μ ∈ spectrum 𝕜 T :=
+  hT.hasEigenvalue_iff_mem_spectrum hμ
+
+end FredholmAlternative
 
 end Rudin.Ch04
