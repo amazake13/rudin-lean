@@ -41,6 +41,20 @@ noncomputable def doubleDualEmbedding (𝕜 : Type*) [RCLike 𝕜]
     E →ₗᵢ[𝕜] StrongDual 𝕜 (StrongDual 𝕜 E) :=
   NormedSpace.inclusionInDoubleDualLi 𝕜
 
+/-- **Theorem 4.4 (defining formula of the bidual embedding)** —
+`(ι x)(f) = f x` for every functional `f`. -/
+theorem doubleDualEmbedding_apply {𝕜 : Type*} [RCLike 𝕜]
+    {E : Type*} [SeminormedAddCommGroup E] [NormedSpace 𝕜 E]
+    (x : E) (f : StrongDual 𝕜 E) :
+    NormedSpace.inclusionInDoubleDual 𝕜 E x f = f x :=
+  NormedSpace.dual_def 𝕜 E x f
+
+/-- **Theorem 4.4 (bidual embedding bound)** — `‖ι x‖ ≤ ‖x‖`. -/
+theorem doubleDualEmbedding_bound {𝕜 : Type*} [RCLike 𝕜]
+    {E : Type*} [SeminormedAddCommGroup E] [NormedSpace 𝕜 E] (x : E) :
+    ‖NormedSpace.inclusionInDoubleDual 𝕜 E x‖ ≤ ‖x‖ :=
+  NormedSpace.double_dual_bound 𝕜 E x
+
 section DualComplete
 
 variable (𝕜 : Type*) [NontriviallyNormedField 𝕜]
