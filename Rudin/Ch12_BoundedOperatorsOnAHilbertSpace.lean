@@ -109,6 +109,16 @@ theorem norm_adjoint_comp_self (A : E →L[𝕜] F) :
     ‖ContinuousLinearMap.adjoint A ∘L A‖ = ‖A‖ * ‖A‖ :=
   ContinuousLinearMap.norm_adjoint_comp_self A
 
+/-- **Corollary of 12.10** — `(range A)⊥ = ker A†`. -/
+theorem orthogonal_range_eq_ker_adjoint (A : E →L[𝕜] F) :
+    A.rangeᗮ = (ContinuousLinearMap.adjoint A).ker :=
+  ContinuousLinearMap.orthogonal_range A
+
+/-- **Corollary of 12.11** — `ker (A† A) = ker A`. -/
+theorem ker_adjoint_comp_self (A : E →L[𝕜] F) :
+    (ContinuousLinearMap.adjoint A ∘L A).ker = A.ker :=
+  ContinuousLinearMap.ker_adjoint_comp_self A
+
 /-- **Corollary of 12.10 + 12.9** — For any bounded operator `A`,
 `A† A` is self-adjoint. Proof: $(A^{*} A)^{*} = A^{*} (A^{*})^{*} = A^{*} A$. -/
 theorem isSelfAdjoint_adjoint_comp_self (A : E →L[𝕜] F) :
