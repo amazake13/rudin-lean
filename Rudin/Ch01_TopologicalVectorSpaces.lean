@@ -353,8 +353,8 @@ section FiniteDimensional
 
 variable {𝕜 : Type*} [NontriviallyNormedField 𝕜] [CompleteSpace 𝕜]
 variable {E F : Type*}
-variable [AddCommGroup E] [Module 𝕜 E] [TopologicalSpace E]
-variable [IsTopologicalAddGroup E] [ContinuousSMul 𝕜 E]
+variable [AddCommGroup E] [Module 𝕜 E] [UniformSpace E]
+variable [IsUniformAddGroup E] [ContinuousSMul 𝕜 E]
 variable [AddCommGroup F] [Module 𝕜 F] [TopologicalSpace F]
 variable [IsTopologicalAddGroup F] [ContinuousSMul 𝕜 F]
 
@@ -381,6 +381,18 @@ theorem finiteDimensional_subspace_isClosed [T2Space E]
     (s : Submodule 𝕜 E) [FiniteDimensional 𝕜 s] :
     IsClosed (s : Set E) :=
   s.closed_of_finiteDimensional
+
+/-- **Theorem 1.22 (Riesz, finite-dimensionality from local compactness)** —
+Every locally compact topological vector space has finite dimension.
+
+Proof. Pick a compact neighbourhood `K` of `0`. Compact sets are
+totally bounded in a uniform space, and in a TVS a totally-bounded
+neighbourhood of the origin forces finite-dimensionality
+(`FiniteDimensional.of_totallyBounded_nhds_zero`). This is the
+additive-group version of Riesz's theorem. -/
+theorem finiteDimensional_of_locallyCompactSpace [T2Space E]
+    [LocallyCompactSpace E] : FiniteDimensional 𝕜 E :=
+  FiniteDimensional.of_locallyCompactSpace 𝕜
 
 end FiniteDimensional
 
