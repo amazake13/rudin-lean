@@ -1,8 +1,13 @@
 import Mathlib.Analysis.Normed.Module.Basic
 import Mathlib.Analysis.Normed.Module.FiniteDimension
 import Mathlib.Analysis.Convex.Gauge
+import Mathlib.Analysis.Convex.Topology
 import Mathlib.Analysis.Normed.Operator.ContinuousLinearMap
 import Mathlib.Analysis.LocallyConvex.BalancedCoreHull
+import Mathlib.Analysis.LocallyConvex.Bounded
+import Mathlib.Analysis.LocallyConvex.WithSeminorms
+import Mathlib.Topology.Algebra.Module.FiniteDimension
+import Mathlib.Topology.Algebra.Group.Basic
 
 /-!
 # Chapter 1 — Topological Vector Spaces
@@ -226,5 +231,122 @@ theorem balanced_hull_mono {s t : Set E} (hst : s ⊆ t) :
   exact ⟨r, hr₁, Set.smul_set_mono hst hr₂⟩
 
 end BalancedHull
+
+section Hausdorff
+
+variable {𝕜 : Type*} [NontriviallyNormedField 𝕜]
+variable {E : Type*} [AddCommGroup E] [Module 𝕜 E]
+variable [TopologicalSpace E] [IsTopologicalAddGroup E]
+
+/-- **Theorem 1.12** — In the setting of Rudin (i.e. with all singletons
+closed, `T1Space`), every topological vector space is Hausdorff.
+
+Proof. In a topological additive group, `T2Space` is equivalent to the
+closedness of `{0}` (mathlib's `IsTopologicalAddGroup.t2Space_iff_zero_closed`,
+the additive variant of `IsTopologicalGroup.t2Space_iff_one_closed`).
+The `T1Space` assumption gives `isClosed_singleton` for every point,
+including the origin. -/
+theorem t2_of_t1 [T1Space E] : T2Space E :=
+  IsTopologicalAddGroup.t2Space_iff_zero_closed.mpr isClosed_singleton
+
+end Hausdorff
+
+section BalancedNhd
+
+variable (𝕜 : Type*) [NontriviallyNormedField 𝕜]
+variable (E : Type*) [AddCommGroup E] [Module 𝕜 E]
+variable [TopologicalSpace E] [IsTopologicalAddGroup E] [ContinuousSMul 𝕜 E]
+
+omit [IsTopologicalAddGroup E] in
+/-- **Theorem 1.14 (a)** — Every neighbourhood of `0` contains a
+balanced neighbourhood of `0`. In fact, the balanced neighbourhoods form
+a basis for the neighbourhood filter of `0`.
+
+Proof. `nhds_basis_balanced` packages precisely this statement: the
+neighbourhood filter of `0` has a basis consisting of balanced sets,
+obtained (constructively) by replacing each neighbourhood by its
+balanced core. -/
+theorem nhds_zero_has_basis_balanced :
+    (nhds (0 : E)).HasBasis (fun s : Set E => s ∈ nhds (0 : E) ∧ Balanced 𝕜 s) id :=
+  nhds_basis_balanced 𝕜 E
+
+omit [IsTopologicalAddGroup E] in
+/-- **Theorem 1.14 (a), existence version** — Every neighbourhood `U`
+of `0` contains a balanced neighbourhood of `0`. -/
+theorem exists_balanced_nhds_subset {U : Set E} (hU : U ∈ nhds (0 : E)) :
+    ∃ V ∈ nhds (0 : E), Balanced 𝕜 V ∧ V ⊆ U :=
+  ⟨balancedCore 𝕜 U, balancedCore_mem_nhds_zero hU,
+    balancedCore_balanced U, balancedCore_subset U⟩
+
+end BalancedNhd
+
+section ClosureBalancedBounded
+
+variable {𝕜 : Type*} [NontriviallyNormedField 𝕜]
+variable {E : Type*} [AddCommGroup E] [Module 𝕜 E] [TopologicalSpace E]
+
+/-- **Theorem 1.13 (e)** — If `B ⊆ E` is balanced, so is its closure. -/
+theorem balanced_closure [ContinuousSMul 𝕜 E] {B : Set E}
+    (hB : Balanced 𝕜 B) : Balanced 𝕜 (closure B) :=
+  hB.closure
+
+/-- **Theorem 1.13 (f)** — In a `T1` regular TVS, if `A ⊆ E` is
+(von Neumann) bounded, so is its closure. -/
+theorem vonNBounded_closure [T1Space E] [RegularSpace E]
+    [ContinuousConstSMul 𝕜 E] {A : Set E} (hA : Bornology.IsVonNBounded 𝕜 A) :
+    Bornology.IsVonNBounded 𝕜 (closure A) :=
+  hA.closure
+
+end ClosureBalancedBounded
+
+section ClosureConvex
+
+variable {F : Type*} [AddCommGroup F] [Module ℝ F] [TopologicalSpace F]
+variable [IsTopologicalAddGroup F] [ContinuousConstSMul ℝ F]
+
+/-- **Theorem 1.13 (d)** — If `C ⊆ F` is convex (real TVS), so is its
+closure. -/
+theorem convex_closure {C : Set F} (hC : Convex ℝ C) : Convex ℝ (closure C) :=
+  hC.closure
+
+end ClosureConvex
+
+section CompactBounded
+
+variable (𝕜 : Type*) [NontriviallyNormedField 𝕜]
+variable {E : Type*} [AddCommGroup E] [Module 𝕜 E] [UniformSpace E]
+variable [IsUniformAddGroup E] [ContinuousSMul 𝕜 E]
+
+/-- **Theorem 1.15 (b)** — Every compact subset of a TVS (working here
+with its underlying uniform structure) is bounded.
+
+Proof. A compact subset of a uniform space is totally bounded, and
+totally bounded subsets are von Neumann bounded in any TVS. -/
+theorem isVonNBounded_of_isCompact {K : Set E} (hK : IsCompact K) :
+    Bornology.IsVonNBounded 𝕜 K :=
+  hK.totallyBounded.isVonNBounded 𝕜
+
+end CompactBounded
+
+section LinearContinuity
+
+variable {𝕜 : Type*} [NontriviallyNormedField 𝕜]
+variable {E F : Type*}
+variable [AddCommGroup E] [Module 𝕜 E] [TopologicalSpace E] [IsTopologicalAddGroup E]
+variable [AddCommGroup F] [Module 𝕜 F] [TopologicalSpace F] [IsTopologicalAddGroup F]
+
+/-- **Theorem 1.17** — A linear map `Λ : E → F` between topological
+vector spaces that is continuous at `0` is continuous everywhere.
+
+Proof. Continuity at `0` plus the group-homomorphism property give
+continuity at every point via translation: by `continuous_of_continuousAt_zero`
+(the additive instance generated via `to_additive` from the monoid
+version `continuous_of_continuousAt_one`). -/
+theorem continuous_of_linear_continuousAt_zero
+    (Λ : E →+ F) (h : ContinuousAt Λ 0) :
+    Continuous Λ :=
+  continuous_of_continuousAt_zero Λ h
+
+end LinearContinuity
 
 end Rudin.Ch01
