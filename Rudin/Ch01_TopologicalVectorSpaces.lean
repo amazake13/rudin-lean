@@ -349,4 +349,57 @@ theorem continuous_of_linear_continuousAt_zero
 
 end LinearContinuity
 
+section FiniteDimensional
+
+variable {𝕜 : Type*} [NontriviallyNormedField 𝕜] [CompleteSpace 𝕜]
+variable {E F : Type*}
+variable [AddCommGroup E] [Module 𝕜 E] [TopologicalSpace E]
+variable [IsTopologicalAddGroup E] [ContinuousSMul 𝕜 E]
+variable [AddCommGroup F] [Module 𝕜 F] [TopologicalSpace F]
+variable [IsTopologicalAddGroup F] [ContinuousSMul 𝕜 F]
+
+/-- **Theorem 1.20 (Lemma)** — A linear map from `𝕜ⁿ` (finite-dimensional
+Hausdorff `𝕜`-module) into a TVS is automatically continuous.
+
+Proof. This is mathlib's `LinearMap.continuous_of_finiteDimensional`
+which shows that every linear map on a finite-dimensional Hausdorff
+`𝕜`-module is continuous. In Rudin's formulation one takes the domain
+to be `ℂⁿ` and writes `f(z) = z₁u₁ + … + zₙuₙ`, deducing continuity
+from the continuity of each coordinate projection combined with
+addition and scalar multiplication continuity in the target. -/
+theorem linear_from_finiteDimensional_continuous [T2Space E]
+    [FiniteDimensional 𝕜 E] (Λ : E →ₗ[𝕜] F) : Continuous Λ :=
+  Λ.continuous_of_finiteDimensional
+
+/-- **Theorem 1.21 (b)** — Every finite-dimensional subspace of a
+Hausdorff TVS is closed.
+
+Proof. `Submodule.closed_of_finiteDimensional`: a finite-dimensional
+subspace is automatically complete (via the uniform structure induced
+from the topological additive group), hence closed. -/
+theorem finiteDimensional_subspace_isClosed [T2Space E]
+    (s : Submodule 𝕜 E) [FiniteDimensional 𝕜 s] :
+    IsClosed (s : Set E) :=
+  s.closed_of_finiteDimensional
+
+end FiniteDimensional
+
+section MetricProperties
+
+variable {E : Type*} [SeminormedAddCommGroup E]
+
+/-- **Theorem 1.28 (a)** — On an additive group with a translation-invariant
+pseudo-norm (equivalently, a translation-invariant pseudo-metric via
+`d(x, y) = ‖x - y‖`), `‖n • x‖ ≤ n · ‖x‖` for every `n : ℕ`.
+
+Proof. Mathlib's `norm_nsmul_le` supplies this inequality directly; it
+is equivalent to `d(nx, 0) ≤ n · d(x, 0)` when the metric comes from a
+seminorm. The underlying argument is a telescoping
+`‖nx‖ ≤ Σ_{k=1}^{n} ‖x‖` obtained from the triangle inequality. -/
+theorem norm_nsmul_le_nat (x : E) (n : ℕ) :
+    ‖n • x‖ ≤ n * ‖x‖ :=
+  norm_nsmul_le
+
+end MetricProperties
+
 end Rudin.Ch01
