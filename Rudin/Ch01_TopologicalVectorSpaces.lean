@@ -436,6 +436,14 @@ theorem finiteDimensional_of_locallyCompactSpace [T2Space E]
     [LocallyCompactSpace E] : FiniteDimensional 𝕜 E :=
   FiniteDimensional.of_locallyCompactSpace 𝕜
 
+/-- **Theorem 1.22 (totally-bounded neighbourhood)** — A Hausdorff TVS
+admitting a totally-bounded neighbourhood of `0` is finite-dimensional.
+This is the intermediate step used in Rudin's proof and implies 1.22. -/
+theorem finiteDimensional_of_totallyBounded_nhds_zero [T2Space E]
+    {U : Set E} (hU_nhds : U ∈ nhds (0 : E)) (hU_tb : TotallyBounded U) :
+    FiniteDimensional 𝕜 E :=
+  FiniteDimensional.of_totallyBounded_nhds_zero 𝕜 hU_nhds hU_tb
+
 end FiniteDimensional
 
 section MetricProperties
