@@ -328,11 +328,32 @@ theorem isVonNBounded_of_isCompact {K : Set E} (hK : IsCompact K) :
 
 end CompactBounded
 
+section Absorbent
+
+variable (𝕜 : Type*) [NontriviallyNormedField 𝕜]
+variable {E : Type*} [AddCommGroup E] [Module 𝕜 E] [TopologicalSpace E]
+variable [ContinuousSMul 𝕜 E]
+
+/-- **Theorem 1.15 (a)** — Every neighbourhood `V` of `0` is absorbent:
+for every `x ∈ E`, there is a scalar `r` with `x ∈ r • V`. Equivalently,
+`X = ⋃_{r > 0} r • V` (the form Rudin states with `rₙ → ∞`).
+
+Proof. `absorbent_nhds_zero`: since scalar multiplication is continuous
+and `0 • x = 0 ∈ V`, the set `{ a : 𝕜 | a • x ∈ V }` is a neighbourhood
+of `0` in `𝕜`, so it contains arbitrarily small nonzero scalars; taking
+`r = a⁻¹` one obtains `x ∈ r • V`. -/
+theorem absorbent_nhds_zero' {V : Set E} (hV : V ∈ nhds (0 : E)) :
+    Absorbent 𝕜 V :=
+  absorbent_nhds_zero hV
+
+end Absorbent
+
 section LinearContinuity
 
 variable {𝕜 : Type*} [NontriviallyNormedField 𝕜]
 variable {E F : Type*}
 variable [AddCommGroup E] [Module 𝕜 E] [TopologicalSpace E] [IsTopologicalAddGroup E]
+variable [ContinuousSMul 𝕜 E]
 variable [AddCommGroup F] [Module 𝕜 F] [TopologicalSpace F] [IsTopologicalAddGroup F]
 
 /-- **Theorem 1.17** — A linear map `Λ : E → F` between topological
@@ -346,6 +367,27 @@ theorem continuous_of_linear_continuousAt_zero
     (Λ : E →+ F) (h : ContinuousAt Λ 0) :
     Continuous Λ :=
   continuous_of_continuousAt_zero Λ h
+
+/-- **Theorem 1.18 (part (a) ↔ (b))** — A linear functional `Λ : E → 𝕜`
+on a TVS is continuous if and only if its kernel is closed.
+
+Proof. If `Λ` is continuous then `ker Λ = Λ⁻¹{0}` is the preimage of
+the closed singleton `{0}`, hence closed. Conversely, when the kernel
+is closed, `LinearMap.continuous_of_isClosed_ker` builds a bounded
+neighbourhood of `0` on which `Λ` stays away from any fixed scalar of
+modulus `≥ 1`, and this local boundedness forces continuity at `0`,
+hence everywhere by Theorem 1.17. -/
+theorem linearFunctional_continuous_iff_ker_isClosed (Λ : E →ₗ[𝕜] 𝕜) :
+    Continuous Λ ↔ IsClosed (LinearMap.ker Λ : Set E) :=
+  Λ.continuous_iff_isClosed_ker
+
+/-- **Theorem 1.18 (part (a) via nonvanishing on an open set)** — A
+linear functional that is nonzero on some nonempty open set is
+automatically continuous. -/
+theorem linearFunctional_continuous_of_nonzero_on_open
+    (Λ : E →ₗ[𝕜] 𝕜) {s : Set E} (hs₁ : IsOpen s) (hs₂ : s.Nonempty)
+    (hs₃ : ∀ x ∈ s, Λ x ≠ 0) : Continuous Λ :=
+  Λ.continuous_of_nonzero_on_open s hs₁ hs₂ hs₃
 
 end LinearContinuity
 
