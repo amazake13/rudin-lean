@@ -72,6 +72,86 @@
   The balanced hull is balanced and contains the original set.
 \end{theorem}
 
+\begin{theorem}[Rudin 1.12, TVS is Hausdorff]
+  \label{thm:tvs-hausdorff}
+  \lean{Rudin.Ch01.t2_of_t1}
+  \leanok
+  Every topological vector space (in Rudin's T$_1$ sense) is Hausdorff.
+\end{theorem}
+
+\begin{theorem}[Rudin 1.13 (d,e,f), closure properties]
+  \label{thm:closure-properties}
+  \lean{Rudin.Ch01.convex_closure, Rudin.Ch01.balanced_closure, Rudin.Ch01.vonNBounded_closure}
+  \leanok
+  In a TVS: (d) the closure of a convex set is convex; (e) the closure of
+  a balanced set is balanced; (f) in a $T_1$ regular TVS, the closure of
+  a bounded set is bounded.
+\end{theorem}
+
+\begin{theorem}[Rudin 1.14(a), balanced neighbourhood exists]
+  \label{thm:balanced-nhd}
+  \lean{Rudin.Ch01.nhds_zero_has_basis_balanced, Rudin.Ch01.exists_balanced_nhds_subset}
+  \leanok
+  The neighbourhood filter of $0$ has a basis of balanced sets;
+  equivalently, every neighbourhood of $0$ contains a balanced
+  neighbourhood of $0$.
+\end{theorem}
+
+\begin{theorem}[Rudin 1.15, absorbent and bounded]
+  \label{thm:absorbent-compact-bounded}
+  \lean{Rudin.Ch01.absorbent_nhds_zero', Rudin.Ch01.isVonNBounded_of_isCompact}
+  \leanok
+  (a) Every neighbourhood of $0$ is absorbent. (b) Every compact subset
+  of a TVS is bounded.
+\end{theorem}
+
+\begin{theorem}[Rudin 1.17, continuity at zero]
+  \label{thm:linear-cont-at-zero}
+  \lean{Rudin.Ch01.continuous_of_linear_continuousAt_zero}
+  \leanok
+  A linear map between topological vector spaces that is continuous at
+  $0$ is continuous everywhere.
+\end{theorem}
+
+\begin{theorem}[Rudin 1.18, continuity via closed kernel]
+  \label{thm:linear-cont-iff-closed-ker}
+  \lean{Rudin.Ch01.linearFunctional_continuous_iff_ker_isClosed, Rudin.Ch01.linearFunctional_continuous_of_nonzero_on_open}
+  \leanok
+  A linear functional is continuous iff its kernel is closed. Also, a
+  linear functional nonzero on some nonempty open set is automatically
+  continuous.
+\end{theorem}
+
+\begin{theorem}[Rudin 1.20, linear maps from finite-dimensional spaces]
+  \label{thm:fd-linear-continuous}
+  \lean{Rudin.Ch01.linear_from_finiteDimensional_continuous}
+  \leanok
+  Every linear map from a finite-dimensional Hausdorff topological
+  vector space into a TVS is continuous.
+\end{theorem}
+
+\begin{theorem}[Rudin 1.21(b), finite-dimensional subspaces are closed]
+  \label{thm:fd-subspace-closed}
+  \lean{Rudin.Ch01.finiteDimensional_subspace_isClosed}
+  \leanok
+  Every finite-dimensional subspace of a Hausdorff TVS is closed.
+\end{theorem}
+
+\begin{theorem}[Rudin 1.22, Riesz: locally compact TVS is finite-dim]
+  \label{thm:riesz-locallycompact}
+  \lean{Rudin.Ch01.finiteDimensional_of_locallyCompactSpace, Rudin.Ch01.finiteDimensional_of_totallyBounded_nhds_zero}
+  \leanok
+  Every locally compact topological vector space has finite dimension.
+\end{theorem}
+
+\begin{theorem}[Rudin 1.28(a), iterated translation bound]
+  \label{thm:nsmul-norm}
+  \lean{Rudin.Ch01.norm_nsmul_le_nat}
+  \leanok
+  In a seminormed additive commutative group,
+  $\|n \cdot x\| \le n \cdot \|x\|$.
+\end{theorem}
+
 \chapter{Completeness}
 
 \begin{theorem}[Rudin 2.2, Baire category]
