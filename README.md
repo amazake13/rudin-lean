@@ -37,18 +37,31 @@ Requires the Lean toolchain pinned in [lean-toolchain](lean-toolchain)
 ### Blueprint and API docs
 
 ```sh
-leanblueprint web                    # regenerate blueprint HTML
+leanblueprint web                       # regenerate blueprint HTML
 DOCGEN_SRC=file lake build Rudin:docs   # regenerate API docs
-# symlink docs into blueprint/web/ so /find/#doc/... resolves:
-( cd blueprint/web && \
+# symlink docs into blueprint/web/docs/ so docs/find/#doc/... resolves:
+mkdir -p blueprint/web/docs
+( cd blueprint/web/docs && \
   for e in /Users/so/Repos/rudin-lean/.lake/build/doc/*; do \
     name=$(basename "$e"); [ -e "$name" ] || ln -s "$e" "$name"; \
   done )
-leanblueprint serve                  # browse at http://localhost:8000/
+leanblueprint serve                     # browse at http://localhost:8000/
 ```
 
 The `DOCGEN_SRC=file` env var makes doc-gen4 use `file://` source URIs
 (required when there is no GitHub remote for the repo).
+
+### Hosted blueprint (GitHub Pages)
+
+The [Blueprint workflow](.github/workflows/blueprint.yml) builds the
+blueprint HTML, the `print.pdf`, and the doc-gen4 API docs on every push
+to `main` and deploys them together to GitHub Pages. The blueprint lives
+at the site root; the API docs are served from `/docs/` so that the
+blueprint's `\lean{...}` cross-references (which render as
+`docs/find/#doc/<fq-name>`) resolve correctly.
+
+To enable it on a fresh clone: push the repo to GitHub, then in
+*Settings → Pages* set **Source** to *GitHub Actions*.
 
 ## Status
 

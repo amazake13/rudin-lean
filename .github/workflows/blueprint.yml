@@ -1,0 +1,65 @@
+name: Blueprint
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Build Lean project and API docs
+        uses: leanprover/lean-action@v1
+        with:
+          build-args: Rudin Rudin:docs
+
+      - name: Build blueprint (PDF + web)
+        uses: xu-cheng/texlive-action@v2
+        with:
+          scheme: full
+          run: |
+            apk add --no-cache py3-pip py3-virtualenv graphviz graphviz-dev gcc musl-dev pkgconfig make git
+            git config --global --add safe.directory "$GITHUB_WORKSPACE"
+            python3 -m venv /tmp/venv
+            . /tmp/venv/bin/activate
+            pip install --upgrade pip wheel
+            pip install pygraphviz --config-settings="--global-option=build_ext" \
+                                   --config-settings="--global-option=-L/usr/lib/graphviz/" \
+                                   --config-settings="--global-option=-R/usr/lib/graphviz/"
+            pip install leanblueprint
+            leanblueprint pdf
+            leanblueprint web
+
+      - name: Assemble Pages site
+        run: |
+          mkdir -p blueprint/web/docs
+          cp -r .lake/build/doc/. blueprint/web/docs/
+          if [ -f blueprint/print/print.pdf ]; then
+            cp blueprint/print/print.pdf blueprint/web/blueprint.pdf
+          fi
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: blueprint/web
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
