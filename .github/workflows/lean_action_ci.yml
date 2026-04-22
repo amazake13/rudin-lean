@@ -1,12 +1,15 @@
 name: Lean Action CI
 
 on:
-  push:
   pull_request:
   workflow_dispatch:
 
 permissions:
   contents: read
+
+concurrency:
+  group: lean-ci-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build:
@@ -14,6 +17,16 @@ jobs:
 
     steps:
       - uses: actions/checkout@v5
+
+      - name: Cache .lake
+        uses: actions/cache@v4
+        with:
+          path: .lake
+          key: ${{ runner.os }}-lake-${{ hashFiles('lean-toolchain', 'lake-manifest.json') }}-${{ hashFiles('Rudin/**/*.lean') }}
+          restore-keys: |
+            ${{ runner.os }}-lake-${{ hashFiles('lean-toolchain', 'lake-manifest.json') }}-
+            ${{ runner.os }}-lake-
+
       - uses: leanprover/lean-action@v1
       - name: Report remaining sorries
         run: |
