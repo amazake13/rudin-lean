@@ -12,6 +12,14 @@
   is a homeomorphism of $X$ onto itself, and for each nonzero
   scalar $c$ the map $M_c\colon x \mapsto cx$ is a homeomorphism as well.
 \end{theorem}
+\begin{proof}
+  \leanok
+  $T_a$ is continuous as the sum of a constant and the identity on a
+  topological additive group; its inverse is $T_{-a}$, continuous by the
+  same argument. $M_c$ is continuous by \texttt{ContinuousSMul}; its
+  inverse is $M_{c^{-1}}$, and
+  $M_{c^{-1}}\circ M_c = \mathrm{id}$ follows from $c^{-1}(c x) = x$.
+\end{proof}
 
 \begin{theorem}[Rudin 1.22, Heine--Borel in finite dimensions]
   \label{thm:heine-borel}
@@ -20,6 +28,13 @@
   In a finite-dimensional normed space over $\mathbb{R}$ or $\mathbb{C}$,
   every closed and bounded set is compact.
 \end{theorem}
+\begin{proof}
+  \leanok
+  A finite-dimensional normed space over a locally compact field is a
+  proper metric space, i.e.\ every closed ball $\overline{B}(0, R)$ is
+  compact. A bounded set $s$ is contained in some such $\overline{B}(0, R)$;
+  being a closed subset of a compact set, $s$ is itself compact.
+\end{proof}
 
 \begin{theorem}[corollary of 1.6, translation preserves openness]
   \label{thm:translation-preserves-open}
@@ -30,6 +45,14 @@
   to open sets. \emph{Proved in-project from Rudin 1.6's
   homeomorphism packaging.}
 \end{theorem}
+\begin{proof}
+  \leanok
+  Write $(a + \cdot)(s) = T_{-a}^{-1}(s)$: $y \in (a + \cdot)(s)$ iff
+  $y - a \in s$ iff $T_{-a}(y) \in s$. The map $T_{-a}$ is continuous by
+  Theorem~\ref{thm:translation-homeo}, so the preimage of the open $s$ is
+  open. The scalar case is identical with $T_{-a}$ replaced by
+  $M_{c^{-1}}$.
+\end{proof}
 
 \begin{definition}[Rudin 1.33, Minkowski functional]
   \label{def:minkowski}
@@ -47,6 +70,16 @@
   \leanok
   If $s$ is convex and absorbent, then $\mu_s(x + y) \le \mu_s(x) + \mu_s(y)$.
 \end{theorem}
+\begin{proof}
+  \leanok
+  Fix $\varepsilon > 0$. By absorbence and the definition of the gauge,
+  pick $a < \mu_s(x) + \varepsilon/2$ and $b < \mu_s(y) + \varepsilon/2$
+  with $u, v \in s$ and $x = a u$, $y = b v$. Convexity of $s$ gives
+  $\tfrac{a}{a+b} u + \tfrac{b}{a+b} v \in s$, so
+  $a u + b v = (a + b)\bigl(\tfrac{a}{a+b} u + \tfrac{b}{a+b} v\bigr) \in
+  (a + b) s$. Hence $\mu_s(x + y) \le a + b < \mu_s(x) + \mu_s(y) +
+  \varepsilon$. Let $\varepsilon \to 0$.
+\end{proof}
 
 \begin{theorem}[Rudin 1.18, continuity via boundedness]
   \label{thm:linear-continuity-bound}
@@ -55,6 +88,15 @@
   A linear map between normed spaces is continuous iff there exists a
   constant $C$ with $\|f(x)\| \le C\|x\|$ for all $x$.
 \end{theorem}
+\begin{proof}
+  \leanok
+  Given the bound, linearity yields $\|f(x) - f(y)\| = \|f(x - y)\| \le
+  C\|x - y\|$, so $f$ is Lipschitz with constant $C$, hence continuous.
+  (Conversely, continuity at $0$ of a linear map forces such a bound by
+  absorbing a unit ball into a chosen $0$-neighbourhood.) The Lean
+  construction packages this via
+  \texttt{AddMonoidHomClass.continuous\_of\_bound}.
+\end{proof}
 
 \begin{definition}[Rudin 1.27, balanced hull]
   \label{def:balanced-hull}
@@ -71,6 +113,15 @@
   \leanok
   The balanced hull is balanced and contains the original set.
 \end{theorem}
+\begin{proof}
+  \leanok
+  Realise the hull as $\bigcup_{\|r\| \le 1} r \cdot s$. For containment
+  take $r = 1$: $x = 1 \cdot x \in 1 \cdot s$ for every $x \in s$. For
+  balance, take $\|a\| \le 1$ and $x \in a \cdot \bigcup_{\|r\|\le 1}
+  r \cdot s$. Then $x = (a r) \cdot z$ for some $z \in s$ with
+  $\|r\| \le 1$, and $\|a r\| = \|a\|\|r\| \le 1$, so $x$ lies in the
+  hull.
+\end{proof}
 
 \begin{theorem}[Rudin 1.12, TVS is Hausdorff]
   \label{thm:tvs-hausdorff}
@@ -78,6 +129,14 @@
   \leanok
   Every topological vector space (in Rudin's T$_1$ sense) is Hausdorff.
 \end{theorem}
+\begin{proof}
+  \leanok
+  In any topological additive group, $T_2$ is equivalent to the
+  closedness of $\{0\}$: given distinct $x \neq y$, by continuity of
+  subtraction an open set separating $x - y$ from $0$ pulls back to
+  disjoint open neighbourhoods of $x$ and $y$. Since $\{0\}$ is closed
+  by $T_1$, the space is $T_2$.
+\end{proof}
 
 \begin{theorem}[Rudin 1.13 (d,e,f), closure properties]
   \label{thm:closure-properties}
@@ -87,6 +146,17 @@
   a balanced set is balanced; (f) in a $T_1$ regular TVS, the closure of
   a bounded set is bounded.
 \end{theorem}
+\begin{proof}
+  \leanok
+  (d) For $x, y \in \overline{C}$ and $t \in [0, 1]$, the continuous map
+  $(u, v) \mapsto (1 - t) u + t v$ sends $\overline{C} \times \overline{C}$
+  into $\overline{\{(1 - t) u + t v : u, v \in C\}} \subseteq \overline{C}$.
+  (e) The same argument with $(u) \mapsto a u$ for $\|a\| \le 1$.
+  (f) Given a $0$-neighbourhood $U$, regularity yields a closed
+  $0$-neighbourhood $V$ with $V \subseteq U$; boundedness of $A$ gives
+  $t$ with $A \subseteq t V$; since $t V$ is closed, $\overline{A}
+  \subseteq t V \subseteq t U$.
+\end{proof}
 
 \begin{theorem}[Rudin 1.14(a), balanced neighbourhood exists]
   \label{thm:balanced-nhd}
@@ -96,6 +166,16 @@
   equivalently, every neighbourhood of $0$ contains a balanced
   neighbourhood of $0$.
 \end{theorem}
+\begin{proof}
+  \leanok
+  Given a $0$-neighbourhood $U$, define the \emph{balanced core}
+  $\operatorname{bc}(U) = \bigcap_{\|a\| \ge 1} a \cdot U$. It is
+  balanced by construction. Continuity of scalar multiplication at
+  $(0, 0)$ yields $\delta > 0$ and a $0$-neighbourhood $W$ with $a W
+  \subseteq U$ for $\|a\| \le \delta$, so $W \subseteq \bigcap_{\|a\|
+  \le \delta} a^{-1} U = \operatorname{bc}(U)$ (after rescaling), making
+  $\operatorname{bc}(U)$ a neighbourhood of $0$ contained in $U$.
+\end{proof}
 
 \begin{theorem}[Rudin 1.15, absorbent and bounded]
   \label{thm:absorbent-compact-bounded}
@@ -104,6 +184,18 @@
   (a) Every neighbourhood of $0$ is absorbent. (b) Every compact subset
   of a TVS is bounded.
 \end{theorem}
+\begin{proof}
+  \leanok
+  (a) Fix $x \in E$ and a $0$-neighbourhood $V$. The map $a \mapsto a x$
+  is continuous with $0 \cdot x = 0 \in V$, so $\{a : a x \in V\}$ is a
+  neighbourhood of $0 \in \mathbb{K}$ and contains some nonzero $a$;
+  then $x \in a^{-1} V$.
+  (b) A compact subset of a uniform space is totally bounded. In a TVS,
+  a totally bounded set is von Neumann bounded: given a $0$-neighbourhood
+  $V$, pick a balanced $W$ with $W + W \subseteq V$; a finite cover of
+  $K$ by translates $x_i + W$ lets one choose $t$ large enough that each
+  $x_i \in t W$, hence $K \subseteq t W + W \subseteq t V$.
+\end{proof}
 
 \begin{theorem}[Rudin 1.17, continuity at zero]
   \label{thm:linear-cont-at-zero}
@@ -112,6 +204,14 @@
   A linear map between topological vector spaces that is continuous at
   $0$ is continuous everywhere.
 \end{theorem}
+\begin{proof}
+  \leanok
+  For any $x_0 \in E$, write $\Lambda = T_{\Lambda x_0} \circ \Lambda
+  \circ T_{-x_0}$ (by additivity of $\Lambda$). Both translations are
+  continuous (Theorem~\ref{thm:translation-homeo}), and $\Lambda$ is
+  continuous at $0 = T_{-x_0}(x_0)$, so the composition is continuous at
+  $x_0$.
+\end{proof}
 
 \begin{theorem}[Rudin 1.18, continuity via closed kernel]
   \label{thm:linear-cont-iff-closed-ker}
@@ -121,28 +221,79 @@
   linear functional nonzero on some nonempty open set is automatically
   continuous.
 \end{theorem}
+\begin{proof}
+  \leanok
+  ($\Rightarrow$) $\ker \Lambda = \Lambda^{-1}\{0\}$ is the preimage of a
+  closed singleton, hence closed.
+  ($\Leftarrow$) Assume $\Lambda \neq 0$ and $\ker \Lambda$ closed. Pick
+  $x_0$ with $\Lambda x_0 = 1$. The complement of $\ker \Lambda$ is open
+  and contains $x_0$, so it contains a balanced neighbourhood $V$ of the
+  form $x_0 + U$ with $U$ balanced (Theorem~\ref{thm:balanced-nhd}).
+  Then $\Lambda(U)$ is a balanced subset of $\mathbb{K}$ not containing
+  $-1$, which forces $|\Lambda(U)| < 1$, giving continuity at $0$;
+  Theorem~\ref{thm:linear-cont-at-zero} finishes.
+  For the ``nonzero on an open set'' version: if $\Lambda$ is nonzero on
+  an open $s$, then $\ker \Lambda$ misses $s$, but $\ker \Lambda$ is
+  either $E$ or a hyperplane; hyperplanes with nonempty open complement
+  are closed, reducing to the above.
+\end{proof}
 
 \begin{theorem}[Rudin 1.20, linear maps from finite-dimensional spaces]
   \label{thm:fd-linear-continuous}
+  \uses{thm:linear-cont-at-zero, thm:absorbent-compact-bounded}
   \lean{Rudin.Ch01.linear_from_finiteDimensional_continuous}
   \leanok
   Every linear map from a finite-dimensional Hausdorff topological
   vector space into a TVS is continuous.
 \end{theorem}
+\begin{proof}
+  \leanok
+  Pick a basis $e_1, \ldots, e_n$ of $E$. Writing $x = \sum_i x_i e_i$
+  gives $\Lambda x = \sum_i x_i \Lambda(e_i)$, so it suffices to check
+  that each coordinate projection $\pi_i\colon E \to \mathbb{K}$ is
+  continuous: the target is then a finite sum of scaled continuous maps.
+  On a finite-dimensional Hausdorff TVS, the $\pi_i$ are continuous
+  because the space is linearly homeomorphic to $\mathbb{K}^n$ (a fact
+  equivalent to the $\mathbb{K}$-module topology being uniquely
+  determined).
+\end{proof}
 
 \begin{theorem}[Rudin 1.21(b), finite-dimensional subspaces are closed]
   \label{thm:fd-subspace-closed}
+  \uses{thm:fd-linear-continuous}
   \lean{Rudin.Ch01.finiteDimensional_subspace_isClosed}
   \leanok
   Every finite-dimensional subspace of a Hausdorff TVS is closed.
 \end{theorem}
+\begin{proof}
+  \leanok
+  Let $F$ be a finite-dimensional subspace. The identity $F \to E$ is
+  continuous, and by Theorem~\ref{thm:fd-linear-continuous} so is every
+  linear bijection $\mathbb{K}^n \to F$ together with its inverse, so
+  $F$ inherits a complete normed-space topology from $\mathbb{K}^n$.
+  Completeness in a Hausdorff uniform space implies closedness in the
+  ambient TVS.
+\end{proof}
 
 \begin{theorem}[Rudin 1.22, Riesz: locally compact TVS is finite-dim]
   \label{thm:riesz-locallycompact}
+  \uses{thm:absorbent-compact-bounded, thm:balanced-nhd}
   \lean{Rudin.Ch01.finiteDimensional_of_locallyCompactSpace, Rudin.Ch01.finiteDimensional_of_totallyBounded_nhds_zero}
   \leanok
   Every locally compact topological vector space has finite dimension.
 \end{theorem}
+\begin{proof}
+  \leanok
+  Let $K$ be a compact neighbourhood of $0$; $K$ is totally bounded as
+  a compact subset of a uniform space. Cover $K$ by finitely many
+  translates $x_1 + \tfrac{1}{2} K, \ldots, x_m + \tfrac{1}{2} K$ and
+  let $F = \operatorname{span}\{x_1, \ldots, x_m\}$. Iterating, $K
+  \subseteq F + 2^{-n} K$ for every $n$; since $K$ is bounded and $F$
+  is closed by Theorem~\ref{thm:fd-subspace-closed}, intersecting gives
+  $K \subseteq F$. But $K$ absorbs $E$
+  (Theorem~\ref{thm:absorbent-compact-bounded}(a)), so $E \subseteq F$,
+  i.e.\ $\dim E \le m$.
+\end{proof}
 
 \begin{theorem}[Rudin 1.28(a), iterated translation bound]
   \label{thm:nsmul-norm}
@@ -151,6 +302,282 @@
   In a seminormed additive commutative group,
   $\|n \cdot x\| \le n \cdot \|x\|$.
 \end{theorem}
+\begin{proof}
+  \leanok
+  Immediate by induction on $n$ using the triangle inequality:
+  $\|(n+1) x\| = \|n x + x\| \le \|n x\| + \|x\| \le n\|x\| + \|x\| =
+  (n+1)\|x\|$, with base case $\|0\| = 0$.
+\end{proof}
+
+% --- Pending: signature in Lean (Rudin/Pending.lean), proof not formalised ---
+
+\begin{theorem}[Rudin 1.10, separation of compact and closed]
+  \label{thm:tvs-separation}
+  \lean{Rudin.Pending.separation_compact_closed}
+  \leanok
+  Let $X$ be a TVS, $K \subseteq X$ compact, $C \subseteq X$ closed,
+  $K \cap C = \emptyset$. Then there exists $V \in \mathcal N(0)$ with
+  $(K + V) \cap (C + V) = \emptyset$.
+\end{theorem}
+
+\begin{theorem}[Rudin 1.11, regularity of TVS]
+  \label{thm:tvs-regular}
+  \uses{thm:tvs-separation}
+  \lean{Rudin.Pending.exists_closure_subset_of_nhds_zero}
+  \leanok
+  Every neighbourhood of $0$ in a TVS contains the closure of some
+  neighbourhood of $0$ (the special case $K = \{0\}$ of the previous
+  theorem).
+\end{theorem}
+
+\begin{theorem}[Rudin 1.13(a), closure as intersection]
+  \label{thm:closure-eq-iInter-add}
+  \lean{Rudin.Pending.closure_eq_iInter_add_nhds_zero}
+  \leanok
+  $\overline{A} = \bigcap_{V \in \mathcal N(0)} (A + V)$.
+\end{theorem}
+
+\begin{theorem}[Rudin 1.13(b), closure of sums]
+  \label{thm:closure-add-subset}
+  \lean{Rudin.Pending.closure_add_closure_subset_closure_add}
+  \leanok
+  $\overline{A} + \overline{B} \subseteq \overline{A + B}$.
+\end{theorem}
+
+\begin{definition}[Rudin 1.13(c), closure of a subspace]
+  \label{def:submodule-closure}
+  \lean{Rudin.Pending.submoduleClosure}
+  \leanok
+  The closure of a linear subspace is again a linear subspace; mathlib
+  packages this as \texttt{Submodule.topologicalClosure}.
+\end{definition}
+
+\begin{theorem}[Rudin 1.14(b), convex balanced neighbourhood]
+  \label{thm:convex-balanced-nhd}
+  \uses{thm:balanced-nhd}
+  \lean{Rudin.Pending.exists_convex_balanced_nhds_subset}
+  \leanok
+  In a real locally convex TVS, every convex neighbourhood of $0$
+  contains a convex \emph{and} balanced neighbourhood of $0$.
+\end{theorem}
+
+\begin{theorem}[Rudin 1.15(c), bounded neighbourhood scaling base]
+  \label{thm:nhds-basis-smul-bounded}
+  \lean{Rudin.Pending.nhds_basis_smul_of_bounded}
+  \leanok
+  If $V$ is a bounded neighbourhood of $0$ and $\delta_n \to 0$
+  (nonzero), then $\{\delta_n V\}$ is a countable local base at $0$.
+\end{theorem}
+
+\begin{theorem}[Rudin 1.21(a), $\mathbb K^n$-isomorphism is a homeomorphism]
+  \label{thm:fd-iso-homeomorph}
+  \uses{thm:fd-linear-continuous}
+  \lean{Rudin.Pending.linearEquiv_finrank_isHomeomorph}
+  \leanok
+  Every linear isomorphism $\mathbb K^n \to Y$ onto an
+  $n$-dimensional Hausdorff TVS is a homeomorphism.
+\end{theorem}
+
+\begin{theorem}[Rudin 1.23, locally bounded + Heine--Borel implies finite-dim]
+  \label{thm:locallyBounded-HB-finiteDim}
+  \uses{thm:closure-properties, thm:riesz-locallycompact}
+  \lean{Rudin.Pending.finiteDimensional_of_locallyBounded_heineBorel}
+  \leanok
+  A locally bounded TVS with the Heine--Borel property is
+  finite-dimensional.
+\end{theorem}
+
+\begin{theorem}[Rudin 1.24, countable base implies metrisable]
+  \label{thm:countable-base-metrisable}
+  \uses{thm:balanced-nhd}
+  \lean{Rudin.Pending.exists_invariant_metric_of_countable_basis}
+  \leanok
+  A TVS with a countable local base at $0$ admits a compatible
+  translation-invariant pseudo-metric whose open balls at $0$ are
+  balanced (and may also be chosen convex if the space is locally
+  convex).
+\end{theorem}
+
+\begin{theorem}[Rudin 1.26, dilation principle]
+  \label{thm:dilation-principle}
+  \lean{Rudin.Pending.dilation_principle}
+  \leanok
+  Suppose $(X, d_1)$ is complete, $E \subseteq X$ closed, and
+  $f \colon E \to Y$ continuous with $d_2(f(x'), f(x'')) \ge d_1(x',
+  x'')$ for all $x', x'' \in E$. Then $f(E)$ is closed in $Y$.
+\end{theorem}
+
+\begin{theorem}[Rudin 1.27, F-subspace is closed]
+  \label{thm:fSpace-subspace-closed}
+  \uses{thm:dilation-principle}
+  \lean{Rudin.Pending.fSpace_subspace_isClosed}
+  \leanok
+  Every subspace $Y$ of a TVS $X$ that is itself an F-space (in the
+  inherited topology) is closed in $X$.
+\end{theorem}
+
+\begin{theorem}[Rudin 1.28(b), rescaling a null sequence]
+  \label{thm:null-rescale}
+  \uses{thm:nsmul-norm}
+  \lean{Rudin.Pending.exists_smul_tendsto_zero_of_tendsto_zero}
+  \leanok
+  If $x_n \to 0$ in a metrisable TVS, there exist positive scalars
+  $\gamma_n \to \infty$ such that $\gamma_n x_n \to 0$.
+\end{theorem}
+
+\begin{theorem}[Rudin 1.30, sequential characterisation of bounded sets]
+  \label{thm:bounded-iff-smul-tendsto-zero}
+  \lean{Rudin.Pending.isVonNBounded_iff_smul_tendsto_zero}
+  \leanok
+  $E \subseteq X$ is bounded iff for every sequence $(x_n)$ in $E$ and
+  every scalar sequence $\alpha_n \to 0$, one has $\alpha_n x_n \to 0$.
+\end{theorem}
+
+\begin{theorem}[Rudin 1.32, continuous iff bounded for linear maps]
+  \label{thm:linear-cont-iff-bounded}
+  \uses{thm:bounded-iff-smul-tendsto-zero, thm:null-rescale}
+  \lean{Rudin.Pending.linear_continuous_iff_mapsBounded}
+  \leanok
+  For a linear map between TVSs (with the source metrisable),
+  continuity is equivalent to mapping bounded sets to bounded sets.
+\end{theorem}
+
+\begin{theorem}[Rudin 1.36, Minkowski functionals are separating seminorms]
+  \label{thm:minkowski-separating-seminorms}
+  \uses{def:minkowski, thm:minkowski-subadditive}
+  \lean{Rudin.Pending.minkowski_separating_seminorms}
+  \leanok
+  Given a convex balanced local base $\mathcal B$ of a real TVS, the
+  family of Minkowski functionals $\{\mu_V : V \in \mathcal B\}$ is a
+  separating family of continuous seminorms.
+\end{theorem}
+
+\begin{theorem}[Rudin 1.37, separating seminorms induce a topology]
+  \label{thm:topology-of-seminorms}
+  \uses{thm:minkowski-separating-seminorms}
+  \lean{Rudin.Pending.topology_of_separating_seminorms}
+  \leanok
+  A separating family of seminorms $\mathcal P$ on a vector space
+  induces a unique locally convex Hausdorff topology in which each
+  $p \in \mathcal P$ is continuous. (Mathlib: \texttt{WithSeminorms}.)
+\end{theorem}
+
+\begin{theorem}[Rudin 1.39, normability criterion]
+  \label{thm:normable-iff-convex-bounded-nhd}
+  \uses{thm:convex-balanced-nhd, def:minkowski}
+  \lean{Rudin.Pending.normable_iff_convex_bounded_nhds_zero}
+  \leanok
+  A real TVS is normable iff $0$ admits a convex bounded neighbourhood.
+\end{theorem}
+
+\begin{theorem}[Rudin 1.42, sum of closed and finite-dimensional is closed]
+  \label{thm:add-closed-fd-closed}
+  \uses{thm:fd-subspace-closed}
+  \lean{Rudin.Pending.add_isClosed_of_finiteDimensional}
+  \leanok
+  If $N$ is a closed subspace and $F$ is finite-dimensional, then
+  $N + F$ is closed.
+\end{theorem}
+
+\begin{theorem}[Rudin 1.44, $C(\Omega)$ is a Fréchet space]
+  \label{thm:CO-frechet}
+  \lean{Rudin.Ch01.continuousFunctions_isFrechetSpace}
+  \leanok
+  $C(\Omega, E)$, with the topology of uniform convergence on a chosen
+  exhaustion of $\Omega$ by compact sets, is a Fréchet space whenever
+  $\Omega$ is weakly locally compact and $\sigma$-compact and $E$ is a
+  complete normed real vector space (e.g.\ $\Omega$ open in $\mathbb
+  R^n$, $E = \mathbb R$ or $\mathbb C$).
+\end{theorem}
+\begin{proof}
+  \leanok
+  Each Fréchet-space ingredient is a mathlib instance on $C(\Omega,
+  E)$ with the compact-open topology (= uniform convergence on
+  compacta):
+  topological additive group and continuous scalar multiplication
+  come from the algebra/module structure on \texttt{ContinuousMap};
+  local convexity is \texttt{ContinuousMap.instLocallyConvexSpace};
+  countable generation of the uniformity follows from
+  $\Omega$ being weakly locally compact and $\sigma$-compact together
+  with the countably-generated uniformity of $E$;
+  completeness is \texttt{ContinuousMap.instCompleteSpaceOfCompactly\-CoherentSpace}
+  (weakly locally compact $\Rightarrow$ compactly coherent). The
+  Lean proof is just a five-fold \texttt{inferInstance}.
+\end{proof}
+
+\begin{theorem}[Rudin 1.45, $H(\Omega)$ is Fréchet with Heine--Borel]
+  \label{thm:H-omega-frechet-HB}
+  \uses{thm:CO-frechet}
+  \lean{Rudin.Pending.holomorphic_isFrechetSpace_heineBorel}
+  $H(\Omega)$ (holomorphic functions on open $\Omega \subseteq
+  \mathbb C$) is a Fréchet space with the Heine--Borel property under
+  the compact-open topology. \emph{Pending: the Heine--Borel half is
+  Montel's theorem, which is not yet in mathlib.}
+\end{theorem}
+
+\begin{theorem}[Rudin 1.45 (Fréchet part, $\Omega = \mathbb C$):
+  entire functions are a closed subspace of $C(\mathbb C, \mathbb C)$]
+  \label{thm:entire-isClosed}
+  \uses{thm:CO-frechet}
+  \lean{Rudin.Ch01.entire_isClosed, Rudin.Ch01.entireSubmodule}
+  \leanok
+  The set of entire functions
+  $\{f \in C(\mathbb C, \mathbb C) : f \text{ is differentiable on }
+  \mathbb C\}$ is a closed $\mathbb C$-submodule of
+  $C(\mathbb C, \mathbb C)$. Together with
+  Theorem~\ref{thm:CO-frechet} for $\Omega = \mathbb C$, this shows
+  that the entire functions, with the compact-open topology, form a
+  Fréchet space (closed subspace of a Fréchet space).
+\end{theorem}
+\begin{proof}
+  \leanok
+  A sequence $F_n \to F$ in $C(\mathbb C, \mathbb C)$ converges in the
+  compact-open topology iff locally uniformly on $\mathbb C$
+  (\texttt{ContinuousMap.tendsto\_iff\_tendsto\-LocallyUniformly};
+  $\mathbb C$ is weakly locally compact). Mathlib's
+  \texttt{TendstoLocallyUniformlyOn.differentiableOn} (with $U$ taken
+  to be $\mathbb C$ itself) then shows that the limit of locally
+  uniformly convergent differentiable functions is differentiable.
+  Closure of $\{f : \text{Differentiable}\}$ under cluster points
+  follows. The submodule structure (closure under sum, scalar
+  multiplication, and $0$) is immediate from
+  \texttt{Differentiable.add}, \texttt{Differentiable.const\_smul},
+  and \texttt{differentiable\_const}.
+\end{proof}
+
+\begin{theorem}[Rudin 1.46, $C^\infty(\Omega)$ and $\mathcal D_K$ are Fréchet]
+  \label{thm:Cinfty-frechet}
+  \uses{thm:CO-frechet}
+  \lean{Rudin.Pending.smoothFunctions_isFrechetSpace}
+  $C^\infty(\Omega)$ and the test-function space $\mathcal D_K(\Omega)$
+  are Fréchet spaces under the seminorms $p_n(f) = \sup_{|\alpha| \le
+  n}\sup_{x \in K_n} |\partial^\alpha f(x)|$.
+  \emph{Pending: completeness of $\mathcal D^n_K(E, F)$ is not yet
+  available in mathlib (only the TVS / locally convex part is).}
+\end{theorem}
+
+\begin{theorem}[Rudin 1.46 (TVS + locally convex part):
+  $\mathcal D^n_K(E, F)$ is a locally convex topological vector space]
+  \label{thm:DKn-LCS}
+  \lean{Rudin.Ch01.testFunctions_isTVS_locallyConvex}
+  \leanok
+  Let $E, F$ be normed real vector spaces with $F$ a normed
+  $\mathbb K$-module ($\mathbb K$ a non-trivial normed field). For
+  every $n \in \mathbb N \cup \{\infty\}$ and every compact
+  $K \subseteq E$, the space
+  $\mathcal D^{n}_{K}(E, F)$ of $n$-times continuously differentiable
+  functions $E \to F$ supported in $K$ is a topological additive
+  group, has continuous scalar multiplication by $\mathbb K$, and is
+  locally convex over $\mathbb R$.
+\end{theorem}
+\begin{proof}
+  \leanok
+  Each conclusion is an existing mathlib instance on
+  \texttt{ContDiffMapSupportedIn}:
+  \texttt{isTopologicalAddGroup}, \texttt{continuousSMul}, and
+  \texttt{locallyConvexSpace}. The Lean proof is a triple
+  \texttt{inferInstance}.
+\end{proof}
 
 \chapter{Completeness}
 
@@ -162,6 +589,9 @@
   compact Hausdorff space), the intersection of countably many dense open
   sets is dense.
 \end{theorem}
+\begin{proof}
+  \leanok
+\end{proof}
 
 \begin{theorem}[Rudin 2.5, Banach--Steinhaus]
   \label{thm:banach-steinhaus}
@@ -172,6 +602,9 @@
   a family of continuous linear maps $E \to F$. If the family is
   pointwise bounded, then it is uniformly bounded in operator norm.
 \end{theorem}
+\begin{proof}
+  \leanok
+\end{proof}
 
 \begin{theorem}[Rudin 2.6, pointwise convergent $\Rightarrow$ uniformly bounded]
   \label{thm:banach-steinhaus-pointwise}
@@ -183,6 +616,9 @@
   bounded. \emph{Proved in-project: convergence $\Rightarrow$ Cauchy
   $\Rightarrow$ bounded range, then apply Banach--Steinhaus.}
 \end{theorem}
+\begin{proof}
+  \leanok
+\end{proof}
 
 \begin{theorem}[Rudin 2.11, Open mapping]
   \label{thm:open-mapping}
@@ -191,6 +627,9 @@
   \leanok
   A surjective continuous linear map between Banach spaces is open.
 \end{theorem}
+\begin{proof}
+  \leanok
+\end{proof}
 
 \begin{theorem}[Rudin 2.15, Closed graph]
   \label{thm:closed-graph}
@@ -199,6 +638,9 @@
   \leanok
   A linear map between Banach spaces whose graph is closed is continuous.
 \end{theorem}
+\begin{proof}
+  \leanok
+\end{proof}
 
 \begin{theorem}[Rudin, Riesz's lemma]
   \label{thm:riesz-lemma}
@@ -208,6 +650,9 @@
   $r < 1$, there exists $x_0 \notin F$ with $r\,\|x_0\| \le \|x_0 - y\|$
   for all $y \in F$.
 \end{theorem}
+\begin{proof}
+  \leanok
+\end{proof}
 
 \begin{theorem}[Rudin 2.12, Bounded inverse]
   \label{thm:bounded-inverse}
@@ -217,6 +662,9 @@
   A bijective continuous linear map between Banach spaces has a
   continuous inverse (so it is a topological isomorphism).
 \end{theorem}
+\begin{proof}
+  \leanok
+\end{proof}
 
 \begin{definition}[meagre / first-category sets]
   \label{def:meagre}
@@ -233,6 +681,73 @@
   \leanok
   In a Baire space, every meagre set has dense complement.
 \end{theorem}
+\begin{proof}
+  \leanok
+\end{proof}
+
+% --- Ch02 Pending ---
+
+\begin{theorem}[Rudin 2.4, equicontinuous + bounded $\Rightarrow$ uniform bound]
+  \label{thm:equicontinuous-uniform-bound}
+  \lean{Rudin.Pending.equicontinuous_uniformly_bounded}
+  \leanok
+  An equicontinuous family of linear maps takes every bounded subset
+  of the source into a single bounded subset of the target.
+\end{theorem}
+
+\begin{theorem}[Rudin 2.7, Cauchy on second-category $\Rightarrow$ all]
+  \label{thm:cauchy-second-category}
+  \uses{thm:banach-steinhaus}
+  \lean{Rudin.Pending.cauchy_set_eq_univ_of_second_category}
+  \leanok
+  If $(\Lambda_n)$ is a sequence of continuous linear maps and the set
+  of $x$ with $(\Lambda_n x)$ Cauchy is of second category, then every
+  $\Lambda_n x$ sequence is Cauchy.
+\end{theorem}
+
+\begin{theorem}[Rudin 2.9, compact-convex Banach--Steinhaus]
+  \label{thm:banach-steinhaus-compact-convex}
+  \uses{thm:baire-category}
+  \lean{Rudin.Pending.banach_steinhaus_compact_convex}
+  \leanok
+  If a family of continuous linear maps is pointwise bounded on a
+  compact convex set $K$, it is uniformly bounded on $K$.
+\end{theorem}
+
+\begin{theorem}[Rudin 2.12(c), equivalent norms via open mapping]
+  \label{thm:open-mapping-norm-equiv}
+  \uses{thm:open-mapping}
+  \lean{Rudin.Pending.norm_equiv_of_continuousLinearEquiv}
+  \leanok
+  A continuous linear bijection $A : X \to Y$ between Banach spaces
+  satisfies $a\|x\| \le \|A x\| \le b\|x\|$ for some $a, b > 0$.
+\end{theorem}
+
+\begin{theorem}[Rudin 2.12(d), comparable F-space topologies coincide]
+  \label{thm:fSpace-topologies-eq}
+  \uses{thm:open-mapping}
+  \lean{Rudin.Pending.fSpace_topologies_eq_of_le}
+  \leanok
+  Two comparable F-space topologies on the same vector space are
+  equal.
+\end{theorem}
+
+\begin{theorem}[Rudin 2.14, graph closed if continuous (Hausdorff target)]
+  \label{thm:graph-closed-of-continuous}
+  \lean{Rudin.Pending.graph_isClosed_of_continuous_of_t2}
+  \leanok
+  If $Y$ is Hausdorff and $f : X \to Y$ is continuous, the graph of
+  $f$ is closed in $X \times Y$.
+\end{theorem}
+
+\begin{theorem}[Rudin 2.17, separately continuous bilinear is jointly continuous]
+  \label{thm:bilinear-cont-of-separately}
+  \uses{thm:banach-steinhaus}
+  \lean{Rudin.Pending.bilinear_continuous_of_separately}
+  \leanok
+  A separately continuous bilinear map $B : X \times Y \to Z$ with
+  $X$ an F-space and $Y$ metrisable is jointly continuous.
+\end{theorem}
 
 \chapter{Convexity}
 
@@ -245,6 +760,9 @@
   with $f \le N$ on its domain. Then $f$ extends to a linear functional
   $g\colon E \to \mathbb{R}$ with $g \le N$ everywhere.
 \end{theorem}
+\begin{proof}
+  \leanok
+\end{proof}
 
 \begin{theorem}[Rudin 3.4, Geometric Hahn--Banach]
   \label{thm:hahn-banach-separation}
@@ -255,6 +773,9 @@
   convex set and a disjoint closed convex set can be strictly separated
   by a continuous linear functional.
 \end{theorem}
+\begin{proof}
+  \leanok
+\end{proof}
 
 \begin{theorem}[Rudin 3.5, closed convex vs. point]
   \label{thm:hahn-banach-closed-point}
@@ -265,6 +786,9 @@
   Hausdorff TVS can be strictly separated by a continuous linear
   functional.
 \end{theorem}
+\begin{proof}
+  \leanok
+\end{proof}
 
 \begin{theorem}[Rudin 3.5, two distinct points]
   \label{thm:hahn-banach-point-point}
@@ -274,6 +798,9 @@
   In a locally convex $T_1$ TVS, any two distinct points are strictly
   separated by a continuous linear functional.
 \end{theorem}
+\begin{proof}
+  \leanok
+\end{proof}
 
 \begin{theorem}[Rudin 3.22, Krein--Milman lemma]
   \label{thm:krein-milman-lemma}
@@ -283,6 +810,9 @@
   Every nonempty compact set in a locally convex Hausdorff TVS has an
   extreme point.
 \end{theorem}
+\begin{proof}
+  \leanok
+\end{proof}
 
 \begin{theorem}[Rudin 3.23, Krein--Milman]
   \label{thm:krein-milman}
@@ -291,6 +821,135 @@
   \leanok
   In a locally convex Hausdorff topological vector space, every compact
   convex set is the closed convex hull of its extreme points.
+\end{theorem}
+\begin{proof}
+  \leanok
+\end{proof}
+
+% --- Ch03 Pending ---
+
+\begin{theorem}[Rudin 3.3, complex Hahn--Banach]
+  \label{thm:hahn-banach-complex}
+  \uses{thm:hahn-banach-analytic}
+  \lean{Rudin.Pending.hahn_banach_complex}
+  \leanok
+  A complex-linear functional on a subspace, dominated by a seminorm,
+  extends to the whole space with the same dominance.
+\end{theorem}
+
+\begin{theorem}[Rudin 3.6, continuous extension Hahn--Banach]
+  \label{thm:hahn-banach-cont-extension}
+  \uses{thm:hahn-banach-complex}
+  \lean{Rudin.Pending.hahn_banach_continuous_extension}
+  \leanok
+  A continuous linear functional on a subspace of a locally convex
+  TVS extends to a continuous linear functional on the whole space.
+\end{theorem}
+
+\begin{theorem}[Rudin 3.7, open convex / point separation]
+  \label{thm:hahn-banach-open-point}
+  \uses{thm:hahn-banach-cont-extension}
+  \lean{Rudin.Pending.hahn_banach_open_point}
+  \leanok
+  A nonempty open convex set and a point not in it can be separated
+  by a continuous linear functional.
+\end{theorem}
+
+\begin{theorem}[Rudin 3.10, separating dual induces locally convex topology]
+  \label{thm:topology-separating-dual}
+  \lean{Rudin.Pending.topology_of_separating_dual}
+  \leanok
+  A separating vector space $X'$ of linear functionals on $X$
+  induces a locally convex topology on $X$ whose dual is exactly
+  $X'$.
+\end{theorem}
+
+\begin{theorem}[Rudin 3.12, weak closure equals original closure for convex sets]
+  \label{thm:weak-closure-convex}
+  \uses{thm:hahn-banach-separation}
+  \lean{Rudin.Pending.weak_closure_eq_closure_of_convex}
+  \leanok
+  In a locally convex space, the weak closure of a convex set equals
+  its original closure.
+\end{theorem}
+
+\begin{theorem}[Rudin 3.13, Mazur's lemma]
+  \label{thm:mazur}
+  \uses{thm:weak-closure-convex}
+  \lean{Rudin.Pending.mazur_convex_combinations}
+  \leanok
+  In a metrisable locally convex space, weak limits of sequences are
+  strong limits of convex combinations.
+\end{theorem}
+
+\begin{theorem}[Rudin 3.16, weak-* compact metrisable in separable]
+  \label{thm:weakStar-metrisable}
+  \lean{Rudin.Pending.weakStar_compact_metrisable_of_separable}
+  \leanok
+  In a separable TVS, weak-* compact subsets of the dual are
+  metrisable in the weak-* topology.
+\end{theorem}
+
+\begin{theorem}[Rudin 3.17, sequential Banach--Alaoglu]
+  \label{thm:banach-alaoglu-sequential}
+  \uses{thm:banach-alaoglu, thm:weakStar-metrisable}
+  \lean{Rudin.Pending.banach_alaoglu_sequential}
+  \leanok
+  In a separable TVS, the polar of any neighbourhood of $0$ is
+  sequentially compact in weak-*.
+\end{theorem}
+
+\begin{theorem}[Rudin 3.18, weakly bounded $=$ bounded]
+  \label{thm:weakly-bounded-iff-bounded}
+  \uses{thm:banach-steinhaus}
+  \lean{Rudin.Pending.weakly_bounded_iff_bounded}
+  \leanok
+  In a locally convex space, weakly bounded sets are originally
+  bounded (and vice versa).
+\end{theorem}
+
+\begin{theorem}[Rudin 3.20, bipolar theorem]
+  \label{thm:bipolar}
+  \uses{thm:weak-closure-convex}
+  \lean{Rudin.Pending.bipolar_eq_weak_closure}
+  \leanok
+  For a balanced convex $E \subseteq X$, the bipolar $E^{\circ\circ}$
+  is the weak closure of $E$.
+\end{theorem}
+
+\begin{theorem}[Rudin 3.21, convex closed iff bipolar self]
+  \label{thm:convex-closed-iff-bipolar}
+  \uses{thm:bipolar}
+  \lean{Rudin.Pending.convex_closed_iff_bipolar}
+  \leanok
+  A convex set is closed iff it equals its bipolar.
+\end{theorem}
+
+\begin{theorem}[Rudin 3.25, Milman]
+  \label{thm:milman}
+  \uses{thm:krein-milman}
+  \lean{Rudin.Pending.milman}
+  \leanok
+  If $K$ is compact and the closed convex hull of $K$ is also compact
+  in a locally convex space, then the extreme points of the closed
+  convex hull lie in $K$.
+\end{theorem}
+
+\begin{theorem}[Rudin 3.27, vector-valued integral]
+  \label{thm:vector-integral}
+  \lean{Rudin.Pending.vector_integral_exists}
+  \leanok
+  For $f$ continuous from a compact Hausdorff $(Q, \mu)$ to a Fréchet
+  space, there exists $y$ with $\Lambda y = \int (\Lambda \circ f)
+  d\mu$ for every continuous linear $\Lambda$.
+\end{theorem}
+
+\begin{theorem}[Rudin 3.29, weak holomorphy implies strong]
+  \label{thm:weak-holomorphic-strong}
+  \lean{Rudin.Pending.weak_holomorphic_iff_strong}
+  \leanok
+  Weakly holomorphic maps into a Fréchet space are strongly
+  holomorphic.
 \end{theorem}
 
 \chapter{Duality in Banach Spaces}
@@ -303,6 +962,9 @@
   compact in the weak-$*$ topology; more generally, the polar of any
   neighborhood of the origin is weak-$*$ compact.
 \end{theorem}
+\begin{proof}
+  \leanok
+\end{proof}
 
 \begin{definition}[Rudin 4.4, canonical embedding into the bidual]
   \label{def:double-dual-embedding}
@@ -328,6 +990,129 @@
   \leanok
   The polar of any set is closed in the strong dual.
 \end{theorem}
+\begin{proof}
+  \leanok
+\end{proof}
+
+% --- Ch04 Pending ---
+
+\begin{theorem}[Rudin 4.1, dual norm makes $X^*$ Banach]
+  \label{thm:dualNorm-banach}
+  \lean{Rudin.Pending.dualNorm_isBanach}
+  \leanok
+  $\|\Lambda\| = \sup_{\|x\| \le 1} |\Lambda x|$ makes the dual of a
+  normed space into a Banach space.
+\end{theorem}
+
+\begin{theorem}[Rudin 4.5, canonical embedding is isometric]
+  \label{thm:canonical-embedding-isometry}
+  \uses{def:double-dual-embedding}
+  \lean{Rudin.Pending.canonical_embedding_isometry}
+  \leanok
+  The canonical embedding $X \to X^{**}$ is an isometry.
+\end{theorem}
+
+\begin{theorem}[Rudin 4.6, annihilator double]
+  \label{thm:annihilator-double}
+  \uses{thm:hahn-banach-cont-extension}
+  \lean{Rudin.Pending.annihilator_double}
+  \leanok
+  $M^\perp$ is a closed subspace of $X^*$, and
+  $M^{\perp\perp} \cap X = \overline{M}$ (under the canonical
+  embedding).
+\end{theorem}
+
+\begin{theorem}[Rudin 4.7, annihilator codimension duality]
+  \label{thm:annihilator-codim}
+  \uses{thm:annihilator-double}
+  \lean{Rudin.Pending.annihilator_codim}
+  \leanok
+  $(M^\perp)^\perp = \overline{M}$, and dimensions/codimensions of
+  subspaces and their annihilators correspond appropriately.
+\end{theorem}
+
+\begin{theorem}[Rudin 4.9, duals of subspaces and quotients]
+  \label{thm:dual-subspace-quotient}
+  \uses{thm:hahn-banach-cont-extension}
+  \lean{Rudin.Pending.dual_of_subspace_quotient}
+  \leanok
+  For a closed subspace $M \subseteq X$,
+  $M^* \cong X^*/M^\perp$ and $(X/M)^* \cong M^\perp$.
+\end{theorem}
+
+\begin{theorem}[Rudin 4.10, norm-preserving Hahn--Banach]
+  \label{thm:hahn-banach-norm-preserving}
+  \uses{thm:hahn-banach-cont-extension}
+  \lean{Rudin.Pending.hahn_banach_norm_preserving}
+  \leanok
+  Every continuous linear functional on a closed subspace extends to
+  the whole space with the same norm.
+\end{theorem}
+
+\begin{theorem}[Rudin 4.12, adjoint continuity characterisation]
+  \label{thm:adjoint-cont-iff}
+  \lean{Rudin.Pending.adjoint_continuous_iff}
+  \leanok
+  $T$ is continuous iff its adjoint $T^*$ is weak-* continuous.
+\end{theorem}
+
+\begin{theorem}[Rudin 4.13, $T(U) \subseteq V$ iff $\|T\| \le 1$]
+  \label{thm:operatorNorm-le-one}
+  \lean{Rudin.Pending.operatorNorm_le_one_iff}
+  \leanok
+  An operator maps the open unit ball into the open unit ball iff its
+  operator norm is $\le 1$.
+\end{theorem}
+
+\begin{theorem}[Rudin 4.14, openness via adjoint]
+  \label{thm:open-via-adjoint}
+  \uses{thm:open-mapping}
+  \lean{Rudin.Pending.open_iff_adjoint_bounded_below}
+  \leanok
+  $T : X \to Y$ between Banach spaces is open iff $T^*$ has closed
+  range and is bounded below.
+\end{theorem}
+
+\begin{theorem}[Rudin 4.18, compact operators ideal]
+  \label{thm:compactOps-ideal}
+  \lean{Rudin.Pending.compactOps_isClosedTwoSidedIdeal}
+  \leanok
+  Compact operators form a closed two-sided ideal in $\mathcal B(X)$.
+\end{theorem}
+
+\begin{theorem}[Rudin 4.19, adjoint of compact is compact]
+  \label{thm:adjoint-compact}
+  \lean{Rudin.Pending.adjoint_compact_of_compact}
+  \leanok
+  The adjoint of a compact operator is compact.
+\end{theorem}
+
+\begin{theorem}[Rudin 4.21, functional vanishing on subspace]
+  \label{thm:functional-vanishing}
+  \uses{thm:hahn-banach-cont-extension}
+  \lean{Rudin.Pending.exists_functional_eq_one_off_subspace}
+  \leanok
+  For $M$ closed and $x \notin M$, there is a continuous linear
+  functional vanishing on $M$ with $\Lambda x = 1$.
+\end{theorem}
+
+\begin{theorem}[Rudin 4.24, spectrum of compact operator]
+  \label{thm:spectrum-compactOp}
+  \uses{thm:compactOps-ideal, thm:riesz-lemma}
+  \lean{Rudin.Pending.spectrum_compactOperator}
+  \leanok
+  Spectrum of a compact operator on a Banach space is countable, with
+  $0$ the only possible limit point; nonzero spectrum consists of
+  eigenvalues with finite-dimensional eigenspaces.
+\end{theorem}
+
+\begin{theorem}[Rudin 4.25, Fredholm alternative]
+  \label{thm:fredholm}
+  \uses{thm:spectrum-compactOp}
+  \lean{Rudin.Pending.fredholm_alternative}
+  \leanok
+  Fredholm alternative for compact perturbations of the identity.
+\end{theorem}
 
 \chapter{Some Applications}
 
@@ -339,6 +1124,9 @@
   $C(X,\mathbb{R})$ that separates points, then $A$ is dense in
   $C(X,\mathbb{R})$.
 \end{theorem}
+\begin{proof}
+  \leanok
+\end{proof}
 
 \begin{theorem}[Rudin 5.8, Stone--Weierstrass ($\mathbb{R},\mathbb{C}$)]
   \label{thm:stone-weierstrass-star}
@@ -347,6 +1135,68 @@
   For $\mathbb{K} \in \{\mathbb{R}, \mathbb{C}\}$ and $X$ compact, a
   self-adjoint star-subalgebra of $C(X, \mathbb{K})$ that separates
   points is dense.
+\end{theorem}
+\begin{proof}
+  \leanok
+\end{proof}
+
+% --- Ch05 Pending ---
+
+\begin{theorem}[Rudin 5.1, continuous convex bounded above on bounded sets]
+  \label{thm:continuousConvex-boundedAbove}
+  \lean{Rudin.Pending.continuousConvex_boundedAbove_on_bounded}
+  \leanok
+  A continuous convex function on a locally convex space is bounded
+  above on bounded sets.
+\end{theorem}
+
+\begin{theorem}[Rudin 5.5, continuous partition of unity]
+  \label{thm:partition-of-unity}
+  \lean{Rudin.Pending.partition_of_unity_continuous}
+  \leanok
+  Existence of continuous partitions of unity subordinate to a given
+  open cover (technical lemma used throughout Ch.~5).
+\end{theorem}
+
+\begin{theorem}[Rudin 5.10, Runge approximation]
+  \label{thm:runge}
+  \lean{Rudin.Pending.runge_approximation}
+  \leanok
+  Every holomorphic function on an open subset of $\mathbb C$ can be
+  uniformly approximated on compacta by rational functions whose
+  poles lie outside the domain.
+\end{theorem}
+
+\begin{theorem}[Rudin 5.18, Müntz--Szász]
+  \label{thm:muntz-szasz}
+  \lean{Rudin.Pending.muntz_szasz}
+  \leanok
+  The span of $\{x^{n_k}\}$ is dense in $C[0,1]$ iff
+  $\sum 1/n_k = \infty$.
+\end{theorem}
+
+\begin{theorem}[Rudin 5.21, partial continuous extension]
+  \label{thm:partial-cont-extension}
+  \lean{Rudin.Pending.partial_continuous_extension}
+  \leanok
+  Hahn--Banach-style continuous extension theorem for partial
+  functions.
+\end{theorem}
+
+\begin{theorem}[Rudin 5.23, Markov--Kakutani fixed point]
+  \label{thm:markov-kakutani}
+  \uses{thm:krein-milman}
+  \lean{Rudin.Pending.markov_kakutani}
+  \leanok
+  A commuting family of continuous affine self-maps of a compact
+  convex set has a common fixed point.
+\end{theorem}
+
+\begin{theorem}[Rudin 5.27, Kakutani--Yosida ergodic]
+  \label{thm:kakutani-yosida}
+  \lean{Rudin.Pending.kakutani_yosida_ergodic}
+  \leanok
+  Kakutani--Yosida ergodic theorem on Banach spaces.
 \end{theorem}
 
 \chapter{Test Functions and Distributions}
@@ -369,6 +1219,115 @@
   The Fréchet derivative defines a continuous linear map
   $\mathcal{S}(E,F) \to \mathcal{S}(E, E\!\to_L\! F)$.
 \end{theorem}
+\begin{proof}
+  \leanok
+\end{proof}
+
+% --- Ch06 Pending ---
+
+\begin{theorem}[Rudin 6.3, $\mathcal D(\Omega)$ inductive limit]
+  \label{thm:testFunctions-inductiveLimit}
+  \uses{def:schwartz}
+  \lean{Rudin.Pending.testFunctions_inductiveLimit}
+  \leanok
+  $\mathcal D(\Omega) = \bigcup_K \mathcal D_K(\Omega)$ carries the
+  strict inductive limit topology of the $\mathcal D_K$.
+\end{theorem}
+
+\begin{theorem}[Rudin 6.5, distribution iff continuous on each $\mathcal D_K$]
+  \label{thm:distribution-iff-DK}
+  \uses{thm:testFunctions-inductiveLimit}
+  \lean{Rudin.Pending.distribution_continuous_iff_on_DK}
+  \leanok
+  A linear functional on $\mathcal D(\Omega)$ is a distribution iff
+  its restriction to each $\mathcal D_K$ is continuous.
+\end{theorem}
+
+\begin{theorem}[Rudin 6.6, sequential characterisation of distributions]
+  \label{thm:distribution-sequential}
+  \uses{thm:distribution-iff-DK}
+  \lean{Rudin.Pending.distribution_iff_sequential}
+  \leanok
+  A linear $\Lambda$ on $\mathcal D(\Omega)$ is a distribution iff
+  $\Lambda \varphi_n \to 0$ whenever $\varphi_n \to 0$ in some
+  $\mathcal D_K$.
+\end{theorem}
+
+\begin{theorem}[Rudin 6.8, seminorm bound characterisation]
+  \label{thm:distribution-seminorm}
+  \uses{thm:distribution-iff-DK}
+  \lean{Rudin.Pending.distribution_iff_seminorm_bound}
+  \leanok
+  $\Lambda$ is a distribution iff for every compact $K$ there are
+  $c, N$ with
+  $|\Lambda \varphi| \le c \sum_{|\alpha| \le N} \|\partial^\alpha
+  \varphi\|_\infty$.
+\end{theorem}
+
+\begin{theorem}[Rudin 6.13, distribution derivatives]
+  \label{thm:distribution-derivative}
+  \lean{Rudin.Pending.distribution_derivative_exists}
+  \leanok
+  Every distribution has distribution derivatives of all orders,
+  defined by $(\partial^\alpha T)(\varphi) = (-1)^{|\alpha|}
+  T(\partial^\alpha \varphi)$.
+\end{theorem}
+
+\begin{theorem}[Rudin 6.17, $\mathcal D'(\Omega)$ is sequentially complete]
+  \label{thm:distributions-seqComplete}
+  \lean{Rudin.Pending.distributions_sequentiallyComplete}
+  \leanok
+  Pointwise limits of distributions are distributions.
+\end{theorem}
+
+\begin{theorem}[Rudin 6.20, localisation principle]
+  \label{thm:distribution-local}
+  \lean{Rudin.Pending.distribution_local_principle}
+  \leanok
+  A distribution that vanishes on a neighbourhood of every point of
+  an open set vanishes on that open set.
+\end{theorem}
+
+\begin{theorem}[Rudin 6.24, point-support distributions]
+  \label{thm:distribution-pointSupport}
+  \lean{Rudin.Pending.distribution_pointSupport_eq_diracDerivatives}
+  \leanok
+  A distribution with point support is a finite linear combination
+  of derivatives of the Dirac delta.
+\end{theorem}
+
+\begin{theorem}[Rudin 6.25, compactly supported distributions $= \mathcal E'$]
+  \label{thm:E-prime}
+  \lean{Rudin.Pending.compactlySupported_distributions_eq_dual_smooth}
+  \leanok
+  $\mathcal E'(\Omega) = (\mathcal E(\Omega))^*$ as the space of
+  compactly supported distributions.
+\end{theorem}
+
+\begin{theorem}[Rudin 6.30, convolution of distribution and test function]
+  \label{thm:convolution-T-phi}
+  \lean{Rudin.Pending.convolution_distribution_test}
+  \leanok
+  $T \star \varphi$ is smooth, and derivatives commute with the
+  convolution.
+\end{theorem}
+
+\begin{theorem}[Rudin 6.32, smooth approximation of distributions]
+  \label{thm:distribution-smooth-approx}
+  \uses{thm:convolution-T-phi}
+  \lean{Rudin.Pending.distribution_approx_smooth}
+  \leanok
+  Every distribution is a limit of smooth functions in $\mathcal D'$.
+\end{theorem}
+
+\begin{theorem}[Rudin 6.36, convolution of distributions]
+  \label{thm:convolution-distributions}
+  \uses{thm:E-prime}
+  \lean{Rudin.Pending.convolution_distributions}
+  \leanok
+  $T \star S$ is well-defined when at least one of $T, S$ has compact
+  support.
+\end{theorem}
 
 \chapter{Fourier Transforms}
 
@@ -380,6 +1339,9 @@
   The Fourier transform is a continuous linear self-map of
   $\mathcal{S}(V, E)$.
 \end{theorem}
+\begin{proof}
+  \leanok
+\end{proof}
 
 \begin{theorem}[Rudin 7.9, Plancherel]
   \label{thm:plancherel}
@@ -389,6 +1351,9 @@
   The Fourier transform extends to a unitary automorphism of $L^2(E;F)$;
   in particular, $\|\widehat{f}\|_{L^2} = \|f\|_{L^2}$.
 \end{theorem}
+\begin{proof}
+  \leanok
+\end{proof}
 
 \begin{theorem}[Rudin 7.7, Fourier inversion on Schwartz space]
   \label{thm:fourier-inversion}
@@ -396,6 +1361,61 @@
   \lean{Rudin.Ch07.fourier_inversion}
   \leanok
   For $f \in \mathcal{S}(V, E)$, $\mathcal{F}^{-1} \mathcal{F} f = f$.
+\end{theorem}
+\begin{proof}
+  \leanok
+\end{proof}
+
+% --- Ch07 Pending ---
+
+\begin{theorem}[Rudin 7.1, Fourier transform on $L^1$]
+  \label{thm:fourierTransform-L1}
+  \lean{Rudin.Pending.fourierTransform_L1}
+  \leanok
+  $\widehat{f}(\xi) = \int f(x) e^{-2\pi i x \cdot \xi} dx$ defines a
+  bounded operator $L^1 \to L^\infty$.
+\end{theorem}
+
+\begin{theorem}[Rudin 7.2, Riemann--Lebesgue]
+  \label{thm:riemann-lebesgue}
+  \uses{thm:fourierTransform-L1}
+  \lean{Rudin.Pending.riemann_lebesgue}
+  \leanok
+  $\widehat{f} \in C_0(\mathbb R^n)$ for $f \in L^1$.
+\end{theorem}
+
+\begin{theorem}[Rudin 7.6, Fourier exchanges convolution and multiplication]
+  \label{thm:fourier-convolution}
+  \uses{thm:fourierTransform-L1}
+  \lean{Rudin.Pending.fourier_convolution}
+  \leanok
+  $\widehat{f \star g} = \widehat{f} \cdot \widehat{g}$.
+\end{theorem}
+
+\begin{theorem}[Rudin 7.13--7.15, Paley--Wiener for distributions]
+  \label{thm:paley-wiener}
+  \uses{thm:E-prime}
+  \lean{Rudin.Pending.paley_wiener}
+  \leanok
+  A tempered distribution $T$ has compact support iff $\widehat{T}$
+  extends to an entire function of exponential type.
+\end{theorem}
+
+\begin{theorem}[Rudin 7.19, Schwartz invariance]
+  \label{thm:fourier-schwartz-invariant}
+  \uses{thm:fourier-schwartz}
+  \lean{Rudin.Pending.fourier_schwartz_invariant}
+  \leanok
+  Schwartz class is invariant under Fourier transform; the inverse
+  is $\mathcal F^{-1} f(x) = \mathcal F f(-x)$.
+\end{theorem}
+
+\begin{theorem}[Rudin 7.23, Bochner]
+  \label{thm:bochner}
+  \lean{Rudin.Pending.bochner}
+  \leanok
+  A continuous $\varphi$ on $\mathbb R^n$ is positive definite iff
+  it is the Fourier transform of a nonnegative finite Borel measure.
 \end{theorem}
 
 \chapter{Applications to Differential Equations}
@@ -410,6 +1430,61 @@
   reducing constant-coefficient linear PDEs in $\mathcal{S}$ to
   algebraic (multiplication) problems.
 \end{theorem}
+\begin{proof}
+  \leanok
+\end{proof}
+
+% --- Ch08 Pending ---
+
+\begin{theorem}[Rudin 8.3, fundamental solution lemma]
+  \label{thm:fundamental-solution}
+  \lean{Rudin.Pending.fundamental_solution_exists}
+  \leanok
+  For polynomials $P$ of degree $N$, there is a fundamental solution
+  $E$ for $P(D)$ (a distribution with $P(D) E = \delta$).
+\end{theorem}
+
+\begin{theorem}[Rudin 8.4, Malgrange--Ehrenpreis]
+  \label{thm:malgrange-ehrenpreis}
+  \uses{thm:fundamental-solution}
+  \lean{Rudin.Pending.malgrange_ehrenpreis}
+  \leanok
+  Every nonzero constant-coefficient linear PDE has a fundamental
+  solution.
+\end{theorem}
+
+\begin{theorem}[Rudin 8.5--8.6, elliptic regularity]
+  \label{thm:elliptic-regularity}
+  \uses{thm:malgrange-ehrenpreis}
+  \lean{Rudin.Pending.elliptic_regularity}
+  \leanok
+  If $P(D) u = f$ with $f$ smooth and $P$ elliptic, then $u$ is
+  smooth.
+\end{theorem}
+
+\begin{theorem}[Rudin 8.9, local solvability]
+  \label{thm:local-solvability}
+  \uses{thm:malgrange-ehrenpreis}
+  \lean{Rudin.Pending.local_solvability}
+  \leanok
+  Every constant-coefficient linear PDE is locally solvable.
+\end{theorem}
+
+\begin{theorem}[Rudin 8.12, hypoelliptic operators]
+  \label{thm:hypoelliptic}
+  \lean{Rudin.Pending.hypoelliptic_iff}
+  \leanok
+  $P(D)$ is hypoelliptic iff its fundamental solution is smooth away
+  from the origin.
+\end{theorem}
+
+\begin{theorem}[Rudin 8.14, quasi-elliptic implies hypoelliptic]
+  \label{thm:quasiElliptic-hypoelliptic}
+  \uses{thm:hypoelliptic}
+  \lean{Rudin.Pending.quasiElliptic_hypoelliptic}
+  \leanok
+  Quasi-elliptic operators are hypoelliptic.
+\end{theorem}
 
 \chapter{Tauberian Theory}
 
@@ -421,6 +1496,58 @@
   $x \to 1^-$. (The elementary abelian partner to Wiener's Tauberian
   theorem, which is not yet available in mathlib.)
 \end{theorem}
+\begin{proof}
+  \leanok
+\end{proof}
+
+% --- Ch09 Pending ---
+
+\begin{theorem}[Rudin 9.3, Wiener's lemma]
+  \label{thm:wiener-lemma}
+  \uses{thm:fourier-convolution}
+  \lean{Rudin.Pending.wiener_lemma}
+  \leanok
+  If $\varphi \in L^1(\mathbb R^n)$ has nowhere-zero Fourier
+  transform, translates of $\varphi$ span a dense subspace of $L^1$.
+\end{theorem}
+
+\begin{theorem}[Rudin 9.5, closed translation-invariant ideals]
+  \label{thm:closed-invariant-ideals-L1}
+  \uses{thm:wiener-lemma}
+  \lean{Rudin.Pending.closed_invariant_ideals_L1}
+  \leanok
+  Closed translation-invariant ideals in $L^1(\mathbb R^n)$ are in
+  bijection with closed subsets of $\mathbb R^n$ via the spectrum
+  (hull of the ideal).
+\end{theorem}
+
+\begin{theorem}[Rudin 9.7, Wiener's Tauberian theorem]
+  \label{thm:wiener-tauberian}
+  \uses{thm:closed-invariant-ideals-L1}
+  \lean{Rudin.Pending.wiener_tauberian}
+  \leanok
+  Let $K \in L^1(\mathbb R^n)$ have nowhere-zero Fourier transform.
+  If $f \in L^\infty$ satisfies $(K \star f)(x) \to A \int K$, then
+  $(h \star f)(x) \to A \int h$ for every $h \in L^1$.
+\end{theorem}
+
+\begin{theorem}[Rudin 9.10, Ikehara]
+  \label{thm:ikehara}
+  \uses{thm:wiener-tauberian}
+  \lean{Rudin.Pending.ikehara}
+  \leanok
+  Asymptotic distribution theorem via analytic continuation of
+  Dirichlet series, classically used to derive the prime number
+  theorem.
+\end{theorem}
+
+\begin{theorem}[Rudin 9.12, Prime Number Theorem]
+  \label{thm:pnt}
+  \uses{thm:ikehara}
+  \lean{Rudin.Pending.prime_number_theorem}
+  \leanok
+  $\pi(x) \sim x / \log x$.
+\end{theorem}
 
 \chapter{Banach Algebras}
 
@@ -430,6 +1557,9 @@
   \leanok
   In a Banach algebra, the set of invertible elements is open.
 \end{theorem}
+\begin{proof}
+  \leanok
+\end{proof}
 
 \begin{theorem}[Rudin 10.12, inversion is continuous]
   \label{thm:inversion-continuous}
@@ -438,6 +1568,9 @@
   \leanok
   The inversion map $x \mapsto x^{-1}$ is continuous at every unit.
 \end{theorem}
+\begin{proof}
+  \leanok
+\end{proof}
 
 \begin{definition}[Rudin 10.7, Neumann unit construction]
   \label{def:neumann-unit}
@@ -455,6 +1588,9 @@
   For $\|a\| < 1$ in a Banach algebra,
   $\sum_{n \ge 0} a^n = (1 - a)^{-1}$.
 \end{theorem}
+\begin{proof}
+  \leanok
+\end{proof}
 
 \begin{theorem}[$1 - a$ is a unit for small $a$]
   \label{thm:one-sub-unit}
@@ -463,6 +1599,9 @@
   \leanok
   If $\|a\| < 1$ in a Banach algebra, then $1 - a$ is invertible.
 \end{theorem}
+\begin{proof}
+  \leanok
+\end{proof}
 
 \begin{theorem}[Rudin 10.13, spectrum nonempty]
   \label{thm:spectrum-nonempty}
@@ -470,6 +1609,9 @@
   \leanok
   Every element of a nontrivial complex Banach algebra has nonempty spectrum.
 \end{theorem}
+\begin{proof}
+  \leanok
+\end{proof}
 
 \begin{theorem}[Rudin 10.14, Gelfand--Mazur]
   \label{thm:gelfand-mazur}
@@ -480,6 +1622,9 @@
   then the natural map $\mathbb{C} \to A$ is an isometric algebra
   isomorphism.
 \end{theorem}
+\begin{proof}
+  \leanok
+\end{proof}
 
 \begin{theorem}[Rudin 10.13, Gelfand's spectral radius formula]
   \label{thm:gelfand-formula}
@@ -489,6 +1634,9 @@
   $\|a^n\|^{1/n} \to \rho(a)$ as $n \to \infty$,
   where $\rho(a)$ is the spectral radius.
 \end{theorem}
+\begin{proof}
+  \leanok
+\end{proof}
 
 \begin{theorem}[Rudin 10.13, spectrum bounded by norm]
   \label{thm:spectrum-in-closed-ball}
@@ -496,6 +1644,9 @@
   \leanok
   $\sigma(a) \subseteq \{z : |z| \le \|a\|\}$.
 \end{theorem}
+\begin{proof}
+  \leanok
+\end{proof}
 
 \begin{theorem}[Rudin 10.13, spectrum is compact]
   \label{thm:spectrum-compact}
@@ -504,6 +1655,9 @@
   \leanok
   The spectrum of any element of a complex Banach algebra is compact.
 \end{theorem}
+\begin{proof}
+  \leanok
+\end{proof}
 
 \begin{theorem}[resolvent set is open]
   \label{thm:resolventSet-open}
@@ -511,6 +1665,9 @@
   \leanok
   The complement of the spectrum in $\mathbb{C}$ is open.
 \end{theorem}
+\begin{proof}
+  \leanok
+\end{proof}
 
 \begin{theorem}[spectral radius $\le$ norm]
   \label{thm:spectralRadius-le-norm}
@@ -519,6 +1676,9 @@
   \leanok
   $\rho(a) \le \|a\|$ for any element of a complex Banach algebra.
 \end{theorem}
+\begin{proof}
+  \leanok
+\end{proof}
 
 \begin{theorem}[corollary: $\rho(1) \le 1$]
   \label{thm:spectralRadius-one-le}
@@ -527,6 +1687,87 @@
   \leanok
   The spectral radius of the identity element is at most $1$.
   \emph{Proved in-project from $\rho(a) \le \|a\|$ and $\|1\| = 1$.}
+\end{theorem}
+\begin{proof}
+  \leanok
+\end{proof}
+
+% --- Ch10 Pending ---
+
+\begin{theorem}[Rudin 10.10, group of units]
+  \label{thm:units-def}
+  \lean{Rudin.Pending.units_def}
+  \leanok
+  Definition of $G(A)$, the group of invertible elements; mathlib
+  packages this as $A^\times$.
+\end{theorem}
+
+\begin{theorem}[Rudin 10.18, spectrum upper semicontinuity]
+  \label{thm:spectrum-uppersemiContinuous}
+  \lean{Rudin.Pending.spectrum_upperSemiContinuous}
+  \leanok
+  If $x_n \to x$ then $\sigma(x_n) \to \sigma(x)$ in a suitable
+  Hausdorff sense.
+\end{theorem}
+
+\begin{theorem}[Rudin 10.19, polynomial spectral mapping]
+  \label{thm:spectrum-polynomial}
+  \lean{Rudin.Pending.spectrum_polynomial_mapping}
+  \leanok
+  $\sigma(p(x)) = p(\sigma(x))$ for any polynomial $p$.
+\end{theorem}
+
+\begin{theorem}[Rudin 10.20, resolvent is holomorphic]
+  \label{thm:resolvent-holomorphic}
+  \lean{Rudin.Pending.resolvent_holomorphic}
+  \leanok
+  The resolvent function $R(\lambda) = (\lambda - x)^{-1}$ is
+  holomorphic on the resolvent set.
+\end{theorem}
+
+\begin{theorem}[Rudin 10.21--10.27, holomorphic functional calculus]
+  \label{thm:holomorphic-fc}
+  \uses{thm:resolvent-holomorphic}
+  \lean{Rudin.Pending.holomorphic_functional_calculus}
+  \leanok
+  If $f$ is holomorphic on a neighbourhood of $\sigma(x)$, then
+  $f(x)$ is well defined via Cauchy's integral formula.
+\end{theorem}
+
+\begin{theorem}[Rudin 10.28, holomorphic spectral mapping]
+  \label{thm:spectrum-holomorphic}
+  \uses{thm:holomorphic-fc}
+  \lean{Rudin.Pending.spectrum_holomorphic_mapping}
+  \leanok
+  $\sigma(f(x)) = f(\sigma(x))$ for $f$ holomorphic.
+\end{theorem}
+
+\begin{theorem}[Rudin 10.30, Shilov idempotent]
+  \label{thm:shilov-idempotent}
+  \uses{thm:holomorphic-fc}
+  \lean{Rudin.Pending.shilov_idempotent}
+  \leanok
+  If $\sigma(x) = K_1 \sqcup K_2$ with $K_i$ disjoint compact, there
+  exist orthogonal idempotents $e_i \in A$ with $e_1 + e_2 = 1$ and
+  $\sigma(e_i) \subseteq K_i \cup \{0\}$.
+\end{theorem}
+
+\begin{theorem}[Rudin 10.33, square root]
+  \label{thm:banachAlgebra-sqrt}
+  \uses{thm:holomorphic-fc}
+  \lean{Rudin.Pending.banachAlgebra_squareRoot}
+  \leanok
+  Every $x$ with $\sigma(x) \cap (-\infty, 0] = \emptyset$ admits a
+  holomorphic square root.
+\end{theorem}
+
+\begin{theorem}[Rudin 10.34, logarithm]
+  \label{thm:banachAlgebra-log}
+  \uses{thm:banachAlgebra-sqrt}
+  \lean{Rudin.Pending.banachAlgebra_log}
+  \leanok
+  Every $x$ with $\sigma(x) \cap (-\infty, 0] = \emptyset$ admits a
+  logarithm.
 \end{theorem}
 
 \chapter{Commutative Banach Algebras}
@@ -548,6 +1789,9 @@
   $z \in \sigma(a)$ iff there is a character $\varphi \in \Delta$ with
   $\varphi(a) = z$.
 \end{theorem}
+\begin{proof}
+  \leanok
+\end{proof}
 
 \begin{definition}[Rudin 11.18, Gelfand transform]
   \label{def:gelfand-transform}
@@ -566,6 +1810,9 @@
   For a commutative unital C$^{*}$-algebra $A$, the Gelfand transform
   is an isometric $*$-isomorphism $A \cong C(\Delta, \mathbb{C})$.
 \end{theorem}
+\begin{proof}
+  \leanok
+\end{proof}
 
 \begin{definition}[Rudin 11.5, character from a maximal ideal]
   \label{def:maximal-ideal-character}
@@ -582,6 +1829,54 @@
   \lean{Rudin.Ch11.maximalIdealCharacter_apply_eq_zero_of_mem}
   \leanok
   The character of a maximal ideal $I$ vanishes on every $a \in I$.
+\end{theorem}
+\begin{proof}
+  \leanok
+\end{proof}
+
+% --- Ch11 Pending ---
+
+\begin{theorem}[Rudin 11.7, character / maximal-ideal correspondence]
+  \label{thm:character-maxIdeal-bijection}
+  \uses{def:character-space, def:maximal-ideal-character}
+  \lean{Rudin.Pending.character_maxIdeal_bijection}
+  \leanok
+  The character space $\Delta(A)$ is in bijection with the maximal
+  ideals of a commutative unital Banach algebra $A$.
+\end{theorem}
+
+\begin{theorem}[Rudin 11.13, $\|\widehat{x}\|_\infty = \rho(x)$]
+  \label{thm:gelfand-norm-spectralRadius}
+  \uses{def:gelfand-transform, thm:gelfand-formula}
+  \lean{Rudin.Pending.gelfand_norm_eq_spectralRadius}
+  \leanok
+  $\|\widehat{x}\|_\infty = \rho(x)$ for the Gelfand transform.
+\end{theorem}
+
+\begin{theorem}[Rudin 11.18, continuous functional calculus]
+  \label{thm:cfc-commutative}
+  \uses{thm:gelfand-naimark}
+  \lean{Rudin.Pending.continuous_functional_calculus_commutative}
+  \leanok
+  Continuous functional calculus on commutative unital
+  $C^*$-algebras.
+\end{theorem}
+
+\begin{theorem}[Rudin 11.21, Stone--Čech via characters]
+  \label{thm:stoneCech-via-characters}
+  \uses{def:character-space}
+  \lean{Rudin.Pending.stoneCech_via_characters}
+  \leanok
+  For a Tychonoff space $X$, the Stone--Čech compactification $\beta
+  X$ arises as the character space of $C_b(X)$.
+\end{theorem}
+
+\begin{theorem}[Rudin 11.23, existence of involution]
+  \label{thm:commutative-involution}
+  \lean{Rudin.Pending.commutative_involution_existence}
+  \leanok
+  Existence of an involution on commutative semisimple Banach
+  algebras under suitable conditions.
 \end{theorem}
 
 \chapter{Bounded Operators on a Hilbert Space}
@@ -603,6 +1898,9 @@
   \leanok
   $\langle A^{*} y, x\rangle = \langle y, A x\rangle$.
 \end{theorem}
+\begin{proof}
+  \leanok
+\end{proof}
 
 \begin{theorem}[Rudin 12.9, adjoint is involutive]
   \label{thm:adjoint-adjoint}
@@ -611,6 +1909,9 @@
   \leanok
   $(A^{*})^{*} = A$.
 \end{theorem}
+\begin{proof}
+  \leanok
+\end{proof}
 
 \begin{theorem}[Rudin 12.10, adjoint of composition]
   \label{thm:adjoint-comp}
@@ -619,6 +1920,9 @@
   \leanok
   $(AB)^{*} = B^{*} A^{*}$.
 \end{theorem}
+\begin{proof}
+  \leanok
+\end{proof}
 
 \begin{theorem}[Rudin 12.11, C$^{*}$-identity]
   \label{thm:cstar-identity}
@@ -627,6 +1931,9 @@
   \leanok
   $\|A^{*} A\| = \|A\|^{2}$.
 \end{theorem}
+\begin{proof}
+  \leanok
+\end{proof}
 
 \begin{theorem}[in-project corollaries of 12.9]
   \label{thm:adjoint-linear-laws}
@@ -638,6 +1945,9 @@
   $\|A^{*}\| = \|A\|$.
   \emph{Proved in-project from the defining inner-product relation.}
 \end{theorem}
+\begin{proof}
+  \leanok
+\end{proof}
 
 \begin{theorem}[in-project: $A^{*} A$ is self-adjoint]
   \label{thm:adjoint-self-comp}
@@ -648,6 +1958,9 @@
   self-adjoint. \emph{Proved in-project by
   $(A^{*}A)^{*} = A^{*}(A^{*})^{*} = A^{*}A$.}
 \end{theorem}
+\begin{proof}
+  \leanok
+\end{proof}
 
 \begin{theorem}[Rudin 12.12, self-adjoint iff $A^{*} = A$]
   \label{thm:self-adjoint-iff}
@@ -656,6 +1969,9 @@
   \leanok
   $A$ is self-adjoint iff $A^{*} = A$.
 \end{theorem}
+\begin{proof}
+  \leanok
+\end{proof}
 
 \begin{theorem}[Rudin 12.23, eigenvalues of a self-adjoint operator are real]
   \label{thm:self-adjoint-real-eigenvalue}
@@ -665,6 +1981,9 @@
   Every eigenvalue $\mu$ of a self-adjoint operator satisfies
   $\overline{\mu} = \mu$.
 \end{theorem}
+\begin{proof}
+  \leanok
+\end{proof}
 
 \begin{theorem}[Rudin 12.26, characterisation of normal operators]
   \label{thm:normal-iff}
@@ -674,6 +1993,9 @@
   An operator $T$ on a Hilbert space is normal ($T^{*}T = T T^{*}$)
   iff $\|T v\| = \|T^{*} v\|$ for every $v$.
 \end{theorem}
+\begin{proof}
+  \leanok
+\end{proof}
 
 \begin{theorem}[Rudin 12.26, kernel $=$ range orthogonal complement for normal operators]
   \label{thm:normal-orthogonal-range}
@@ -682,6 +2004,9 @@
   \leanok
   For a normal operator $T$, $(\operatorname{range} T)^{\perp} = \ker T$.
 \end{theorem}
+\begin{proof}
+  \leanok
+\end{proof}
 
 \begin{definition}[orthogonal projection onto a closed subspace]
   \label{def:ortho-proj}
@@ -698,6 +2023,9 @@
   \leanok
   Every orthogonal projection $P_U$ satisfies $P_U^{*} = P_U$.
 \end{theorem}
+\begin{proof}
+  \leanok
+\end{proof}
 
 \begin{theorem}[Rudin 12.22, spectral theorem (finite-dimensional)]
   \label{thm:spectral-diagonalization}
@@ -709,6 +2037,128 @@
   orthogonal direct sum of its eigenspaces: there is a linear isometry
   $E \cong \bigoplus_\mu E_\mu$ conjugating $T$ to multiplication by
   $\mu$ on each summand.
+\end{theorem}
+\begin{proof}
+  \leanok
+\end{proof}
+
+% --- Ch12 Pending ---
+
+\begin{theorem}[Rudin 12.13, polarisation identity]
+  \label{thm:polarisation}
+  \lean{Rudin.Pending.polarisation}
+  \leanok
+  The inner product is recovered from the norm via polarisation.
+\end{theorem}
+
+\begin{theorem}[Rudin 12.16, polar decomposition]
+  \label{thm:polar-decomposition}
+  \uses{def:adjoint}
+  \lean{Rudin.Pending.polar_decomposition}
+  \leanok
+  $T = U |T|$ with $U$ partial isometry and $|T| = (T^* T)^{1/2}$.
+\end{theorem}
+
+\begin{theorem}[Rudin 12.17, isometry characterisation]
+  \label{thm:isometry-iff}
+  \uses{def:adjoint}
+  \lean{Rudin.Pending.isometry_iff_adjoint_id}
+  \leanok
+  $T$ is an isometry iff $T^* T = I$.
+\end{theorem}
+
+\begin{theorem}[Rudin 12.18, self-adjoint via real quadratic form]
+  \label{thm:selfAdjoint-realQuadratic}
+  \uses{thm:self-adjoint-iff}
+  \lean{Rudin.Pending.selfAdjoint_iff_realQuadratic}
+  \leanok
+  $T = T^*$ iff $\langle T x, x \rangle \in \mathbb R$ for all $x$
+  (over $\mathbb C$).
+\end{theorem}
+
+\begin{theorem}[Rudin 12.19--12.20, continuous functional calculus]
+  \label{thm:cfc-selfAdjoint}
+  \uses{thm:self-adjoint-iff}
+  \lean{Rudin.Pending.cfc_selfAdjoint}
+  \leanok
+  Continuous functional calculus for self-adjoint operators extends
+  polynomial calculus to $C(\sigma(T))$.
+\end{theorem}
+
+\begin{theorem}[Rudin 12.21, multiplication-operator spectral theorem]
+  \label{thm:spectral-multiplication}
+  \uses{thm:cfc-selfAdjoint}
+  \lean{Rudin.Pending.spectral_theorem_normal}
+  \leanok
+  Every normal operator is unitarily equivalent to multiplication by
+  a measurable function on some $L^2(\mu)$.
+\end{theorem}
+
+\begin{theorem}[Rudin 12.24, projection-valued spectral resolution]
+  \label{thm:spectral-resolution}
+  \uses{thm:spectral-multiplication}
+  \lean{Rudin.Pending.spectral_resolution}
+  \leanok
+  Every normal $T$ admits a unique resolution of the identity $E$ on
+  $\sigma(T)$ with $T = \int \lambda \, dE(\lambda)$.
+\end{theorem}
+
+\begin{theorem}[Rudin 12.25, Borel functional calculus]
+  \label{thm:borel-fc}
+  \uses{thm:spectral-resolution}
+  \lean{Rudin.Pending.borel_functional_calculus}
+  \leanok
+  $f(T) = \int f \, dE$ for bounded Borel $f$ on $\sigma(T)$.
+\end{theorem}
+
+\begin{theorem}[Rudin 12.27, positive operators]
+  \label{thm:positive-iff-quadratic}
+  \uses{def:adjoint}
+  \lean{Rudin.Pending.positive_iff_quadratic_nonneg}
+  \leanok
+  $T \ge 0$ iff $\langle T x, x \rangle \ge 0$, iff $T = S^* S$.
+\end{theorem}
+
+\begin{theorem}[Rudin 12.30, spectrum of normal $=$ essential range]
+  \label{thm:spectrum-normal-essRange}
+  \uses{thm:spectral-multiplication}
+  \lean{Rudin.Pending.spectrum_normal_essRange}
+  \leanok
+  Spectrum of a normal operator equals the essential range of its
+  symbol under the multiplication-operator representation.
+\end{theorem}
+
+\begin{theorem}[Rudin 12.32, commutant of normal operator]
+  \label{thm:commutant-normal}
+  \uses{thm:spectral-resolution}
+  \lean{Rudin.Pending.commutant_normal}
+  \leanok
+  The commutant of a normal operator equals the commutant of its
+  spectral measure.
+\end{theorem}
+
+\begin{theorem}[Rudin 12.36, multiplicity theory]
+  \label{thm:multiplicity-normal}
+  \uses{thm:spectral-resolution}
+  \lean{Rudin.Pending.multiplicity_normal}
+  \leanok
+  Multiplicity theory for normal operators.
+\end{theorem}
+
+\begin{theorem}[Rudin 12.40, mean ergodic theorem]
+  \label{thm:mean-ergodic}
+  \lean{Rudin.Pending.mean_ergodic_vonNeumann}
+  \leanok
+  For an isometry $T$ on a Hilbert space, $\frac{1}{N} \sum_{k=0}^{N-1}
+  T^k x \to P x$ strongly, with $P$ projecting on $\ker(T - I)$.
+\end{theorem}
+
+\begin{theorem}[Rudin 12.43, individual ergodic theorem (Hilbert)]
+  \label{thm:pointwise-ergodic-hilbert}
+  \uses{thm:mean-ergodic}
+  \lean{Rudin.Pending.pointwise_ergodic_hilbert}
+  \leanok
+  Pointwise / individual ergodic theorem in Hilbert-space form.
 \end{theorem}
 
 \chapter{Unbounded Operators}
@@ -737,6 +2187,9 @@
   \leanok
   Every closed operator is trivially closable.
 \end{theorem}
+\begin{proof}
+  \leanok
+\end{proof}
 
 \begin{definition}[Rudin 13.6, closure of an operator]
   \label{def:closure-operator}
@@ -754,6 +2207,9 @@
   \leanok
   If $T$ is closable, then $\overline{T}$ is a closed operator.
 \end{theorem}
+\begin{proof}
+  \leanok
+\end{proof}
 
 \begin{definition}[Rudin 13.9, adjoint of an unbounded operator]
   \label{def:pmap-adjoint}
@@ -773,6 +2229,9 @@
   \leanok
   The adjoint of any densely-defined operator is a closed operator.
 \end{theorem}
+\begin{proof}
+  \leanok
+\end{proof}
 
 \begin{theorem}[Rudin 13.11, adjoint is a formal adjoint]
   \label{thm:pmap-adjoint-formal}
@@ -782,4 +2241,105 @@
   For a densely-defined $T$, $\langle T x, y\rangle = \langle x,
   T^{*} y\rangle$ whenever $x \in \operatorname{dom} T$ and $y \in
   \operatorname{dom} T^{*}$.
+\end{theorem}
+\begin{proof}
+  \leanok
+\end{proof}
+
+% --- Ch13 Pending ---
+
+\begin{theorem}[Rudin 13.13, adjoint dense iff closable]
+  \label{thm:adjoint-dense-iff-closable}
+  \uses{def:closable-operator, def:pmap-adjoint}
+  \lean{Rudin.Pending.adjoint_denselyDefined_iff_closable}
+  \leanok
+  The adjoint of a closed densely-defined operator is densely defined
+  iff the operator is closable.
+\end{theorem}
+
+\begin{theorem}[Rudin 13.14, $T^{**} = \overline{T}$]
+  \label{thm:adjoint-adjoint-closure}
+  \uses{def:closure-operator, def:pmap-adjoint}
+  \lean{Rudin.Pending.adjoint_adjoint_eq_closure}
+  \leanok
+  The double adjoint of a densely-defined closable operator equals
+  its closure.
+\end{theorem}
+
+\begin{theorem}[Rudin 13.16, Cayley transform]
+  \label{thm:cayley-transform}
+  \lean{Rudin.Pending.cayley_transform}
+  \leanok
+  Closed symmetric $T$ corresponds to an isometry
+  $U = (T - i)(T + i)^{-1}$.
+\end{theorem}
+
+\begin{theorem}[Rudin 13.17, self-adjoint iff Cayley unitary]
+  \label{thm:selfAdjoint-cayley-unitary}
+  \uses{thm:cayley-transform}
+  \lean{Rudin.Pending.selfAdjoint_iff_cayley_unitary}
+  \leanok
+  $T$ is self-adjoint iff its Cayley transform is unitary.
+\end{theorem}
+
+\begin{theorem}[Rudin 13.19, deficiency indices]
+  \label{thm:deficiency-indices}
+  \uses{thm:cayley-transform}
+  \lean{Rudin.Pending.selfAdjoint_extension_iff_deficiency}
+  \leanok
+  Self-adjoint extensions of a closed symmetric $T$ exist iff
+  $\dim \ker(T^* - i) = \dim \ker(T^* + i)$.
+\end{theorem}
+
+\begin{theorem}[Rudin 13.22, spectral theorem (unbounded self-adjoint)]
+  \label{thm:spectral-unbounded-selfAdjoint}
+  \uses{thm:selfAdjoint-cayley-unitary, thm:spectral-resolution}
+  \lean{Rudin.Pending.spectral_theorem_unbounded_selfAdjoint}
+  \leanok
+  Every self-adjoint operator $T$ admits a unique spectral resolution
+  $T = \int \lambda \, dE(\lambda)$ over $\mathbb R$.
+\end{theorem}
+
+\begin{theorem}[Rudin 13.24, unbounded functional calculus]
+  \label{thm:unbounded-fc}
+  \uses{thm:spectral-unbounded-selfAdjoint}
+  \lean{Rudin.Pending.unbounded_functional_calculus}
+  \leanok
+  Functional calculus for unbounded self-adjoint operators, defined
+  via the spectral resolution and including unbounded measurable
+  functions.
+\end{theorem}
+
+\begin{theorem}[Rudin 13.30, spectral theorem (unbounded normal)]
+  \label{thm:spectral-unbounded-normal}
+  \uses{thm:spectral-unbounded-selfAdjoint}
+  \lean{Rudin.Pending.spectral_theorem_unbounded_normal}
+  \leanok
+  Spectral theorem for unbounded normal operators.
+\end{theorem}
+
+\begin{theorem}[Rudin 13.33, Stone's theorem]
+  \label{thm:stone-theorem}
+  \uses{thm:spectral-unbounded-selfAdjoint}
+  \lean{Rudin.Pending.stone_theorem}
+  \leanok
+  A strongly continuous one-parameter unitary group has the form
+  $U(t) = e^{itA}$ for a unique self-adjoint $A$.
+\end{theorem}
+
+\begin{theorem}[Rudin 13.36, self-adjoint contraction generators]
+  \label{thm:selfAdjoint-contraction}
+  \uses{thm:stone-theorem}
+  \lean{Rudin.Pending.selfAdjoint_generator_contraction}
+  \leanok
+  Self-adjoint generators of contraction semigroups (Hille--Yosida
+  special case).
+\end{theorem}
+
+\begin{theorem}[Rudin 13.37--13.38, Friedrichs extension]
+  \label{thm:friedrichs}
+  \lean{Rudin.Pending.friedrichs_extension}
+  \leanok
+  A densely-defined semibounded symmetric operator has a canonical
+  self-adjoint extension.
 \end{theorem}

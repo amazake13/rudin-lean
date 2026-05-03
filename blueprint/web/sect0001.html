@@ -97,6 +97,9 @@
 
     <a class="icon proof" href="sect0001.html#thm:translation-homeo">#</a>
     
+    <a class="icon proof" href="sect0001.html#a0000000015"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
     
     
     <button class="modal lean">L∃∀N</button>
@@ -110,9 +113,9 @@
         
         <ul class="uses">
           
-          <li><a href="/find/#doc/Rudin.Ch01.translationHomeo" class="lean_decl">Rudin.Ch01.translationHomeo</a></li>
+          <li><a href="docs/find/#doc/Rudin.Ch01.translationHomeo" class="lean_decl">Rudin.Ch01.translationHomeo</a></li>
           
-          <li><a href="/find/#doc/Rudin.Ch01.smulHomeo" class="lean_decl">Rudin.Ch01.smulHomeo</a></li>
+          <li><a href="docs/find/#doc/Rudin.Ch01.smulHomeo" class="lean_decl">Rudin.Ch01.smulHomeo</a></li>
           
         </ul>
     
@@ -124,6 +127,18 @@
   </div>
   <div class="theorem_thmcontent">
   <p>   Let \(X\) be a topological vector space over \(\mathbb {K}\). For each \(a \in X\) the translation \(T_a\colon x \mapsto x + a\) is a homeomorphism of \(X\) onto itself, and for each nonzero scalar \(c\) the map \(M_c\colon x \mapsto cx\) is a homeomorphism as well. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000015">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>\(T_a\) is continuous as the sum of a constant and the identity on a topological additive group; its inverse is \(T_{-a}\), continuous by the same argument. \(M_c\) is continuous by <span class="ttfamily">ContinuousSMul</span>; its inverse is \(M_{c^{-1}}\), and \(M_{c^{-1}}\circ M_c = \mathrm{id}\) follows from \(c^{-1}(c x) = x\). </p>
 
   </div>
 </div>
@@ -143,6 +158,9 @@
 
     <a class="icon proof" href="sect0001.html#thm:heine-borel">#</a>
     
+    <a class="icon proof" href="sect0001.html#a0000000016"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
     
     
     <button class="modal lean">L∃∀N</button>
@@ -156,7 +174,7 @@
         
         <ul class="uses">
           
-          <li><a href="/find/#doc/Rudin.Ch01.heine_borel" class="lean_decl">Rudin.Ch01.heine_borel</a></li>
+          <li><a href="docs/find/#doc/Rudin.Ch01.heine_borel" class="lean_decl">Rudin.Ch01.heine_borel</a></li>
           
         </ul>
     
@@ -168,6 +186,18 @@
   </div>
   <div class="theorem_thmcontent">
   <p>   In a finite-dimensional normed space over \(\mathbb {R}\) or \(\mathbb {C}\), every closed and bounded set is compact. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000016">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>A finite-dimensional normed space over a locally compact field is a proper metric space, i.e. every closed ball \(\overline{B}(0, R)\) is compact. A bounded set \(s\) is contained in some such \(\overline{B}(0, R)\); being a closed subset of a compact set, \(s\) is itself compact. </p>
 
   </div>
 </div>
@@ -186,6 +216,9 @@
     <div class="thm_header_hidden_extras">
 
     <a class="icon proof" href="sect0001.html#thm:translation-preserves-open">#</a>
+    
+    <a class="icon proof" href="sect0001.html#a0000000017"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
     
     
     <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
@@ -220,9 +253,9 @@
         
         <ul class="uses">
           
-          <li><a href="/find/#doc/Rudin.Ch01.translation_image_isOpen" class="lean_decl">Rudin.Ch01.translation_image_isOpen</a></li>
+          <li><a href="docs/find/#doc/Rudin.Ch01.translation_image_isOpen" class="lean_decl">Rudin.Ch01.translation_image_isOpen</a></li>
           
-          <li><a href="/find/#doc/Rudin.Ch01.smul_image_isOpen" class="lean_decl">Rudin.Ch01.smul_image_isOpen</a></li>
+          <li><a href="docs/find/#doc/Rudin.Ch01.smul_image_isOpen" class="lean_decl">Rudin.Ch01.smul_image_isOpen</a></li>
           
         </ul>
     
@@ -234,6 +267,18 @@
   </div>
   <div class="theorem_thmcontent">
   <p>    Left-translation by \(a\) and scaling by a nonzero \(c\) send open sets to open sets. <em>Proved in-project from Rudin 1.6’s homeomorphism packaging.</em> </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000017">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Write \((a + \cdot )(s) = T_{-a}^{-1}(s)\): \(y \in (a + \cdot )(s)\) iff \(y - a \in s\) iff \(T_{-a}(y) \in s\). The map \(T_{-a}\) is continuous by Theorem&#160;<a href="sect0001.html#thm:translation-homeo">1</a>, so the preimage of the open \(s\) is open. The scalar case is identical with \(T_{-a}\) replaced by \(M_{c^{-1}}\). </p>
 
   </div>
 </div>
@@ -266,7 +311,7 @@
         
         <ul class="uses">
           
-          <li><a href="/find/#doc/Rudin.Ch01.minkowski" class="lean_decl">Rudin.Ch01.minkowski</a></li>
+          <li><a href="docs/find/#doc/Rudin.Ch01.minkowski" class="lean_decl">Rudin.Ch01.minkowski</a></li>
           
         </ul>
     
@@ -296,6 +341,9 @@
     <div class="thm_header_hidden_extras">
 
     <a class="icon proof" href="sect0001.html#thm:minkowski-subadditive">#</a>
+    
+    <a class="icon proof" href="sect0001.html#a0000000018"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
     
     
     <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
@@ -330,7 +378,7 @@
         
         <ul class="uses">
           
-          <li><a href="/find/#doc/Rudin.Ch01.minkowski_add_le" class="lean_decl">Rudin.Ch01.minkowski_add_le</a></li>
+          <li><a href="docs/find/#doc/Rudin.Ch01.minkowski_add_le" class="lean_decl">Rudin.Ch01.minkowski_add_le</a></li>
           
         </ul>
     
@@ -342,6 +390,18 @@
   </div>
   <div class="theorem_thmcontent">
   <p>    If \(s\) is convex and absorbent, then \(\mu _s(x + y) \le \mu _s(x) + \mu _s(y)\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000018">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Fix \(\varepsilon {\gt} 0\). By absorbence and the definition of the gauge, pick \(a {\lt} \mu _s(x) + \varepsilon /2\) and \(b {\lt} \mu _s(y) + \varepsilon /2\) with \(u, v \in s\) and \(x = a u\), \(y = b v\). Convexity of \(s\) gives \(\tfrac {a}{a+b} u + \tfrac {b}{a+b} v \in s\), so \(a u + b v = (a + b)\bigl(\tfrac {a}{a+b} u + \tfrac {b}{a+b} v\bigr) \in (a + b) s\). Hence \(\mu _s(x + y) \le a + b {\lt} \mu _s(x) + \mu _s(y) + \varepsilon \). Let \(\varepsilon \to 0\). </p>
 
   </div>
 </div>
@@ -361,6 +421,9 @@
 
     <a class="icon proof" href="sect0001.html#thm:linear-continuity-bound">#</a>
     
+    <a class="icon proof" href="sect0001.html#a0000000019"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
     
     
     <button class="modal lean">L∃∀N</button>
@@ -374,7 +437,7 @@
         
         <ul class="uses">
           
-          <li><a href="/find/#doc/Rudin.Ch01.linear_continuous_of_bounded" class="lean_decl">Rudin.Ch01.linear_continuous_of_bounded</a></li>
+          <li><a href="docs/find/#doc/Rudin.Ch01.linear_continuous_of_bounded" class="lean_decl">Rudin.Ch01.linear_continuous_of_bounded</a></li>
           
         </ul>
     
@@ -386,6 +449,18 @@
   </div>
   <div class="theorem_thmcontent">
   <p>   A linear map between normed spaces is continuous iff there exists a constant \(C\) with \(\| f(x)\|  \le C\| x\| \) for all \(x\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000019">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Given the bound, linearity yields \(\| f(x) - f(y)\|  = \| f(x - y)\|  \le C\| x - y\| \), so \(f\) is Lipschitz with constant \(C\), hence continuous. (Conversely, continuity at \(0\) of a linear map forces such a bound by absorbing a unit ball into a chosen \(0\)-neighbourhood.) The Lean construction packages this via <span class="ttfamily">AddMonoidHomClass.continuous_of_bound</span>. </p>
 
   </div>
 </div>
@@ -418,7 +493,7 @@
         
         <ul class="uses">
           
-          <li><a href="/find/#doc/Rudin.Ch01.balanced_hull" class="lean_decl">Rudin.Ch01.balanced_hull</a></li>
+          <li><a href="docs/find/#doc/Rudin.Ch01.balanced_hull" class="lean_decl">Rudin.Ch01.balanced_hull</a></li>
           
         </ul>
     
@@ -448,6 +523,9 @@
     <div class="thm_header_hidden_extras">
 
     <a class="icon proof" href="sect0001.html#thm:balanced-hull-balanced">#</a>
+    
+    <a class="icon proof" href="sect0001.html#a0000000020"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
     
     
     <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
@@ -482,9 +560,9 @@
         
         <ul class="uses">
           
-          <li><a href="/find/#doc/Rudin.Ch01.balanced_hull_is_balanced" class="lean_decl">Rudin.Ch01.balanced_hull_is_balanced</a></li>
+          <li><a href="docs/find/#doc/Rudin.Ch01.balanced_hull_is_balanced" class="lean_decl">Rudin.Ch01.balanced_hull_is_balanced</a></li>
           
-          <li><a href="/find/#doc/Rudin.Ch01.subset_balanced_hull" class="lean_decl">Rudin.Ch01.subset_balanced_hull</a></li>
+          <li><a href="docs/find/#doc/Rudin.Ch01.subset_balanced_hull" class="lean_decl">Rudin.Ch01.subset_balanced_hull</a></li>
           
         </ul>
     
@@ -496,6 +574,2091 @@
   </div>
   <div class="theorem_thmcontent">
   <p>    The balanced hull is balanced and contains the original set. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000020">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Realise the hull as \(\bigcup _{\| r\|  \le 1} r \cdot s\). For containment take \(r = 1\): \(x = 1 \cdot x \in 1 \cdot s\) for every \(x \in s\). For balance, take \(\| a\|  \le 1\) and \(x \in a \cdot \bigcup _{\| r\| \le 1} r \cdot s\). Then \(x = (a r) \cdot z\) for some \(z \in s\) with \(\| r\|  \le 1\), and \(\| a r\|  = \| a\| \| r\|  \le 1\), so \(x\) lies in the hull. </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:tvs-hausdorff">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">9</span>
+    <span class="theorem_thmtitle">Rudin 1.12, TVS is Hausdorff</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0001.html#thm:tvs-hausdorff">#</a>
+    
+    <a class="icon proof" href="sect0001.html#a0000000021"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="docs/find/#doc/Rudin.Ch01.t2_of_t1" class="lean_decl">Rudin.Ch01.t2_of_t1</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>   Every topological vector space (in Rudin’s T\(_1\) sense) is Hausdorff. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000021">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>In any topological additive group, \(T_2\) is equivalent to the closedness of \(\{ 0\} \): given distinct \(x \neq y\), by continuity of subtraction an open set separating \(x - y\) from \(0\) pulls back to disjoint open neighbourhoods of \(x\) and \(y\). Since \(\{ 0\} \) is closed by \(T_1\), the space is \(T_2\). </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:closure-properties">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">10</span>
+    <span class="theorem_thmtitle">Rudin 1.13 (d,e,f), closure properties</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0001.html#thm:closure-properties">#</a>
+    
+    <a class="icon proof" href="sect0001.html#a0000000022"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="docs/find/#doc/Rudin.Ch01.convex_closure" class="lean_decl">Rudin.Ch01.convex_closure</a></li>
+          
+          <li><a href="docs/find/#doc/Rudin.Ch01.balanced_closure" class="lean_decl">Rudin.Ch01.balanced_closure</a></li>
+          
+          <li><a href="docs/find/#doc/Rudin.Ch01.vonNBounded_closure" class="lean_decl">Rudin.Ch01.vonNBounded_closure</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>   In a TVS: (d) the closure of a convex set is convex; (e) the closure of a balanced set is balanced; (f) in a \(T_1\) regular TVS, the closure of a bounded set is bounded. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000022">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>(d) For \(x, y \in \overline{C}\) and \(t \in [0, 1]\), the continuous map \((u, v) \mapsto (1 - t) u + t v\) sends \(\overline{C} \times \overline{C}\) into \(\overline{\{ (1 - t) u + t v : u, v \in C\} } \subseteq \overline{C}\). (e) The same argument with \((u) \mapsto a u\) for \(\| a\|  \le 1\). (f) Given a \(0\)-neighbourhood \(U\), regularity yields a closed \(0\)-neighbourhood \(V\) with \(V \subseteq U\); boundedness of \(A\) gives \(t\) with \(A \subseteq t V\); since \(t V\) is closed, \(\overline{A} \subseteq t V \subseteq t U\). </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:balanced-nhd">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">11</span>
+    <span class="theorem_thmtitle">Rudin 1.14(a), balanced neighbourhood exists</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0001.html#thm:balanced-nhd">#</a>
+    
+    <a class="icon proof" href="sect0001.html#a0000000023"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="docs/find/#doc/Rudin.Ch01.nhds_zero_has_basis_balanced" class="lean_decl">Rudin.Ch01.nhds_zero_has_basis_balanced</a></li>
+          
+          <li><a href="docs/find/#doc/Rudin.Ch01.exists_balanced_nhds_subset" class="lean_decl">Rudin.Ch01.exists_balanced_nhds_subset</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>   The neighbourhood filter of \(0\) has a basis of balanced sets; equivalently, every neighbourhood of \(0\) contains a balanced neighbourhood of \(0\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000023">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Given a \(0\)-neighbourhood \(U\), define the <em>balanced core</em> \(\operatorname {bc}(U) = \bigcap _{\| a\|  \ge 1} a \cdot U\). It is balanced by construction. Continuity of scalar multiplication at \((0, 0)\) yields \(\delta {\gt} 0\) and a \(0\)-neighbourhood \(W\) with \(a W \subseteq U\) for \(\| a\|  \le \delta \), so \(W \subseteq \bigcap _{\| a\|  \le \delta } a^{-1} U = \operatorname {bc}(U)\) (after rescaling), making \(\operatorname {bc}(U)\) a neighbourhood of \(0\) contained in \(U\). </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:absorbent-compact-bounded">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">12</span>
+    <span class="theorem_thmtitle">Rudin 1.15, absorbent and bounded</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0001.html#thm:absorbent-compact-bounded">#</a>
+    
+    <a class="icon proof" href="sect0001.html#a0000000024"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="docs/find/#doc/Rudin.Ch01.absorbent_nhds_zero'" class="lean_decl">Rudin.Ch01.absorbent_nhds_zero'</a></li>
+          
+          <li><a href="docs/find/#doc/Rudin.Ch01.isVonNBounded_of_isCompact" class="lean_decl">Rudin.Ch01.isVonNBounded_of_isCompact</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>   (a) Every neighbourhood of \(0\) is absorbent. (b) Every compact subset of a TVS is bounded. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000024">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>(a) Fix \(x \in E\) and a \(0\)-neighbourhood \(V\). The map \(a \mapsto a x\) is continuous with \(0 \cdot x = 0 \in V\), so \(\{ a : a x \in V\} \) is a neighbourhood of \(0 \in \mathbb {K}\) and contains some nonzero \(a\); then \(x \in a^{-1} V\). (b) A compact subset of a uniform space is totally bounded. In a TVS, a totally bounded set is von Neumann bounded: given a \(0\)-neighbourhood \(V\), pick a balanced \(W\) with \(W + W \subseteq V\); a finite cover of \(K\) by translates \(x_i + W\) lets one choose \(t\) large enough that each \(x_i \in t W\), hence \(K \subseteq t W + W \subseteq t V\). </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:linear-cont-at-zero">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">13</span>
+    <span class="theorem_thmtitle">Rudin 1.17, continuity at zero</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0001.html#thm:linear-cont-at-zero">#</a>
+    
+    <a class="icon proof" href="sect0001.html#a0000000025"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="docs/find/#doc/Rudin.Ch01.continuous_of_linear_continuousAt_zero" class="lean_decl">Rudin.Ch01.continuous_of_linear_continuousAt_zero</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>   A linear map between topological vector spaces that is continuous at \(0\) is continuous everywhere. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000025">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>For any \(x_0 \in E\), write \(\Lambda = T_{\Lambda x_0} \circ \Lambda \circ T_{-x_0}\) (by additivity of \(\Lambda \)). Both translations are continuous (Theorem&#160;<a href="sect0001.html#thm:translation-homeo">1</a>), and \(\Lambda \) is continuous at \(0 = T_{-x_0}(x_0)\), so the composition is continuous at \(x_0\). </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:linear-cont-iff-closed-ker">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">14</span>
+    <span class="theorem_thmtitle">Rudin 1.18, continuity via closed kernel</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0001.html#thm:linear-cont-iff-closed-ker">#</a>
+    
+    <a class="icon proof" href="sect0001.html#a0000000026"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="docs/find/#doc/Rudin.Ch01.linearFunctional_continuous_iff_ker_isClosed" class="lean_decl">Rudin.Ch01.linearFunctional_continuous_iff_ker_isClosed</a></li>
+          
+          <li><a href="docs/find/#doc/Rudin.Ch01.linearFunctional_continuous_of_nonzero_on_open" class="lean_decl">Rudin.Ch01.linearFunctional_continuous_of_nonzero_on_open</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>   A linear functional is continuous iff its kernel is closed. Also, a linear functional nonzero on some nonempty open set is automatically continuous. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000026">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>(\(\Rightarrow \)) \(\ker \Lambda = \Lambda ^{-1}\{ 0\} \) is the preimage of a closed singleton, hence closed. (\(\Leftarrow \)) Assume \(\Lambda \neq 0\) and \(\ker \Lambda \) closed. Pick \(x_0\) with \(\Lambda x_0 = 1\). The complement of \(\ker \Lambda \) is open and contains \(x_0\), so it contains a balanced neighbourhood \(V\) of the form \(x_0 + U\) with \(U\) balanced (Theorem&#160;<a href="sect0001.html#thm:balanced-nhd">11</a>). Then \(\Lambda (U)\) is a balanced subset of \(\mathbb {K}\) not containing \(-1\), which forces \(|\Lambda (U)| {\lt} 1\), giving continuity at \(0\); Theorem&#160;<a href="sect0001.html#thm:linear-cont-at-zero">13</a> finishes. For the “nonzero on an open set” version: if \(\Lambda \) is nonzero on an open \(s\), then \(\ker \Lambda \) misses \(s\), but \(\ker \Lambda \) is either \(E\) or a hyperplane; hyperplanes with nonempty open complement are closed, reducing to the above. </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:fd-linear-continuous">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">15</span>
+    <span class="theorem_thmtitle">Rudin 1.20, linear maps from finite-dimensional spaces</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0001.html#thm:fd-linear-continuous">#</a>
+    
+    <a class="icon proof" href="sect0001.html#a0000000027"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0001.html#thm:linear-cont-at-zero">Theorem 13</a></li>
+          
+          <li><a href="sect0001.html#thm:absorbent-compact-bounded">Theorem 12</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="docs/find/#doc/Rudin.Ch01.linear_from_finiteDimensional_continuous" class="lean_decl">Rudin.Ch01.linear_from_finiteDimensional_continuous</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>    Every linear map from a finite-dimensional Hausdorff topological vector space into a TVS is continuous. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000027">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Pick a basis \(e_1, \ldots , e_n\) of \(E\). Writing \(x = \sum _i x_i e_i\) gives \(\Lambda x = \sum _i x_i \Lambda (e_i)\), so it suffices to check that each coordinate projection \(\pi _i\colon E \to \mathbb {K}\) is continuous: the target is then a finite sum of scaled continuous maps. On a finite-dimensional Hausdorff TVS, the \(\pi _i\) are continuous because the space is linearly homeomorphic to \(\mathbb {K}^n\) (a fact equivalent to the \(\mathbb {K}\)-module topology being uniquely determined). </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:fd-subspace-closed">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">16</span>
+    <span class="theorem_thmtitle">Rudin 1.21(b), finite-dimensional subspaces are closed</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0001.html#thm:fd-subspace-closed">#</a>
+    
+    <a class="icon proof" href="sect0001.html#a0000000028"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0001.html#thm:fd-linear-continuous">Theorem 15</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="docs/find/#doc/Rudin.Ch01.finiteDimensional_subspace_isClosed" class="lean_decl">Rudin.Ch01.finiteDimensional_subspace_isClosed</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>    Every finite-dimensional subspace of a Hausdorff TVS is closed. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000028">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Let \(F\) be a finite-dimensional subspace. The identity \(F \to E\) is continuous, and by Theorem&#160;<a href="sect0001.html#thm:fd-linear-continuous">15</a> so is every linear bijection \(\mathbb {K}^n \to F\) together with its inverse, so \(F\) inherits a complete normed-space topology from \(\mathbb {K}^n\). Completeness in a Hausdorff uniform space implies closedness in the ambient TVS. </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:riesz-locallycompact">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">17</span>
+    <span class="theorem_thmtitle">Rudin 1.22, Riesz: locally compact TVS is finite-dim</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0001.html#thm:riesz-locallycompact">#</a>
+    
+    <a class="icon proof" href="sect0001.html#a0000000029"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0001.html#thm:absorbent-compact-bounded">Theorem 12</a></li>
+          
+          <li><a href="sect0001.html#thm:balanced-nhd">Theorem 11</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="docs/find/#doc/Rudin.Ch01.finiteDimensional_of_locallyCompactSpace" class="lean_decl">Rudin.Ch01.finiteDimensional_of_locallyCompactSpace</a></li>
+          
+          <li><a href="docs/find/#doc/Rudin.Ch01.finiteDimensional_of_totallyBounded_nhds_zero" class="lean_decl">Rudin.Ch01.finiteDimensional_of_totallyBounded_nhds_zero</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>    Every locally compact topological vector space has finite dimension. </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000029">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Let \(K\) be a compact neighbourhood of \(0\); \(K\) is totally bounded as a compact subset of a uniform space. Cover \(K\) by finitely many translates \(x_1 + \tfrac {1}{2} K, \ldots , x_m + \tfrac {1}{2} K\) and let \(F = \operatorname {span}\{ x_1, \ldots , x_m\} \). Iterating, \(K \subseteq F + 2^{-n} K\) for every \(n\); since \(K\) is bounded and \(F\) is closed by Theorem&#160;<a href="sect0001.html#thm:fd-subspace-closed">16</a>, intersecting gives \(K \subseteq F\). But \(K\) absorbs \(E\) (Theorem&#160;<a href="sect0001.html#thm:absorbent-compact-bounded">12</a>(a)), so \(E \subseteq F\), i.e. \(\dim E \le m\). </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:nsmul-norm">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">18</span>
+    <span class="theorem_thmtitle">Rudin 1.28(a), iterated translation bound</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0001.html#thm:nsmul-norm">#</a>
+    
+    <a class="icon proof" href="sect0001.html#a0000000030"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="docs/find/#doc/Rudin.Ch01.norm_nsmul_le_nat" class="lean_decl">Rudin.Ch01.norm_nsmul_le_nat</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>   In a seminormed additive commutative group, \(\| n \cdot x\|  \le n \cdot \| x\| \). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000030">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Immediate by induction on \(n\) using the triangle inequality: \(\| (n+1) x\|  = \| n x + x\|  \le \| n x\|  + \| x\|  \le n\| x\|  + \| x\|  = (n+1)\| x\| \), with base case \(\| 0\|  = 0\). </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:tvs-separation">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">19</span>
+    <span class="theorem_thmtitle">Rudin 1.10, separation of compact and closed</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0001.html#thm:tvs-separation">#</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="docs/find/#doc/Rudin.Pending.separation_compact_closed" class="lean_decl">Rudin.Pending.separation_compact_closed</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>   Let \(X\) be a TVS, \(K \subseteq X\) compact, \(C \subseteq X\) closed, \(K \cap C = \emptyset \). Then there exists \(V \in \mathcal N(0)\) with \((K + V) \cap (C + V) = \emptyset \). </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:tvs-regular">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">20</span>
+    <span class="theorem_thmtitle">Rudin 1.11, regularity of TVS</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0001.html#thm:tvs-regular">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0001.html#thm:tvs-separation">Theorem 19</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="docs/find/#doc/Rudin.Pending.exists_closure_subset_of_nhds_zero" class="lean_decl">Rudin.Pending.exists_closure_subset_of_nhds_zero</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>    Every neighbourhood of \(0\) in a TVS contains the closure of some neighbourhood of \(0\) (the special case \(K = \{ 0\} \) of the previous theorem). </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:closure-eq-iInter-add">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">21</span>
+    <span class="theorem_thmtitle">Rudin 1.13(a), closure as intersection</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0001.html#thm:closure-eq-iInter-add">#</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="docs/find/#doc/Rudin.Pending.closure_eq_iInter_add_nhds_zero" class="lean_decl">Rudin.Pending.closure_eq_iInter_add_nhds_zero</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>   \(\overline{A} = \bigcap _{V \in \mathcal N(0)} (A + V)\). </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:closure-add-subset">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">22</span>
+    <span class="theorem_thmtitle">Rudin 1.13(b), closure of sums</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0001.html#thm:closure-add-subset">#</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="docs/find/#doc/Rudin.Pending.closure_add_closure_subset_closure_add" class="lean_decl">Rudin.Pending.closure_add_closure_subset_closure_add</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>   \(\overline{A} + \overline{B} \subseteq \overline{A + B}\). </p>
+
+  </div>
+</div>
+<div class="definition_thmwrapper theorem-style-definition" id="def:submodule-closure">
+  <div class="definition_thmheading">
+    <span class="definition_thmcaption">
+    Definition
+    </span>
+    <span class="definition_thmlabel">23</span>
+    <span class="definition_thmtitle">Rudin 1.13(c), closure of a subspace</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0001.html#def:submodule-closure">#</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="docs/find/#doc/Rudin.Pending.submoduleClosure" class="lean_decl">Rudin.Pending.submoduleClosure</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="definition_thmcontent">
+  <p>   The closure of a linear subspace is again a linear subspace; mathlib packages this as <span class="ttfamily">Submodule.topologicalClosure</span>. </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:convex-balanced-nhd">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">24</span>
+    <span class="theorem_thmtitle">Rudin 1.14(b), convex balanced neighbourhood</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0001.html#thm:convex-balanced-nhd">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0001.html#thm:balanced-nhd">Theorem 11</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="docs/find/#doc/Rudin.Pending.exists_convex_balanced_nhds_subset" class="lean_decl">Rudin.Pending.exists_convex_balanced_nhds_subset</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>    In a real locally convex TVS, every convex neighbourhood of \(0\) contains a convex <em>and</em> balanced neighbourhood of \(0\). </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:nhds-basis-smul-bounded">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">25</span>
+    <span class="theorem_thmtitle">Rudin 1.15(c), bounded neighbourhood scaling base</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0001.html#thm:nhds-basis-smul-bounded">#</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="docs/find/#doc/Rudin.Pending.nhds_basis_smul_of_bounded" class="lean_decl">Rudin.Pending.nhds_basis_smul_of_bounded</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>   If \(V\) is a bounded neighbourhood of \(0\) and \(\delta _n \to 0\) (nonzero), then \(\{ \delta _n V\} \) is a countable local base at \(0\). </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:fd-iso-homeomorph">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">26</span>
+    <span class="theorem_thmtitle">Rudin 1.21(a), \(\mathbb K^n\)-isomorphism is a homeomorphism</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0001.html#thm:fd-iso-homeomorph">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0001.html#thm:fd-linear-continuous">Theorem 15</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="docs/find/#doc/Rudin.Pending.linearEquiv_finrank_isHomeomorph" class="lean_decl">Rudin.Pending.linearEquiv_finrank_isHomeomorph</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>    Every linear isomorphism \(\mathbb K^n \to Y\) onto an \(n\)-dimensional Hausdorff TVS is a homeomorphism. </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:locallyBounded-HB-finiteDim">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">27</span>
+    <span class="theorem_thmtitle">Rudin 1.23, locally bounded + Heine–Borel implies finite-dim</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0001.html#thm:locallyBounded-HB-finiteDim">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0001.html#thm:closure-properties">Theorem 10</a></li>
+          
+          <li><a href="sect0001.html#thm:riesz-locallycompact">Theorem 17</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="docs/find/#doc/Rudin.Pending.finiteDimensional_of_locallyBounded_heineBorel" class="lean_decl">Rudin.Pending.finiteDimensional_of_locallyBounded_heineBorel</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>    A locally bounded TVS with the Heine–Borel property is finite-dimensional. </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:countable-base-metrisable">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">28</span>
+    <span class="theorem_thmtitle">Rudin 1.24, countable base implies metrisable</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0001.html#thm:countable-base-metrisable">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0001.html#thm:balanced-nhd">Theorem 11</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="docs/find/#doc/Rudin.Pending.exists_invariant_metric_of_countable_basis" class="lean_decl">Rudin.Pending.exists_invariant_metric_of_countable_basis</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>    A TVS with a countable local base at \(0\) admits a compatible translation-invariant pseudo-metric whose open balls at \(0\) are balanced (and may also be chosen convex if the space is locally convex). </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:dilation-principle">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">29</span>
+    <span class="theorem_thmtitle">Rudin 1.26, dilation principle</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0001.html#thm:dilation-principle">#</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="docs/find/#doc/Rudin.Pending.dilation_principle" class="lean_decl">Rudin.Pending.dilation_principle</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>   Suppose \((X, d_1)\) is complete, \(E \subseteq X\) closed, and \(f \colon E \to Y\) continuous with \(d_2(f(x'), f(x'')) \ge d_1(x', x'')\) for all \(x', x'' \in E\). Then \(f(E)\) is closed in \(Y\). </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:fSpace-subspace-closed">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">30</span>
+    <span class="theorem_thmtitle">Rudin 1.27, F-subspace is closed</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0001.html#thm:fSpace-subspace-closed">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0001.html#thm:dilation-principle">Theorem 29</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="docs/find/#doc/Rudin.Pending.fSpace_subspace_isClosed" class="lean_decl">Rudin.Pending.fSpace_subspace_isClosed</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>    Every subspace \(Y\) of a TVS \(X\) that is itself an F-space (in the inherited topology) is closed in \(X\). </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:null-rescale">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">31</span>
+    <span class="theorem_thmtitle">Rudin 1.28(b), rescaling a null sequence</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0001.html#thm:null-rescale">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0001.html#thm:nsmul-norm">Theorem 18</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="docs/find/#doc/Rudin.Pending.exists_smul_tendsto_zero_of_tendsto_zero" class="lean_decl">Rudin.Pending.exists_smul_tendsto_zero_of_tendsto_zero</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>    If \(x_n \to 0\) in a metrisable TVS, there exist positive scalars \(\gamma _n \to \infty \) such that \(\gamma _n x_n \to 0\). </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:bounded-iff-smul-tendsto-zero">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">32</span>
+    <span class="theorem_thmtitle">Rudin 1.30, sequential characterisation of bounded sets</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0001.html#thm:bounded-iff-smul-tendsto-zero">#</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="docs/find/#doc/Rudin.Pending.isVonNBounded_iff_smul_tendsto_zero" class="lean_decl">Rudin.Pending.isVonNBounded_iff_smul_tendsto_zero</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>   \(E \subseteq X\) is bounded iff for every sequence \((x_n)\) in \(E\) and every scalar sequence \(\alpha _n \to 0\), one has \(\alpha _n x_n \to 0\). </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:linear-cont-iff-bounded">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">33</span>
+    <span class="theorem_thmtitle">Rudin 1.32, continuous iff bounded for linear maps</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0001.html#thm:linear-cont-iff-bounded">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0001.html#thm:bounded-iff-smul-tendsto-zero">Theorem 32</a></li>
+          
+          <li><a href="sect0001.html#thm:null-rescale">Theorem 31</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="docs/find/#doc/Rudin.Pending.linear_continuous_iff_mapsBounded" class="lean_decl">Rudin.Pending.linear_continuous_iff_mapsBounded</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>    For a linear map between TVSs (with the source metrisable), continuity is equivalent to mapping bounded sets to bounded sets. </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:minkowski-separating-seminorms">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">34</span>
+    <span class="theorem_thmtitle">Rudin 1.36, Minkowski functionals are separating seminorms</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0001.html#thm:minkowski-separating-seminorms">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0001.html#def:minkowski">Definition 4</a></li>
+          
+          <li><a href="sect0001.html#thm:minkowski-subadditive">Theorem 5</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="docs/find/#doc/Rudin.Pending.minkowski_separating_seminorms" class="lean_decl">Rudin.Pending.minkowski_separating_seminorms</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>    Given a convex balanced local base \(\mathcal B\) of a real TVS, the family of Minkowski functionals \(\{ \mu _V : V \in \mathcal B\} \) is a separating family of continuous seminorms. </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:topology-of-seminorms">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">35</span>
+    <span class="theorem_thmtitle">Rudin 1.37, separating seminorms induce a topology</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0001.html#thm:topology-of-seminorms">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0001.html#thm:minkowski-separating-seminorms">Theorem 34</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="docs/find/#doc/Rudin.Pending.topology_of_separating_seminorms" class="lean_decl">Rudin.Pending.topology_of_separating_seminorms</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>    A separating family of seminorms \(\mathcal P\) on a vector space induces a unique locally convex Hausdorff topology in which each \(p \in \mathcal P\) is continuous. (Mathlib: <span class="ttfamily">WithSeminorms</span>.) </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:normable-iff-convex-bounded-nhd">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">36</span>
+    <span class="theorem_thmtitle">Rudin 1.39, normability criterion</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0001.html#thm:normable-iff-convex-bounded-nhd">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0001.html#thm:convex-balanced-nhd">Theorem 24</a></li>
+          
+          <li><a href="sect0001.html#def:minkowski">Definition 4</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="docs/find/#doc/Rudin.Pending.normable_iff_convex_bounded_nhds_zero" class="lean_decl">Rudin.Pending.normable_iff_convex_bounded_nhds_zero</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>    A real TVS is normable iff \(0\) admits a convex bounded neighbourhood. </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:add-closed-fd-closed">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">37</span>
+    <span class="theorem_thmtitle">Rudin 1.42, sum of closed and finite-dimensional is closed</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0001.html#thm:add-closed-fd-closed">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0001.html#thm:fd-subspace-closed">Theorem 16</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="docs/find/#doc/Rudin.Pending.add_isClosed_of_finiteDimensional" class="lean_decl">Rudin.Pending.add_isClosed_of_finiteDimensional</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>    If \(N\) is a closed subspace and \(F\) is finite-dimensional, then \(N + F\) is closed. </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:CO-frechet">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">38</span>
+    <span class="theorem_thmtitle">Rudin 1.44, \(C(\Omega )\) is a Fréchet space</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0001.html#thm:CO-frechet">#</a>
+    
+    <a class="icon proof" href="sect0001.html#a0000000031"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="docs/find/#doc/Rudin.Ch01.continuousFunctions_isFrechetSpace" class="lean_decl">Rudin.Ch01.continuousFunctions_isFrechetSpace</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>   \(C(\Omega , E)\), with the topology of uniform convergence on a chosen exhaustion of \(\Omega \) by compact sets, is a Fréchet space whenever \(\Omega \) is weakly locally compact and \(\sigma \)-compact and \(E\) is a complete normed real vector space (e.g. \(\Omega \) open in \(\mathbb R^n\), \(E = \mathbb R\) or \(\mathbb C\)). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000031">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Each Fréchet-space ingredient is a mathlib instance on \(C(\Omega , E)\) with the compact-open topology (= uniform convergence on compacta): topological additive group and continuous scalar multiplication come from the algebra/module structure on <span class="ttfamily">ContinuousMap</span>; local convexity is <span class="ttfamily">ContinuousMap.instLocallyConvexSpace</span>; countable generation of the uniformity follows from \(\Omega \) being weakly locally compact and \(\sigma \)-compact together with the countably-generated uniformity of \(E\); completeness is <span class="ttfamily">ContinuousMap.instCompleteSpaceOfCompactlyCoherentSpace</span> (weakly locally compact \(\Rightarrow \) compactly coherent). The Lean proof is just a five-fold <span class="ttfamily">inferInstance</span>. </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:H-omega-frechet-HB">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">39</span>
+    <span class="theorem_thmtitle">Rudin 1.45, \(H(\Omega )\) is Fréchet with Heine–Borel</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0001.html#thm:H-omega-frechet-HB">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0001.html#thm:CO-frechet">Theorem 38</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="docs/find/#doc/Rudin.Pending.holomorphic_isFrechetSpace_heineBorel" class="lean_decl">Rudin.Pending.holomorphic_isFrechetSpace_heineBorel</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>    \(H(\Omega )\) (holomorphic functions on open \(\Omega \subseteq \mathbb C\)) is a Fréchet space with the Heine–Borel property under the compact-open topology. <em>Pending: the Heine–Borel half is Montel’s theorem, which is not yet in mathlib.</em> </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:entire-isClosed">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">40</span>
+    <span class="theorem_thmtitle">Rudin 1.45 (Fréchet part, \(\Omega = \mathbb C\)): entire functions are a closed subspace of \(C(\mathbb C, \mathbb C)\)</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0001.html#thm:entire-isClosed">#</a>
+    
+    <a class="icon proof" href="sect0001.html#a0000000032"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0001.html#thm:CO-frechet">Theorem 38</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="docs/find/#doc/Rudin.Ch01.entire_isClosed" class="lean_decl">Rudin.Ch01.entire_isClosed</a></li>
+          
+          <li><a href="docs/find/#doc/Rudin.Ch01.entireSubmodule" class="lean_decl">Rudin.Ch01.entireSubmodule</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>    The set of entire functions \(\{ f \in C(\mathbb C, \mathbb C) : f \text{ is differentiable on } \mathbb C\} \) is a closed \(\mathbb C\)-submodule of \(C(\mathbb C, \mathbb C)\). Together with Theorem&#160;<a href="sect0001.html#thm:CO-frechet">38</a> for \(\Omega = \mathbb C\), this shows that the entire functions, with the compact-open topology, form a Fréchet space (closed subspace of a Fréchet space). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000032">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>A sequence \(F_n \to F\) in \(C(\mathbb C, \mathbb C)\) converges in the compact-open topology iff locally uniformly on \(\mathbb C\) (<span class="ttfamily">ContinuousMap.tendsto_iff_tendstoLocallyUniformly</span>; \(\mathbb C\) is weakly locally compact). Mathlib’s <span class="ttfamily">TendstoLocallyUniformlyOn.differentiableOn</span> (with \(U\) taken to be \(\mathbb C\) itself) then shows that the limit of locally uniformly convergent differentiable functions is differentiable. Closure of \(\{ f : \text{Differentiable}\} \) under cluster points follows. The submodule structure (closure under sum, scalar multiplication, and \(0\)) is immediate from <span class="ttfamily">Differentiable.add</span>, <span class="ttfamily">Differentiable.const_smul</span>, and <span class="ttfamily">differentiable_const</span>. </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:Cinfty-frechet">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">41</span>
+    <span class="theorem_thmtitle">Rudin 1.46, \(C^\infty (\Omega )\) and \(\mathcal D_K\) are Fréchet</span>
+    <div class="thm_header_extras">
+
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0001.html#thm:Cinfty-frechet">#</a>
+    
+    
+    <button class="modal"><svg  class="icon icon-mindmap "><use xlink:href="symbol-defs.svg#icon-mindmap"></use></svg>
+</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Uses</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="sect0001.html#thm:CO-frechet">Theorem 38</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="docs/find/#doc/Rudin.Pending.smoothFunctions_isFrechetSpace" class="lean_decl">Rudin.Pending.smoothFunctions_isFrechetSpace</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>    \(C^\infty (\Omega )\) and the test-function space \(\mathcal D_K(\Omega )\) are Fréchet spaces under the seminorms \(p_n(f) = \sup _{|\alpha | \le n}\sup _{x \in K_n} |\partial ^\alpha f(x)|\). <em>Pending: completeness of \(\mathcal D^n_K(E, F)\) is not yet available in mathlib (only the TVS / locally convex part is).</em> </p>
+
+  </div>
+</div>
+<div class="theorem_thmwrapper theorem-style-plain" id="thm:DKn-LCS">
+  <div class="theorem_thmheading">
+    <span class="theorem_thmcaption">
+    Theorem
+    </span>
+    <span class="theorem_thmlabel">42</span>
+    <span class="theorem_thmtitle">Rudin 1.46 (TVS + locally convex part): \(\mathcal D^n_K(E, F)\) is a locally convex topological vector space</span>
+    <div class="thm_header_extras">
+
+    
+    ✓
+        </div>
+    <div class="thm_header_hidden_extras">
+
+    <a class="icon proof" href="sect0001.html#thm:DKn-LCS">#</a>
+    
+    <a class="icon proof" href="sect0001.html#a0000000033"><svg  class="icon icon-cogs "><use xlink:href="symbol-defs.svg#icon-cogs"></use></svg>
+</a>
+    
+    
+    
+    <button class="modal lean">L∃∀N</button>
+        <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>Lean declarations</h1>
+          <button class="closebtn"><svg  class="icon icon-cross "><use xlink:href="symbol-defs.svg#icon-cross"></use></svg>
+</button>
+        </header>
+        
+        <ul class="uses">
+          
+          <li><a href="docs/find/#doc/Rudin.Ch01.testFunctions_isTVS_locallyConvex" class="lean_decl">Rudin.Ch01.testFunctions_isTVS_locallyConvex</a></li>
+          
+        </ul>
+    
+      </div>
+    </div>
+
+    
+        </div>
+  </div>
+  <div class="theorem_thmcontent">
+  <p>   Let \(E, F\) be normed real vector spaces with \(F\) a normed \(\mathbb K\)-module (\(\mathbb K\) a non-trivial normed field). For every \(n \in \mathbb N \cup \{ \infty \} \) and every compact \(K \subseteq E\), the space \(\mathcal D^{n}_{K}(E, F)\) of \(n\)-times continuously differentiable functions \(E \to F\) supported in \(K\) is a topological additive group, has continuous scalar multiplication by \(\mathbb K\), and is locally convex over \(\mathbb R\). </p>
+
+  </div>
+</div>
+<div class="proof_wrapper" id="a0000000033">
+  <div class="proof_heading">
+    <span class="proof_caption">
+    Proof
+    </span>
+    <span class="expand-proof">▶</span>
+  </div>
+  <div class="proof_content">
+  <p>Each conclusion is an existing mathlib instance on <span class="ttfamily">ContDiffMapSupportedIn</span>: <span class="ttfamily">isTopologicalAddGroup</span>, <span class="ttfamily">continuousSMul</span>, and <span class="ttfamily">locallyConvexSpace</span>. The Lean proof is a triple <span class="ttfamily">inferInstance</span>. </p>
 
   </div>
 </div>
